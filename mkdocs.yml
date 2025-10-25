@@ -1,4 +1,8 @@
 site_name: Slope Library Doc
 site_url: https://slopedoc.github.io/site
+repo_url: https://github.com/baptiste-genest/slope
 theme:
   name: material
+theme:
+  icon:
+    repo: fontawesome/brands/git-alt
