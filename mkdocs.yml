@@ -1,1 +1,4 @@
-site_name: My Docs
+site_name: Slope Library Doc
+site_url: https://slopedoc.github.io/site
+theme:
+  name: material
