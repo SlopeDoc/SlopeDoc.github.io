@@ -1,4 +1,4 @@
 ---
-title: Persistant placement
+title: Persistant
 ---
 

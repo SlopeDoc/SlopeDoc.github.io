@@ -12,7 +12,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(slope)
 ```
 
-```cmake title="CMakeLists.txt"
+```cmake title="CMakeLists.txt" linenums="1"
 project(slope_project)
 cmake_minimum_required(VERSION 3.12)
 

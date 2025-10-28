@@ -1,3 +1,3 @@
 ---
-title: Relative placement
+title: Relative
 ---
