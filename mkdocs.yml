@@ -37,5 +37,5 @@ extra_javascript:
 
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
-  - stylesheets/no-collapse.css
+    #  - stylesheets/no-collapse.css
   - stylesheets/typography.css

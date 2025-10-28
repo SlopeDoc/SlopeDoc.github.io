@@ -8,11 +8,3 @@ Starting only from pure documentation can be hard so here is a step by step exam
 show << Latex::Add("Hello!");
 ```
 
-!!! tip
-
-    chock on 
-
-test:
-$$
-\frac{1}{\mu}
-$$
