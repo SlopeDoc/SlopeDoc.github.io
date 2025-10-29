@@ -2,21 +2,27 @@
 title: Hot Reloading
 ---
 
-```json title="latex.json"
-{
-"key1":[0,"Some text",1],
-"key2":[1,"\pi \approx 3",1]
-}
+We creating the slides, text is more often edited than the rest. In order to avoid recompiling, hot reloading of an external source file is possible.
 
-```
+=== "Json LateX source"
 
-In the code:
-```c++
-LatexLoader::Init("latex.json");
+    ``` json
+    {
+    "key1":[0,"Some text",1],
+    "key2":[1,"\pi \approx 3",1]
+    }
+    ```
 
-show << LatexLoader::Load("key1");
+=== "Code"
 
-// equivalent to LatexLoader::Load("key2")->at("key2")
-show << LatexLoader::LoadWithKey("key2");  
-```
+    ``` c++
+    LatexLoader::Init("latex.json");
+
+    show << LatexLoader::Load("key1");
+
+    // equivalent to LatexLoader::Load("key2")->at("key2")
+    show << LatexLoader::LoadWithKey("key2");  
+    ```
+
+In the Json, the first element must be 0 or 1, 0 for text, 1 for formulas, the middle one is the content, the last one is the scale of the text.
 

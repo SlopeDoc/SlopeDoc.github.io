@@ -5,11 +5,14 @@ repo_name: baptiste-genest/slope
 theme:
   name: material
   logo: static/slope_icon_white.png
+  favicon: static/slope_icon.png
   icon:
     repo: fontawesome/brands/git-alt
   features:
     - navigation.instant.preview
     - navigation.expand
+    - content.code.select
+    - content.code.copy
   palette:
     primary:
       black
@@ -23,7 +26,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.arithmatex:
       generic: true
   - admonition

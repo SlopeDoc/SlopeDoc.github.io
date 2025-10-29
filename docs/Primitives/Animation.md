@@ -1,6 +1,6 @@
-The code way animations can be implemented is through the concept of the updater.
+The way animations can be programatically conceived is through updaters.
 
-Each primitive has as updater object that is called at each frame such that all the primitives can be time-dependant:
+Each primitive has as updater object that is called at each frame such that each primitive can be time-dependant:
 
 ```cpp
 auto pc = PointCloud::Add(positions);
@@ -17,10 +17,10 @@ pc->updater = [pc] (TimeObject t,Primitive*) {
 }
 ```
 
-The TimeObject carries all time information:
+The TimeObject contains all relevant time information for this primitive:
 
 - from_begin (s) : time from start of the program
 - from_action (s) : time from last slide change
 - inner_time (s) : time from first appearence on screen
-- absolute_frame_number (int) : current frame number
-- relative_frame_number (int) : number of frames from first appearence
+- absolute_frame_number (int) : current frame number from first slide
+- relative_frame_number (int) : number of slides from first appearence of this primitive
