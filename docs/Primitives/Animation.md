@@ -17,10 +17,12 @@ pc->updater = [pc] (TimeObject t,Primitive*) {
 }
 ```
 
-The TimeObject contains all relevant time information for this primitive:
 
-- from_begin (s) : time from start of the program
-- from_action (s) : time from last slide change
-- inner_time (s) : time from first appearence on screen
-- absolute_frame_number (int) : current frame number from first slide
-- relative_frame_number (int) : number of slides from first appearence of this primitive
+!!! note "```TimeObject```"
+    The TimeObject given in parameter of the updater contains all relevant time information for each primitive:
+
+    - from_begin (s) : time from start of the program
+    - from_action (s) : time from last slide change
+    - inner_time (s) : time from first appearence on screen
+    - absolute_frame_number (int) : current frame number from first slide
+    - relative_frame_number (int) : number of slides from first appearence of this primitive

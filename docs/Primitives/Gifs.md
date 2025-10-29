@@ -9,6 +9,8 @@ As screen primitives are rendered with ImGui, no video support is possible but o
 show << Gif::Add("puppy_dance.gif");
 ```
 
+### Builder
+
 ??? note "```c++ Gif::Add(std::string path, int fps,float scale,bool loop); ```"
     - ```std::string path``` if relative then look in [data path](../../options).
     - ```int fps``` speed at which the gif is played (default: 10 fps)

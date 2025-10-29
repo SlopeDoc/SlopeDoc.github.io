@@ -9,7 +9,6 @@ Most basic screen primitive.
 show << Image::Add("slope_logo.png");
 ```
 
-!!! note ""
-    ```c++
-        Image::Add(std::string name,float name);
-    ```
+### Builder
+
+!!! note "```c++ Image::Add(std::string path,float name);```"

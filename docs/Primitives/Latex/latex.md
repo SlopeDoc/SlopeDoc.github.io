@@ -23,5 +23,5 @@ Latex files are then hashed and stored in a cache to only generate them once.
 !!! tip "Full string escape"
     For complex strings, escaping each \ is painfull, remember that C++ offers full string escaping:
     ```c++
-    Latex::Add(R"( much easier like that : $ \pi = 3$ )")    
+    Latex::Add(R"( much easier like that : $\pi = \int_0^3 1 dt$ )")    
     ```

@@ -1,3 +1,3 @@
 ---
-title: Path & Options
+title: Paths, Caches & Options
 ---
