@@ -14,9 +14,9 @@ Each object transform can be controled on each slide with the ```at``` method:
     show << inNextFrame << M->at(vec(-1,-1,-1)); // will transition between transforms
 ```
 
-### Persistant transform and live editing
+### Persistent transform and live editing
 
-Just as for [Persistant 2D positions](../../placement/persistant_placement), setting a label allows to modify the transform in live:
+Just as for [Persistent 2D positions](../../placement/persistant_placement), setting a label allows to modify the transform in live:
 ```
     show << M->("bunny");
 ```

@@ -1,10 +1,10 @@
 ---
-title: Persistant
+title: Persistent
 ---
 
 Eyeballing positions on the screen can be tedious, hence, you can instead assign a label to a primitive (possibly a different one per slide).
 
-Labeled pritmives can then be selected, with ```Ctrl+Left Click```, and be moved with the mouse and scaled with the mouse roll.
+Labeled pritmives can then be selected, with ```Ctrl+Left Click```, and be moved with the mouse and scaled with the mouse roll. The assigned position will by saved for future executions.
 A selected primitive can be centered horizontally by pressing ```H``` and vertically by pressing ```V```.
 
 ```c++
