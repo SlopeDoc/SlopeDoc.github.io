@@ -11,7 +11,7 @@ As titles are a special kind of text, you can use the ```Title(std::string text)
 
 ```
 
-### Table of content
+### Table of contents
 
 As titles are unique, you can use them to jump between slides: by pressing ```tab``` you get the list of all titles and clicking on one will make you jump directly to the first slide with this title, useful for questions during presentations!
 
