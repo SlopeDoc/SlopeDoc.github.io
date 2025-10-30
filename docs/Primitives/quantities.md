@@ -9,16 +9,18 @@ Of course, during the presentation, one would like to control independently the 
 One can do it simply in the following way:
 ```c++
 
-auto mesh = Mesh::Add("bunny.obj");
+    auto mesh = Mesh::Add("bunny.obj");
 
-Vec V = // some scalar field of size = nb vertex;
+    Vec V = // some scalar field of size = nb vertex;
 
-auto sf = mesh->pc->addVertexScalarQuantity("some field",V);
+    auto sf = mesh->pc->addVertexScalarQuantity("some field",V);
 
-auto field = AddPolyscopeQuantity(sf);
+    sf->q->setColormap("viridis");
 
-// displays mesh first, then the scalar field
-show << mesh << InNextFrame << field;
+    auto field = AddPolyscopeQuantity(sf);
+
+    // displays mesh first, then the scalar field
+    show << mesh << InNextFrame << field;
 
 ```
 
