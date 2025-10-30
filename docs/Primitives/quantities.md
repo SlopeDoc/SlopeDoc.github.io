@@ -15,7 +15,7 @@ One can do it simply in the following way:
 
     auto sf = mesh->pc->addVertexScalarQuantity("some field",V);
 
-    sf->q->setColormap("viridis");
+    sf->q->setColorMap("viridis");
 
     auto field = AddPolyscopeQuantity(sf);
 
