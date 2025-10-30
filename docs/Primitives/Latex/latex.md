@@ -7,15 +7,15 @@ In order to add text on your slides, you can add Latex, either by hardcoding it 
 To make things easier between standard text and formulas, two builders exist:
 
 ```c++
-    show << Latex::Add("Some text, can use math $\\pi$"); // must escape caracters
-
+    show << Latex::Add("Some text, can use math $\\pi$");
     show << Formula::Add("\\int_0^1 t dt = 8"); // math mode by default
 ```
 
 Importing latex packages can be easily done using:
 
 ```c++
-    Latex::AddToPrefix("\\usepackage{libertine}"); // will apply to all
+    Latex::AddToPrefix("\\usepackage{libertine}"); 
+    // will be added before ALL latex objects
 ```
 
 Latex files are then hashed and stored in a cache to only generate them once.

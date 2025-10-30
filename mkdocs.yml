@@ -54,25 +54,30 @@ nav:
   - options.md
   - Workflow:
     - workflow/slide.md
-    - workflow/full_example.md
-  - Screen Primitives:
-    - Primitives/screen_primitives.md
-    - Primitives/images.md
-    - Primitives/Gifs.md
-    - Latex:
-      - Primitives/Latex/latex.md
-      - Primitives/Latex/dynamic.md
-      - Primitives/Latex/titles.md
-    - Placement:
-      - placement/absolute.md
-      - placement/persistant_placement.md
-      - placement/relative_placement.md
-      - placement/tracking.md
-  - Polyscope Primitives:
-    - Primitives/polyscope_primitives.md
-    - Primitives/point_cloud.md
-    - Primitives/Mesh.md
-    - Primitives/camera.md
+    - workflow/transitions.md
+      #    - workflow/full_example.md
+  - Primitives:
+    - Primitives/Animation.md
+    - Screen Primitives:
+      - Primitives/screen_primitives.md
+      - Primitives/images.md
+      - Primitives/Gifs.md
+      - Latex:
+        - Primitives/Latex/latex.md
+        - Primitives/Latex/dynamic.md
+        - Primitives/Latex/titles.md
+      - Placement:
+        - placement/absolute.md
+        - placement/relative_placement.md
+        - placement/persistant_placement.md
+        - placement/tracking.md
+    - Polyscope Primitives:
+      - Primitives/polyscope_primitives.md
+      - Primitives/transforms.md
+      - Primitives/point_cloud.md
+      - Primitives/Mesh.md
+      - Primitives/camera.md
+      - Primitives/quantities.md
   - limitations.md
   - about.md
 

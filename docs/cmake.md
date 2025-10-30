@@ -1,5 +1,5 @@
 ---
-title: CMake Integration
+title: Build & CMake Integration
 ---
 
 Slope is designed to be easilty integrated on top of any cmake project in order to merge scientific code and your presentations!
@@ -34,3 +34,18 @@ Slope is designed to be easilty integrated on top of any cmake project in order 
     FetchContent_MakeAvailable(slope)
     ```
 
+### Dependencies
+- the same as [Polyscope](https://polyscope.run/about/dependencies/)
+- Imagick (```convert``` command)
+- ```pdflatex```
+
+[Paths](../options) to Imagick and pdflatex are found by cmake.
+
+### Build and run !
+
+```
+mkdir build && cd build
+cmake ..
+make -j
+./exe --project_path /path/to/your/project/folder
+```

@@ -22,3 +22,6 @@ You can force a 2D object, for instance a label, to follow a 3D object of the sc
 ```
 <video src="../../static/tracking.mp4" muted autoplay loop controls width="100%" >
 </video>
+
+A fixed point in the 3D scene can also be followed:
+!!! note "```at(const vec& pos,vec2 offset)```"
