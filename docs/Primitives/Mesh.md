@@ -18,8 +18,3 @@ What would we do without meshes? You can load one either from a file or a handma
     - ```const faces& F``` faces = ```std::vector<std::vector<size_t>```.
     - ```bool smooth``` polyscope shading mode (if false then visible edges)
 
-
-### Useful methods
-
-!!! note "normalize()"
-!!! note "Apply( X )"
