@@ -25,3 +25,6 @@ Latex files are then hashed and stored in a cache to only generate them once.
     ```c++
     Latex::Add(R"( much easier like that : $\pi = \int_0^3 1 dt$ )")    
     ```
+
+!!! note "Image resolution"
+    Slope naively converts latex pdf to png, hence we lose the scale invariance of vector graphics. If you want to scale some text to very large you can change the DPI for the conversion, by setting ```slope::Options::PDFtoPNGDensity```.

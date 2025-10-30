@@ -2,7 +2,7 @@
 title: Hot Reloading
 ---
 
-We creating the slides, text is more often edited than the rest. In order to avoid recompiling, hot reloading of an external source file is possible.
+When creating the slides, text is more often edited than the rest. In order to avoid recompiling, hot reloading of an external source file is possible.
 
 === "Json LateX source"
 
@@ -26,3 +26,5 @@ We creating the slides, text is more often edited than the rest. In order to avo
 
 In the Json, the first element must be 0 or 1, 0 for text, 1 for formulas, the middle one is the content, the last one is the scale of the text.
 
+!!! warning "Warning"
+    The reloading occurs when the json file is saved, if there is an error in the LateX, the program will end.

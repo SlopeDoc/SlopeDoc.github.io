@@ -18,8 +18,7 @@ Slope does a distinction between two types of Primitives, the ones that live onl
 - Curve3D
 - Camera view
 
-The key difference being that screen primitives can be placed on the screen using various 2D referential (see [Placement](../../placement/relative_placement)), while polyscope ones
-can be displaced in the scene or viewed from different camera angles.
+The key difference being that screen primitives can be placed on the screen using various 2D referential, with the ```at``` method (see [Placement](../../placement/relative_placement)), while polyscope ones live in a common 3D referential (you can modify the model-to-scene transform by setting ```polyscopeprimitive->transform```).
 
 
 Most primitives can be instanciated using:
@@ -28,5 +27,4 @@ Most primitives can be instanciated using:
     // PrimitiveType::Add( contructor );
     // like
     Mesh::Add("bunny.obj");
-
 ```

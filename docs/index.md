@@ -8,7 +8,7 @@ Exporting scientific results or complicated concepts into pretty presentations i
 
 But talking about graphics and geometry without 3D is both a waste of joy and clarity.
 
-Hence we propose **Slope**, a 3D slide engine built on top of [Polyscope](https://polyscope.run/), made to be loaded on top of your scientific code!
+Hence we propose **Slope**, a 3D slide engine built on top of [Polyscope](https://polyscope.run/), which can be loaded on top of your scientific code!
 
 The goal is to allow researchers, teachers and geometry lovers to easily illustrate concepts with *pretty & interactive* 3D slides and animations.
 
