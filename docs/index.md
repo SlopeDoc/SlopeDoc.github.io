@@ -3,7 +3,7 @@ title: What is Slope?
 ---
 
 
-Exporting scientific results or complicated concepts into pretty presentations is a very painfull proces that very often leads to a sad succession of screenshots and equations.
+Exporting scientific results or complicated concepts into pretty presentations is a very hard proces that very often leads to a sad succession of screenshots and equations.
 
 
 But talking about graphics and geometry without 3D is both a waste of joy and clarity.

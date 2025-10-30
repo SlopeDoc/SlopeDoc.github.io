@@ -1,3 +1,3 @@
 ---
-title: Automatic Transitions
+title: Transitions & slide management
 ---

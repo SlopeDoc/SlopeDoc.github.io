@@ -2,7 +2,7 @@
 title: CMake Integration
 ---
 
-Slope is designed to be easilty integration on top of any cmake project in order to be able to merge scientific code and your presentations!
+Slope is designed to be easilty integrated on top of any cmake project in order to merge scientific code and your presentations!
 
 
 

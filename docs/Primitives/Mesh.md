@@ -2,7 +2,7 @@
 title: Mesh
 ---
 
-Since geometry without meshes would be less fun, you can load them either from an file or you can craft them with love:
+What would we do without meshes? You can load one either from a file or a handmade one:
 
 
 ### Builders
