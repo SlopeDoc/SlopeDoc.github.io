@@ -15,3 +15,10 @@ The difference being that if a primitive is present in a slide at a given locati
 
 ```
 In this example the title is duplicated by ```inNextFrame``` but when you reinsert it, the new location overrides the old one.
+
+
+<video width="100%" autoplay loop muted>
+  <source src="../../static/transition.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+

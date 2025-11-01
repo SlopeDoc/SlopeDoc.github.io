@@ -12,6 +12,23 @@ Primitives can be placed with respect to another one. The main way to do so is w
     - ```scalar paddingX ``` offset in the opposite direction of the placeX in the x-coord
     - ```scalar paddingY ``` offset in the opposite direction of the placeY in the x-coord
 
+!!! info "Dynamic tracking"
+
+
+    <video 
+        src="../../static/relative.mp4" 
+        autoplay 
+        muted 
+        loop 
+        style="display: block; float: right; margin-left: auto;margin-bottom: auto; margin-right: auto; width: 200px; height: auto;">
+    </video>
+
+    The relative placement is dynamic, if the reference primitive moves, the placement is updated:
+    ``` c++
+        show << Latex::Add("I'm A")->at("A");
+        show << PlaceBelow(Latex::Add("I follow A"),0.03);
+    ```
+
 Of course, many wrappers exist over this to simplify stuff for common constructions:
 
 ### Wrappers:

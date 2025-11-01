@@ -20,7 +20,7 @@ You can force a 2D object, for instance a label, to follow a 3D object of the sc
 
     show << Formula::Add("x")->track([particle] () {return particle->getCurrentPos();}, vec2(0.03,0.03));
 ```
-<video src="../../static/tracking.mp4" muted autoplay loop controls width="100%" >
+<video src="../../static/tracking.mp4" muted autoplay loop width="100%" >
 </video>
 
 A fixed point in the 3D scene can also be followed:

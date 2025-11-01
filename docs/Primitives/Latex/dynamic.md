@@ -28,3 +28,8 @@ In the Json, the first element must be 0 or 1, 0 for text, 1 for formulas, the m
 
 !!! warning "Warning"
     The reloading occurs when the json file is saved, if there is an error in the LateX, the program will end.
+
+<video width="100%" autoplay loop muted>
+  <source src="../../../static/hot_reload.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
