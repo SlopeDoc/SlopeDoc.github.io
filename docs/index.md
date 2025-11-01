@@ -18,3 +18,11 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
   Your browser does not support the video tag.
 </video>
 
+### Main features:
+
+- Easy integration of all polyscope primitives and quantities
+- LateX compilation, with possible hot-reloading
+- Intuitive slide creation system
+- Full control over objects and animations
+- Automatic transitions
+- Interactivity with ImGui widgets
