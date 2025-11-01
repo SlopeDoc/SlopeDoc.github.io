@@ -1,0 +1,7 @@
+/* Change la taille de base du texte */
+:root {
+  --md-text-font-size: 2rem;  /* Par défaut ≈ 1rem (16px) */
+  --md-typeset-font-size: 2rem;
+  --md-typeset-line-height: 3;
+}
+
