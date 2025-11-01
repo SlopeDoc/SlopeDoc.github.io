@@ -4,7 +4,7 @@ title: Interactivity & Widgets
 
 Since Slope works on top of polyscope, you keep the control over the camera with usual mouse control.
 
-To make interactive presentations, we can use ImGui widgets as a primitive:
+To make interactive presentations, you can use ImGui widgets as a primitive:
 ```c++
     float* f = new float(1); // make sure to allocate on heap
 
