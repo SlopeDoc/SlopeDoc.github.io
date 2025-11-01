@@ -78,6 +78,7 @@ nav:
       - Primitives/Mesh.md
       - Primitives/camera.md
       - Primitives/quantities.md
+  - interactivity.md
   - limitations.md
   - about.md
 

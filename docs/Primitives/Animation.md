@@ -1,6 +1,6 @@
 The way animations can be programatically conceived is through updaters.
 
-All primitive have an updater object that is called at each frame such that each primitive can be time-dependant:
+All primitives have an updater object that is called at each frame such that each primitive can be time-dependant:
 
 ```cpp
 auto pc = PointCloud::Add(positions);
