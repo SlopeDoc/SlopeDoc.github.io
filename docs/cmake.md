@@ -36,7 +36,7 @@ Slope is designed to be easilty integrated on top of any cmake project in order 
 
 ### Dependencies
 - the same as [Polyscope](https://polyscope.run/about/dependencies/)
-- Imagick (```convert``` command)
+- Imagick (```convert``` command) : Make sure that the convert command is allowed to convert pdf to png, see [here](https://stackoverflow.com/a/53180170).
 - ```pdflatex```
 
 [Paths](../options) to Imagick and pdflatex are found by cmake.
