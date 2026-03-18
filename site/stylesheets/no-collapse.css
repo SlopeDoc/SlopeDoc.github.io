@@ -1,0 +1,17 @@
+
+/* Supprime les flèches et le comportement pliable */
+.md-nav__toggle {
+  display: none !important;
+}
+
+.md-nav__item--nested > .md-nav__link {
+  cursor: default !important;
+}
+
+.md-nav__item--nested > nav {
+  display: block !important;
+  height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+

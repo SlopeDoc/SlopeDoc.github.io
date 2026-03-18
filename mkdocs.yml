@@ -58,6 +58,7 @@ nav:
       #    - workflow/full_example.md
   - Primitives:
     - Primitives/Animation.md
+    - Primitives/colors.md
     - Screen Primitives:
       - Primitives/screen_primitives.md
       - Primitives/images.md
@@ -79,6 +80,7 @@ nav:
       - Primitives/camera.md
       - Primitives/quantities.md
   - interactivity.md
+  - tutorial.md
   - limitations.md
   - about.md
 

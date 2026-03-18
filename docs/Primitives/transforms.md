@@ -17,10 +17,14 @@ Each object transform can be controled on each slide with the ```at``` method:
 ### Persistent transform and live editing
 
 Just as for [Persistent 2D positions](../../placement/persistant_placement), setting a label allows to modify the transform in live:
-```
-    show << M->("bunny");
+``` c++
+   show << M->("bunny");
 ```
 by pressing ```t```.
+
+Here demonstration of the interpolation between two frames with different persistent transforms:
+<video src="../../static/guizmos.mp4" muted autoplay loop controls width="100%" >
+</video>
 
 
 ### Builders

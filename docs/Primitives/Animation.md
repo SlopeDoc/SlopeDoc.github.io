@@ -4,7 +4,7 @@ All primitives have an updater object that is called at each frame such that eac
 
 ```cpp
 auto pc = PointCloud::Add(positions);
-pc->updater = [pc] (TimeObject t,Primitive*) {
+pc->updater = [pc] (TimeObject t) {
 
     if (t.relative_frame == 0) {
         auto P = pc->getPoints();
@@ -15,6 +15,20 @@ pc->updater = [pc] (TimeObject t,Primitive*) {
         // do something else
     }
 }
+```
+
+If you want to avoid having to code each behavior for each relative frame (and be resilient to slide changes), you can replace an updater starting at another frame directly:  
+
+```cpp
+auto pc = PointCloud::Add(positions);
+pc->updater = [pc] (TimeObject t) {
+    // default behavior
+}
+show << inNextFrame << pc;
+// do stuff, create new slides, etc...
+show << pc->setUpdater([pc] (TimeObject time){
+    // new behavior starting from this frame
+});
 ```
 
 
