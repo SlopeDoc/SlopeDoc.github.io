@@ -37,13 +37,8 @@ Note that a good idea to reduce compilation time would be to generate each group
 [Titles](../Primitives/Latex/titles) are essential in a presentation and in slope they allow to label each group of slides to enable jumping back and forth between slide groups. They appear larger than standard text and are unique to a slide. Let's make it appear at the center first, and then make it move to the top at the next slide.
 
 ``` c++
-void init () {
-    Latex::UsePackage("libertine");
-    LatexLoader::Init("test.json");
-
     show << Title("The moon and the tides")->at(CENTER);
     show << inNextFrame << TOP;
-}
 ```
 
 Note that only adding ```TOP``` will refer automatically to the last primitive inserted. Here it is equivalent to:
@@ -56,12 +51,9 @@ Note that only adding ```TOP``` will refer automatically to the last primitive i
 
 ## Primitives and camera
 
-We core object in slope are the primitives, we can start by adding a sphere:
+The core objects in slope are the primitives, that are either [screen ones](Primitives/screen_primitives.md) (purely in 2D space in the screen), or [Polyscope ones](Primitives/polyscope_primitives.md), we can start by adding a sphere:
 
 ``` c++
-    show << Title("The moon and the tides")->at(CENTER);
-    show << inNextFrame << TOP;
-
     // adding a mesh
     auto planet = Mesh::Add("sphere.obj");
     show << planet;
@@ -74,10 +66,6 @@ At this point, you should get this:
 
 We first adapt the camera to the scene by changing it as usual with polyscope and you can save the view by pressing ```c``` and here we save it under ```view1``` and add it to the scene:
 ``` c++
-    auto planet = Mesh::Add("sphere.obj");
-    show << planet;
-    planet->pc->setSurfaceColor(glm::vec3(0.5,0.6,1));
-
     show << CameraView::Add("view1");
 ```
 
@@ -86,14 +74,12 @@ We first adapt the camera to the scene by changing it as usual with polyscope an
 We can also start adding text, do it by modifing the latex souce file, here ```test.json```:
 === "main.cpp"
     ``` cpp
-    show << CameraView::Add("view1");
-
-    show << LatexLoader::LoadWithAnchor("moon1");
+        show << LatexLoader::LoadWithAnchor("moon1");
     ```
 === "text.json"
     ```json
     {
-        "moon1":[0,"The moon is essentialy of a very big rock"]
+        "moon1":[0,"The moon is essentialy a very big rock"]
     }
     ```
 
@@ -213,6 +199,9 @@ void init () {
     };
 
     show << tide_plot;
+
+    show << newFrame;
+    // make more slides here!
 }
 
 int main(int argc,char** argv) {
