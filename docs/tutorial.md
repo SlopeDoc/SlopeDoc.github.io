@@ -180,7 +180,7 @@ void init () {
 
     Vec tide = Vec::Random(planet->getVertices().size());
     auto q = planet->pc->addVertexScalarQuantity("tide",tide);
-    auto tide_plot = PolyscopeQuantity<polyscope::SurfaceVertexScalarQuantity>::Add(q);
+    auto tide_plot = AddPolyscopeQuantity(q);
 
     auto verts = planet->getVertices();
     tide_plot->q->setColorMap("blues");
