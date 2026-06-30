@@ -20,7 +20,7 @@ Just as for [Persistent 2D positions](../../placement/persistant_placement), set
 ```
     show << M->("bunny");
 ```
-by pressing ```t```.
+by pressing ```t```, where you get access to guizmos.
 
 
 ### Builders

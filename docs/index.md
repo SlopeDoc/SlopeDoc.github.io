@@ -21,11 +21,16 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 ### Main features:
 
 - Easy integration of all polyscope primitives and quantities
-- LateX compilation, with possible hot-reloading
+- LateX compilation, with hot-reloading
 - Intuitive slide creation system
 - Full control over objects and animations
 - Automatic transitions
 - Interactivity with ImGui widgets
+- Possible forced breaks to control the pace of the presentation
+- Snap-to-align interactive placement of screen elements
+- 3D world to screen tracking
+- A speaker-notes prompter on a second window
+- Live rehearsal timings to check your talk length
 
 ### Presentations with *Slope*:
 

@@ -33,6 +33,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - tables
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -79,6 +80,11 @@ nav:
       - Primitives/camera.md
       - Primitives/quantities.md
   - interactivity.md
+  - Presenter tools:
+    - presenter/shortcuts.md
+    - presenter/pause.md
+    - presenter/timings.md
+    - presenter/prompter.md
   - limitations.md
   - about.md
 
