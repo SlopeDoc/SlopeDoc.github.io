@@ -81,15 +81,12 @@ nav:
       - Primitives/camera.md
       - Primitives/quantities.md
   - interactivity.md
-<<<<<<< HEAD
   - Presenter tools:
     - presenter/shortcuts.md
     - presenter/pause.md
     - presenter/timings.md
     - presenter/prompter.md
-=======
   - tutorial.md
->>>>>>> 2571ad340f20734f433111fbdae6d8cb8766d7ba
   - limitations.md
   - about.md
 
