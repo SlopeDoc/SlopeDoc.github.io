@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://slopedoc.github.io/site/</loc>
-<<<<<<< HEAD
          <lastmod>2026-06-30</lastmod>
     </url>
     <url>
@@ -26,6 +25,10 @@
          <lastmod>2026-06-30</lastmod>
     </url>
     <url>
+         <loc>https://slopedoc.github.io/site/tutorial/</loc>
+         <lastmod>2026-06-30</lastmod>
+    </url>
+    <url>
          <loc>https://slopedoc.github.io/site/Primitives/Animation/</loc>
          <lastmod>2026-06-30</lastmod>
     </url>
@@ -38,7 +41,15 @@
          <lastmod>2026-06-30</lastmod>
     </url>
     <url>
+         <loc>https://slopedoc.github.io/site/Primitives/box/</loc>
+         <lastmod>2026-06-30</lastmod>
+    </url>
+    <url>
          <loc>https://slopedoc.github.io/site/Primitives/camera/</loc>
+         <lastmod>2026-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://slopedoc.github.io/site/Primitives/colors/</loc>
          <lastmod>2026-06-30</lastmod>
     </url>
     <url>
@@ -91,6 +102,10 @@
     </url>
     <url>
          <loc>https://slopedoc.github.io/site/placement/tracking/</loc>
+         <lastmod>2026-06-30</lastmod>
+    </url>
+    <url>
+         <loc>https://slopedoc.github.io/site/presenter/pause/</loc>
          <lastmod>2026-06-30</lastmod>
     </url>
     <url>
@@ -120,120 +135,5 @@
     <url>
          <loc>https://slopedoc.github.io/site/workflow/transitions/</loc>
          <lastmod>2026-06-30</lastmod>
-=======
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/about/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/cmake/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/interactivity/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/limitations/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/options/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/tutorial/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Animation/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Gifs/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Mesh/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/box/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/camera/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/colors/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/images/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/point_cloud/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/polyscope_primitives/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/quantities/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/screen_primitives/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/transforms/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Latex/dynamic/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Latex/latex/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/Primitives/Latex/titles/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/placement/absolute/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/placement/persistant_placement/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/placement/relative_placement/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/placement/tracking/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/workflow/full_example/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/workflow/slide/</loc>
-         <lastmod>2026-03-18</lastmod>
-    </url>
-    <url>
-         <loc>https://slopedoc.github.io/site/workflow/transitions/</loc>
-         <lastmod>2026-03-18</lastmod>
->>>>>>> 2571ad340f20734f433111fbdae6d8cb8766d7ba
     </url>
 </urlset>
