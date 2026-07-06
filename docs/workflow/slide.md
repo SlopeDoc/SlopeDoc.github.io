@@ -2,6 +2,8 @@
 title: Slide management 
 ---
 
+You can create slides in full C++.
+
 The way the user adds elements to the slides is with streams ```<<```
 
 The core object is the ```Slideshow``` object that must be unique for each presentation.
