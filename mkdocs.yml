@@ -53,13 +53,13 @@ nav:
   - index.md
   - cmake.md
   - options.md
+  - C++ Workflow:
+    - workflow/slide.md
+    - workflow/transitions.md
   - Interactive deck system:
     - deck/getting_started.md
     - deck/manifest.md
     - deck/objects.md
-  - C++ Workflow:
-    - workflow/slide.md
-    - workflow/transitions.md
   - Primitives:
     - Primitives/Animation.md
     - Primitives/colors.md
