@@ -57,6 +57,10 @@ nav:
     - workflow/slide.md
     - workflow/transitions.md
       #    - workflow/full_example.md
+  - Deck system:
+    - deck/getting_started.md
+    - deck/manifest.md
+    - deck/objects.md
   - Primitives:
     - Primitives/Animation.md
     - Primitives/colors.md
@@ -64,6 +68,8 @@ nav:
       - Primitives/screen_primitives.md
       - Primitives/images.md
       - Primitives/Gifs.md
+      - Primitives/shapes.md
+      - Primitives/stacks.md
       - Latex:
         - Primitives/Latex/latex.md
         - Primitives/Latex/dynamic.md

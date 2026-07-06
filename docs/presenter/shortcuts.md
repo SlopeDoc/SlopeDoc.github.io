@@ -24,7 +24,9 @@ These act on [persistent screen primitives](../placement/persistant_placement).
 | mouse wheel | Scale the picked primitive |
 | ``H`` | Center it horizontally |
 | ``V`` | Center it vertically |
-| ``Ctrl`` + ``S`` | Save all dragged positions to disk |
+| ``Ctrl`` + ``Shift`` + left click | Toggle the primitive in/out of a group selection |
+| left drag (with a group selected) | Move the whole group, preserving relative spacing (a short click clears the selection) |
+| ``Ctrl`` + ``S`` | Save all dragged positions and edited [parameters](../interactivity) to disk |
 | ``T`` | Transform guizmo editor (3D objects) |
 
 ### Tools & windows
@@ -35,5 +37,6 @@ These act on [persistent screen primitives](../placement/persistant_placement).
 | ``W`` | Color palette editor |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
+| ``A`` | Tuner panel: [tunable parameters](../interactivity) of the current slide |
 | ``P`` | Screenshot (saved to ``/tmp/screenshot_*.png``) |
 | ``R`` | Reset rehearsal timings |

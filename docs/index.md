@@ -23,7 +23,10 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 - Easy integration of all polyscope primitives and quantities
 - LateX compilation, with hot-reloading
 - Intuitive slide creation system
+- Slides composed in a hot-reloadable YAML manifest, editable while presenting
 - Full control over objects and animations
+- Persistent, runtime-tunable animation parameters
+- 2D vector graphics: shapes, and arrows that follow their targets
 - Automatic transitions
 - Interactivity with ImGui widgets
 - Possible forced breaks to control the pace of the presentation

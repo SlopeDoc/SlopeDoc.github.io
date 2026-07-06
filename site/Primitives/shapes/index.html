@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://slopedoc.github.io/site/cmake/">
+        <link rel="canonical" href="https://slopedoc.github.io/site/Primitives/shapes/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../Gifs/">
       
       
-        <link rel="next" href="../options/">
+        <link rel="next" href="../stacks/">
       
       
-      <link rel="icon" href="../static/slope_icon.png">
+      <link rel="icon" href="../../static/slope_icon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Build & CMake Integration - Slope</title>
+        <title>Shapes & arrows - Slope</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,9 +50,9 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../stylesheets/typography.css">
+      <link rel="stylesheet" href="../../stylesheets/typography.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dependencies" class="md-skip">
+        <a href="#2d-vector-graphics" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Slope" class="md-header__button md-logo" aria-label="Slope" data-md-component="logo">
+    <a href="../.." title="Slope" class="md-header__button md-logo" aria-label="Slope" data-md-component="logo">
       
-  <img src="../static/slope_icon_white.png" alt="logo">
+  <img src="../../static/slope_icon_white.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build & CMake Integration
+              Shapes & arrows
             
           </span>
         </div>
@@ -201,9 +201,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Slope" class="md-nav__button md-logo" aria-label="Slope" data-md-component="logo">
+    <a href="../.." title="Slope" class="md-nav__button md-logo" aria-label="Slope" data-md-component="logo">
       
-  <img src="../static/slope_icon_white.png" alt="logo">
+  <img src="../../static/slope_icon_white.png" alt="logo">
 
     </a>
     Slope
@@ -230,7 +230,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -249,30 +249,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Build & CMake Integration
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../cmake/" class="md-nav__link">
         
   
   
@@ -283,42 +263,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dependencies
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-and-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build and run !
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -330,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../options/" class="md-nav__link">
+      <a href="../../options/" class="md-nav__link">
         
   
   
@@ -392,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflow/slide/" class="md-nav__link">
+      <a href="../../workflow/slide/" class="md-nav__link">
         
   
   
@@ -415,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflow/transitions/" class="md-nav__link">
+      <a href="../../workflow/transitions/" class="md-nav__link">
         
   
   
@@ -485,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deck/getting_started/" class="md-nav__link">
+      <a href="../../deck/getting_started/" class="md-nav__link">
         
   
   
@@ -508,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deck/manifest/" class="md-nav__link">
+      <a href="../../deck/manifest/" class="md-nav__link">
         
   
   
@@ -531,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deck/objects/" class="md-nav__link">
+      <a href="../../deck/objects/" class="md-nav__link">
         
   
   
@@ -558,20 +502,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -587,7 +531,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Primitives
@@ -601,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Animation/" class="md-nav__link">
+      <a href="../Animation/" class="md-nav__link">
         
   
   
@@ -624,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/colors/" class="md-nav__link">
+      <a href="../colors/" class="md-nav__link">
         
   
   
@@ -644,20 +588,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -673,7 +617,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             Screen Primitives
@@ -687,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/screen_primitives/" class="md-nav__link">
+      <a href="../screen_primitives/" class="md-nav__link">
         
   
   
@@ -710,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/images/" class="md-nav__link">
+      <a href="../images/" class="md-nav__link">
         
   
   
@@ -733,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Gifs/" class="md-nav__link">
+      <a href="../Gifs/" class="md-nav__link">
         
   
   
@@ -753,10 +697,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Primitives/shapes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Shapes & arrows
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -767,6 +731,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2d-vector-graphics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2D vector graphics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2D vector graphics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Builders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#englobing-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Englobing boxes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -779,7 +803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/stacks/" class="md-nav__link">
+      <a href="../stacks/" class="md-nav__link">
         
   
   
@@ -842,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Latex/latex/" class="md-nav__link">
+      <a href="../Latex/latex/" class="md-nav__link">
         
   
   
@@ -865,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Latex/dynamic/" class="md-nav__link">
+      <a href="../Latex/dynamic/" class="md-nav__link">
         
   
   
@@ -888,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Latex/titles/" class="md-nav__link">
+      <a href="../Latex/titles/" class="md-nav__link">
         
   
   
@@ -959,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../placement/absolute/" class="md-nav__link">
+      <a href="../../placement/absolute/" class="md-nav__link">
         
   
   
@@ -982,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../placement/relative_placement/" class="md-nav__link">
+      <a href="../../placement/relative_placement/" class="md-nav__link">
         
   
   
@@ -1005,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../placement/persistant_placement/" class="md-nav__link">
+      <a href="../../placement/persistant_placement/" class="md-nav__link">
         
   
   
@@ -1028,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../placement/tracking/" class="md-nav__link">
+      <a href="../../placement/tracking/" class="md-nav__link">
         
   
   
@@ -1107,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/polyscope_primitives/" class="md-nav__link">
+      <a href="../polyscope_primitives/" class="md-nav__link">
         
   
   
@@ -1130,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/transforms/" class="md-nav__link">
+      <a href="../transforms/" class="md-nav__link">
         
   
   
@@ -1153,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/point_cloud/" class="md-nav__link">
+      <a href="../point_cloud/" class="md-nav__link">
         
   
   
@@ -1176,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/Mesh/" class="md-nav__link">
+      <a href="../Mesh/" class="md-nav__link">
         
   
   
@@ -1199,7 +1223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/camera/" class="md-nav__link">
+      <a href="../camera/" class="md-nav__link">
         
   
   
@@ -1222,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Primitives/quantities/" class="md-nav__link">
+      <a href="../quantities/" class="md-nav__link">
         
   
   
@@ -1260,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../interactivity/" class="md-nav__link">
+      <a href="../../interactivity/" class="md-nav__link">
         
   
   
@@ -1322,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../presenter/shortcuts/" class="md-nav__link">
+      <a href="../../presenter/shortcuts/" class="md-nav__link">
         
   
   
@@ -1345,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../presenter/pause/" class="md-nav__link">
+      <a href="../../presenter/pause/" class="md-nav__link">
         
   
   
@@ -1368,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../presenter/timings/" class="md-nav__link">
+      <a href="../../presenter/timings/" class="md-nav__link">
         
   
   
@@ -1391,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../presenter/prompter/" class="md-nav__link">
+      <a href="../../presenter/prompter/" class="md-nav__link">
         
   
   
@@ -1421,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial/" class="md-nav__link">
+      <a href="../../tutorial/" class="md-nav__link">
         
   
   
@@ -1443,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../limitations/" class="md-nav__link">
+      <a href="../../limitations/" class="md-nav__link">
         
   
   
@@ -1465,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -1505,20 +1529,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+  <a href="#2d-vector-graphics" class="md-nav__link">
     <span class="md-ellipsis">
-      Dependencies
+      2D vector graphics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2D vector graphics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#builders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Builders
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#build-and-run" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#arrows" class="md-nav__link">
     <span class="md-ellipsis">
-      Build and run !
+      Arrows
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#englobing-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Englobing boxes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1541,68 +1589,64 @@
   
 
 
-  <h1>Build & CMake Integration</h1>
+  <h1>Shapes & arrows</h1>
 
-<p>Slope is designed to be easilty integrated on top of any cmake project in order to merge scientific code and your presentations!</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">In CMakeLists.txt</label><label for="__tabbed_1_2">FetchContent file</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="language-cmake highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">project</span><span class="p">(</span><span class="s">slope_project</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.12</span><span class="p">)</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="o">${</span><span class="nv">PROJECT_SOURCE_DIR</span><span class="o">}</span><span class="s">/cmake</span><span class="p">)</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">20</span><span class="p">)</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nb">include</span><span class="p">(</span><span class="s">slope</span><span class="p">)</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="nb">add_executable</span><span class="p">(</span><span class="s">slope_project</span><span class="w"> </span><span class="s">slides.cpp</span><span class="w"> </span><span class="p">)</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">slope_project</span><span class="w"> </span><span class="s">slope</span><span class="p">)</span>
-</span></code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="language-cmake highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">slope.cmake</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">include</span><span class="p">(</span><span class="s">FetchContent</span><span class="p">)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">FetchContent_Declare</span><span class="p">(</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span><span class="s">slope</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="s">GIT_REPOSITORY</span><span class="w"> </span><span class="s">https://github.com/baptiste-genest/slope.git</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span><span class="s">GIT_TAG</span><span class="w"> </span><span class="s">alpha-0.0.1</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">)</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nb">FetchContent_MakeAvailable</span><span class="p">(</span><span class="s">slope</span><span class="p">)</span>
-</span></code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<h3 id="dependencies">Dependencies</h3>
-<ul>
-<li>the same as <a href="https://polyscope.run/about/dependencies/">Polyscope</a></li>
-<li>Imagick (<code>convert</code> command) : Make sure that the convert command is allowed to convert pdf to png, see <a href="https://stackoverflow.com/a/53180170">here</a>.</li>
-<li><code>pdflatex</code></li>
-</ul>
-<p><a href="../options">Paths</a> to Imagick and pdflatex are found by cmake.</p>
-<h3 id="build-and-run">Build and run !</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir build &amp;&amp; cd build
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cmake ..
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>make -j
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>./exe --project_path /path/to/your/project/folder
+<h2 id="2d-vector-graphics">2D vector graphics</h2>
+<p>Live vector shapes, drawn every frame: resolution independent, animatable, with a <em>draw-on</em> intro (the stroke grows along its arc length).</p>
+<div class="language-c++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Shape2D</span><span class="o">::</span><span class="n">Circle</span><span class="p">(</span><span class="n">vec2</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">),</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">circle</span><span class="o">-&gt;</span><span class="n">style</span><span class="p">.</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RGBA</span><span class="p">(</span><span class="mf">0.8f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">show</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">circle</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="s">&quot;circle_label&quot;</span><span class="p">);</span>
 </span></code></pre></div>
+<h3 id="builders">Builders</h3>
+<div class="admonition note">
+<p class="admonition-title"><code>Shape2D::Line(a, b)</code> / <code>Bezier(a, control, b)</code> / <code>Circle(center, radius)</code> / <code>Rect(center, size)</code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><code>Shape2D::Add(std::vector&lt;vec2&gt; points, bool closed)</code> — arbitrary polyline</p>
+</div>
+<p>Geometry is given in relative <span class="arithmatex">\([0,1]^2\)</span> coordinates, then recentered around the anchor: shapes are placed, dragged and transitioned like any other screen primitive.</p>
+<p>Every shape carries a <code>ShapeStyle</code>: <code>color</code>, <code>fill_color</code>, <code>thickness</code> (pixels at 1080p, scaled with the window) and <code>filled</code>.</p>
+<h3 id="arrows">Arrows</h3>
+<p><code>Arrow2D</code> is a connector: its endpoints are resolved <strong>every frame</strong>, so arrows follow drag edits and moving targets.</p>
+<div class="language-c++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">show</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">Arrow2D</span><span class="o">::</span><span class="n">Add</span><span class="p">(</span><span class="n">Arrow2D</span><span class="o">::</span><span class="n">Attach</span><span class="p">(</span><span class="n">formula</span><span class="p">),</span><span class="w">        </span><span class="c1">// a screen primitive</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">                     </span><span class="n">Arrow2D</span><span class="o">::</span><span class="n">AttachLabel</span><span class="p">(</span><span class="s">&quot;target&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// a persistent label</span>
+</span></code></pre></div>
+<p>An endpoint is a fixed position, a label, or a screen primitive — in which case the arrow attaches at the boundary of its bounding box, keeping a small <code>margin</code>. Each endpoint also takes an <code>offset</code>, applied after attachment, to fine-tune where the arrow starts and lands.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bend</code></td>
+<td>curvature: control-point offset, as a fraction of the endpoint distance</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>arrowhead size, relative units</td>
+</tr>
+<tr>
+<td><code>margin</code></td>
+<td>gap kept between an endpoint and its target</td>
+</tr>
+<tr>
+<td><code>from.offset</code> / <code>to.offset</code></td>
+<td>shift of the attach points</td>
+</tr>
+</tbody>
+</table>
+<h3 id="englobing-boxes">Englobing boxes</h3>
+<p><code>Box2D</code> is a rectangle englobing other screen primitives: the union of their bounding boxes (plus <code>padding</code>) is recomputed every frame, so the box follows drag edits and hot-reloaded content.</p>
+<div class="language-c++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Box2D</span><span class="o">::</span><span class="n">Add</span><span class="p">(</span><span class="n">theorem</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="p">);</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">box</span><span class="o">-&gt;</span><span class="n">style</span><span class="p">.</span><span class="n">filled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// filled with the background color by default,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">                            </span><span class="c1">// or box-&gt;setFillColor(...)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">show</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">box</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Like any primitive, the box is drawn at its insertion rank in the slide: add it <em>before</em> its targets to frame them, <em>after</em> to cover them.</p>
+<p>In a deck manifest, arrows and boxes are available as the <code>arrow:</code> and <code>box:</code> items (see <a href="../../deck/manifest">manifest format</a>).</p>
 
 
 
@@ -1654,12 +1698,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant.preview", "navigation.expand", "content.code.select", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant.preview", "navigation.expand", "content.code.select", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../javascripts/katex.js"></script>
+        <script src="../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

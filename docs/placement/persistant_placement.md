@@ -6,6 +6,8 @@ Eyeballing positions on the screen can be tedious, hence, you can instead assign
 
 Labeled primitives can be selected with ```Ctrl+Left Click```, then moved with the mouse and scaled with the mouse wheel. While you drag, light-blue guides appear and snap the primitive's edges and center to the other primitives of the slide, so you can align elements precisely. A selected primitive can also be centered horizontally by pressing ```H``` and vertically by pressing ```V```.
 
+Several primitives can also be moved **as a group**: toggle them in and out of the selection with ```Ctrl+Shift+Left Click``` (they highlight without moving), then drag with the left button to translate them all, preserving their relative spacing. A short click clears the selection.
+
 Dragged positions are kept only for the current session until you save them: press ```Ctrl+S``` to write them to disk so they are restored on the next run. If you try to quit (```Esc```) with unsaved placements, Slope asks for confirmation first.
 
 ```c++
