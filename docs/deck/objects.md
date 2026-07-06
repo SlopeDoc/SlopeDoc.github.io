@@ -7,12 +7,9 @@ title: C++ objects
 Anything the manifest cannot express — updaters, computed geometry, quantities — is defined in C++ and registered under a name, then placed by the manifest with `object: name`.
 
 ```c++
-// a factory : called once, the primitive is cached across hot reloads
-deck.registerObject("wobbly_spot", []() {
     auto spot = Mesh::Add("spot.obj");
-    spot->setUpdater([](TimeObject t){ /* ... */ });
-    return spot;
-});
+    spot->setUpdater([](TimeObject t){ /* ... */ }); // configure animation
+    deck.registerObject("wobbly_spot",spot);
 ```
 
 `registerObject` accepts several forms:
