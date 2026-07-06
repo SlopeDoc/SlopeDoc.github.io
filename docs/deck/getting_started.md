@@ -43,18 +43,25 @@ slides:
       - title: A mesh, from C++
       - object: spot
       - step:
-          - load: my_key        # content from latex.json
+          - load: my_key        # content from the latex definitions file
 ```
 
-`init` also loads the project's `latex.json` (latex definitions, see [dynamic latex](../../Primitives/Latex/dynamic)) and `commands.tex` (latex preamble) when they exist — both hot-reloaded too. Custom paths can be given at the top of the manifest with the `latex:` and `commands:` keys.
+`init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble — both hot-reloaded too. Their paths are given at the top of the manifest with the `latex:` and `commands:` keys; when omitted, the project's `latex.json` and `commands.tex` are used if they exist.
+
+```yaml
+latex: my_definitions.json
+commands: my_preamble.tex
+slides:
+  - ...
+```
 
 ### What hot reload watches
 
 | File | Effect when edited |
 | --- | --- |
 | `deck.yaml` | slides are recomposed in place |
-| `latex.json` | edited entries are recompiled |
-| `commands.tex` | preamble change, every formula is recompiled |
+| latex definitions file | edited entries are recompiled |
+| latex preamble file | every formula is recompiled |
 | saved camera views | the view is reloaded |
 | `views/params.json` | [tunable parameters](../../interactivity) are updated |
 

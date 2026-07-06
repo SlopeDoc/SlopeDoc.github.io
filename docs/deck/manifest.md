@@ -21,7 +21,7 @@ slides:
 | Item | Content |
 | --- | --- |
 | `title: text` | slide title |
-| `load: key` | latex content from `latex.json` (text/formula mode comes from the entry) |
+| `load: key` | latex content from the [definitions file](../getting_started) (text/formula mode comes from the entry) |
 | `latex: \emph{inline} latex` | inline text-mode latex |
 | `formula: e^{i\pi}+1=0` | inline math-mode latex |
 | `image: figure.png` | image (optional `scale:`) |
