@@ -4,7 +4,11 @@ title: Getting started
 
 ## The deck system
 
-Recompiling to move a formula gets old fast. The deck system splits a presentation in two:
+While you can build all your slides in pure C++, you have to recompile each time you want to see an update.
+This can be frustrating for simply slide creation like text, math and images. To avoid this, you can instead build your presentation
+fully interactivly without having to recompile most of the time.
+
+The deck system splits a presentation in two:
 
 - **composition** (which content, on which slide, at which position) lives in a `deck.yaml` manifest, **hot-reloaded** while the presentation runs;
 - **behavior** (updaters, computed meshes, anything that needs real code) stays in C++ and is exposed to the manifest by *registering objects*.
