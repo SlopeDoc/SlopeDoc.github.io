@@ -82,8 +82,6 @@ Inside a `step:` (or a later frame), existing items can be manipulated:
       with: {image: better_fig.png}
     - set: isurf                      # re-place an existing item,
       at: new_label                   # transition animated
-    - move: side_notes                # offset a group (or an item),
-      by: [0.1, -0.05]                # composed on top of placements
 ```
 
 ### Connectors and layout
