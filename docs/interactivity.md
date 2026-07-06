@@ -27,11 +27,11 @@ To make interactive presentations, you can use ImGui widgets as a primitive:
 
 ## Tunable parameters
 
-For animation constants (an amplitude, a speed, a color...), `Params` declares named, runtime-tunable, **persistent** parameters next to the code that uses them:
+For scalar-like parameters that need tuning for animation, you can add a `Params` object. runtime-tunable, **persistent** parameters next to the code that uses them:
 
 ```c++
-auto amp   = Params::Add("wobble/amplitude", 0.2, 0., 1.);  // slider in [0,1]
-auto speed = Params::Add("wobble/speed", 1.);               // unconstrained drag
+auto amp   = Params::Add("amplitude", 0.2, 0., 1.);  // slider in [0,1]
+auto speed = Params::Add("speed", 1.);               // unconstrained drag
 
 spot->setUpdater([=](TimeObject t) {
     deform(spot, (scalar)amp, (scalar)speed * t.inner_time);

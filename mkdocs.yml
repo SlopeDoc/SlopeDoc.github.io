@@ -68,7 +68,6 @@ nav:
       - Primitives/images.md
       - Primitives/Gifs.md
       - Primitives/shapes.md
-      - Primitives/stacks.md
       - Latex:
         - Primitives/Latex/latex.md
         - Primitives/Latex/dynamic.md
