@@ -13,7 +13,7 @@ The deck system splits a presentation in two:
 - **composition** (which content, on which slide, at which position) lives in a `deck.yaml` manifest, **hot-reloaded** while the presentation runs;
 - **behavior** (updaters, computed meshes, anything that needs real code) stays in C++ and is exposed to the manifest by *registering objects*.
 
-Editing the manifest, a latex definition, or a saved camera while the show runs recomposes the slides in place: you keep your current slide, primitives keep their state, and compiled latex or loaded textures are reused.
+Editing the manifest, a latex definition, or a saved camera while the show runs recomposes the slides in place.
 
 ### A minimal deck project
 
