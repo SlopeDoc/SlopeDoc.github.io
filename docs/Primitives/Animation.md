@@ -40,3 +40,25 @@ show << pc->setUpdater([pc] (TimeObject time){
     - ```inner_time``` (s) : time from first appearence on screen
     - ```absolute_frame_number``` (int) : current frame number from first slide
     - ```relative_frame_number``` (int) : number of slides from first appearence of this primitive
+
+## Keyframes
+
+Branching on frame numbers breaks as soon as slides are inserted or reordered. Instead, label a frame while composing the show and test it by name in the updater:
+
+```cpp
+show << Keyframe("noise_on");
+```
+
+```cpp
+pc->updater = [pc] (TimeObject t) {
+    if (t.afterKeyframe("noise_on")) {
+        // ...
+    }
+};
+```
+
+- ```t.afterKeyframe("label")``` : true from the labeled frame on
+- ```t.atKeyframe("label")``` : true exactly on the labeled frame
+- ```t.beforeKeyframe("label")``` : true strictly before it
+
+An unknown label warns once in the terminal and answers false. In a [deck manifest](../../deck/manifest), the same mark is written `- keyframe: label`.

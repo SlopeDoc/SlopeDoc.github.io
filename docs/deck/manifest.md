@@ -29,6 +29,7 @@ slides:
 | `mesh: bunny.obj` | mesh from an obj file (optional `smooth:`, `normalize:`; `at:` is a persistent transform label) |
 | `camera: view_name` | camera view from `views/view_name.json` (`fly: true` for a flight transition) |
 | `pause: 3` | [timed pause](../../presenter/pause) in seconds |
+| `keyframe: label` | labels this frame for C++ updaters (see [keyframes](#keyframes)) |
 
 ### Placement
 
@@ -50,14 +51,25 @@ When omitted, `load`/`image` items default to a label derived from their key or 
 
 ### Steps
 
-A `step:` reveals its items on the next click, inside the same frame (the equivalent of `inNextFrame`):
+A bare `- step` marker splits a frame into clicks (the equivalent of `inNextFrame`): every item after it appears on the next click.
 
 ```yaml
 - frame:
     - load: question
-    - step:
-        - load: answer
-          below: question
+    - step
+    - load: answer
+      below: question
+```
+
+### Keyframes
+
+A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives/Animation) can branch on `t.afterKeyframe("label")` (also `atKeyframe`, `beforeKeyframe`) instead of counting frames — the test follows the label wherever manifest edits move it.
+
+```yaml
+- load: usual_pipeline
+- step
+- keyframe: pipeline_shown
+- load: reconstruct
 ```
 
 ### Referencing items : ids and groups
@@ -73,15 +85,15 @@ Operations refer to items by their key (latex key, image filename stem, object n
 
 ### Operations
 
-Inside a `step:` (or a later frame), existing items can be manipulated:
+After a `- step` (or in a later frame), existing items can be manipulated:
 
 ```yaml
-- step:
-    - remove: [isurf, side_notes]     # item ids or groups
-    - replace: fig
-      with: {image: better_fig.png}
-    - set: isurf                      # re-place an existing item,
-      at: new_label                   # transition animated
+- step
+- remove: [isurf, side_notes]     # item ids or groups
+- replace: fig
+  with: {image: better_fig.png}
+- set: isurf                      # re-place an existing item,
+  at: new_label                   # transition animated
 ```
 
 ### Connectors and layout
@@ -101,9 +113,9 @@ Arrow endpoints follow their target every frame: an item id, a `[x,y]` position,
 
 - stack:                     # children laid out below one another
     - latex: first paragraph
-    - step:
-        - latex: appears later    # space is reserved, earlier children
-  at: column_handle               # never move (see stacks page)
+    - step
+    - latex: appears later     # space is reserved, earlier children
+  at: column_handle            # never move (see stacks page)
   spacing: 0.02
   align: left                # left | center | right
 ```

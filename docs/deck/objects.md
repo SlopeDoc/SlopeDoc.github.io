@@ -36,5 +36,21 @@ deck.registerObject("wobbly_spot", []() {
 });
 ```
 
-!!! warning "Steps are owned by the manifest"
-    An updater branching on `t.relative_frame_number` assumes a step structure that the manifest can freely reorder — keep such assumptions in mind when editing the deck.
+### Synchronizing with the deck : keyframes
+
+An updater branching on `t.relative_frame_number` assumes a step structure that the manifest can freely reorder. Instead, mark the relevant frame in the manifest with a [keyframe](../manifest#keyframes) and test it by name — the branch follows the label wherever it moves:
+
+```yaml
+- object: wobbly_spot
+- step
+- keyframe: noise_on
+```
+
+```c++
+spot->setUpdater([=](TimeObject t){
+    if (t.afterKeyframe("noise_on"))
+        addNoise(spot, t.inner_time);
+});
+```
+
+`afterKeyframe` is true from the marked frame on, `atKeyframe` exactly on it, `beforeKeyframe` strictly before. An unknown label warns once in the terminal and answers false.

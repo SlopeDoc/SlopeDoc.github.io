@@ -56,6 +56,7 @@ nav:
   - C++ Workflow:
     - workflow/slide.md
     - workflow/transitions.md
+    - tutorial.md
   - Interactive deck system:
     - deck/getting_started.md
     - deck/manifest.md
@@ -90,7 +91,6 @@ nav:
     - presenter/pause.md
     - presenter/timings.md
     - presenter/prompter.md
-  - tutorial.md
   - limitations.md
   - about.md
 
