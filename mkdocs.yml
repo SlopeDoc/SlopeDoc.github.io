@@ -69,6 +69,11 @@ nav:
       - Primitives/images.md
       - Primitives/Gifs.md
       - Primitives/shapes.md
+      - Shaders:
+        - Primitives/Shader/basics.md
+        - Primitives/Shader/scene.md
+        - Primitives/Shader/stdlib.md
+        - Primitives/Shader/advanced.md
       - Latex:
         - Primitives/Latex/latex.md
         - Primitives/Latex/dynamic.md
@@ -91,6 +96,7 @@ nav:
     - presenter/pause.md
     - presenter/timings.md
     - presenter/prompter.md
+    - presenter/export.md
   - limitations.md
   - about.md
 

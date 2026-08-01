@@ -15,7 +15,7 @@ show << circle->at("circle_label");
 ### Builders
 
 !!! note "```Shape2D::Line(a, b)``` / ```Bezier(a, control, b)``` / ```Circle(center, radius)``` / ```Rect(center, size)```"
-!!! note "```Shape2D::Add(std::vector<vec2> points, bool closed)``` — arbitrary polyline"
+!!! note "```Shape2D::Add(std::vector<vec2> points, bool closed)```: arbitrary polyline"
 
 Geometry is given in relative $[0,1]^2$ coordinates, then recentered around the anchor: shapes are placed, dragged and transitioned like any other screen primitive.
 
@@ -30,7 +30,7 @@ show << Arrow2D::Add(Arrow2D::Attach(formula),        // a screen primitive
                      Arrow2D::AttachLabel("target")); // a persistent label
 ```
 
-An endpoint is a fixed position, a label, or a screen primitive — in which case the arrow attaches at the boundary of its bounding box, keeping a small `margin`. Each endpoint also takes an `offset`, applied after attachment, to fine-tune where the arrow starts and lands.
+An endpoint is a fixed position, a label, or a screen primitive, in which case the arrow attaches at the boundary of its bounding box, keeping a small `margin`. Each endpoint also takes an `offset`, applied after attachment, to fine-tune where the arrow starts and lands.
 
 | Field | Effect |
 | --- | --- |

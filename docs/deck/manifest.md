@@ -25,6 +25,7 @@ slides:
 | `latex: \emph{inline} latex` | inline text-mode latex |
 | `formula: e^{i\pi}+1=0` | inline math-mode latex |
 | `image: figure.png` | image (optional `scale:`) |
+| `shader: plasma.frag` | single-pass fragment [shader](../../Primitives/Shader/basics) (optional `resolution: [w, h]`) |
 | `object: name` | C++-[registered object](../objects) or group |
 | `mesh: bunny.obj` | mesh from an obj file (optional `smooth:`, `normalize:`; `at:` is a persistent transform label) |
 | `camera: view_name` | camera view from `views/view_name.json` (`fly: true` for a flight transition) |
@@ -63,7 +64,7 @@ A bare `- step` marker splits a frame into clicks (the equivalent of `inNextFram
 
 ### Keyframes
 
-A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives/Animation) can branch on `t.afterKeyframe("label")` (also `atKeyframe`, `beforeKeyframe`) instead of counting frames — the test follows the label wherever manifest edits move it.
+A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives/Animation) can branch on `t.afterKeyframe("label")` (also `atKeyframe`, `beforeKeyframe`) instead of counting frames: the test follows the label wherever manifest edits move it.
 
 ```yaml
 - load: usual_pipeline
@@ -121,4 +122,4 @@ Arrow endpoints follow their target every frame: an item id, a `[x,y]` position,
 ```
 
 !!! warning "Typos"
-    Unknown keys are reported in the terminal instead of being silently ignored — if an item does not move where you expect, check the indentation: a field must be aligned with the first key after its item's dash.
+    Unknown keys are reported in the terminal instead of being silently ignored. If an item does not move where you expect, check the indentation: a field must be aligned with the first key after its item's dash.

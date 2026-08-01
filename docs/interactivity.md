@@ -38,9 +38,9 @@ spot->setUpdater([=](TimeObject t) {
 });
 ```
 
-!!! note "```Params::Add(name, default, min, max)``` — also ```AddInt```, ```AddBool```, ```AddColor```"
+!!! note "```Params::Add(name, default, min, max)```, also ```AddInt```, ```AddBool```, ```AddColor```"
 
 The handle reads the live value (a plain conversion, usable in hot loops). Pressing ``A`` opens the **Tuner** panel, showing the parameters read by the current slide's updaters (a checkbox reveals all of them), grouped by their `"group/name"` prefix. The polyscope camera is not affected while you tweak.
 
-Edited values are saved with ``Ctrl+S`` to `views/params.json` — only ever-edited parameters are written, so untouched ones keep following their code defaults. The file is loaded back on startup, and hot-reloaded when edited by hand.
+Edited values are saved with ``Ctrl+S`` to `views/params.json`. Only ever-edited parameters are written, so untouched ones keep following their code defaults. The file is loaded back on startup, and hot-reloaded when edited by hand.
 

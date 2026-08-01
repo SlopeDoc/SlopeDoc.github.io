@@ -22,16 +22,13 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 
 - Easy integration of all polyscope primitives and quantities
 - LateX compilation, with hot-reloading
-- Intuitive slide creation system
 - Slides can composed in a hot-reloadable YAML manifest, editable while running
 - Full control over objects and animations
-- Persistent, runtime-tunable animation parameters
 - Automatic transitions
+- :fire: **Live shaders, synchronizable with polyscope!** :fire:
 - Interactivity with ImGui widgets
 - Possible forced breaks to control the pace of the presentation
 - 3D world to screen tracking
-- A speaker-notes prompter on a second window
-- Live rehearsal timings to check your talk length
 
 ### Presentations with *Slope*:
 
