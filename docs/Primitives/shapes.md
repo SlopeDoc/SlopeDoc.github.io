@@ -71,7 +71,6 @@ In a deck manifest, arrows and boxes are available as the `arrow:` and `box:` it
           - step
           - formula: \sum_{n\geq 1} \frac1{n^2} = \frac{\pi^2}{6}
             below: th1
-            id: fm1
         id: thbox
         padx: 0.1
         pady: 0.02
