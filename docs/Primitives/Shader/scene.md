@@ -1,9 +1,12 @@
 ---
 title: Interacting with the 3D scene
 ---
+<video src="../../../static/shader_polyscope.mp4" muted autoplay loop controls width="100%" >
+</video>
 
 Shaders are rendered on top of polyscope. But you can make the two work together!
 For instance, if you are doing any form of raytracing, by using the [Shader STL](stdlib.md)'s "camera.glsl", you can generate rays that follow the polyscope camera! (If you want to do custom stuff, polyscope camera is passed as uniforms).
+
 
 ```glsl
 #include <camera.glsl>

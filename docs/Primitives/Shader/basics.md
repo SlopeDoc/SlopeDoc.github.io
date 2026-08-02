@@ -2,6 +2,9 @@
 title: Basics
 ---
 
+<video src="../../../static/shader1.mp4" muted autoplay loop controls width="100%" >
+</video>
+
 You need to express something that would require control over litteraly every pixel of the screen? Do it with a shader!
 
 Slope offers ShaderToy style shaders, and basics of GPU compute, that are all hot-reloaded!
