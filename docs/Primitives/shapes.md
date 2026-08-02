@@ -53,3 +53,37 @@ show << box;
 Like any primitive, the box is drawn at its insertion rank in the slide: add it *before* its targets to frame them, *after* to cover them.
 
 In a deck manifest, arrows and boxes are available as the `arrow:` and `box:` items (see [manifest format](../../deck/manifest)).
+
+## Example:
+
+<video src="../../static/box_arrows.mp4" muted autoplay loop controls width="100%" >
+</video>
+
+```yaml
+  - frame:
+      - title: The big Theorem
+        at: TOP
+      - step
+      - box:
+          - latex: \textbf{Theorem.}
+            at: th1
+            id: th1
+          - step
+          - formula: \sum_{n\geq 1} \frac1{n^2} = \frac{\pi^2}{6}
+            below: th1
+            id: fm1
+        id: thbox
+        padx: 0.1
+        pady: 0.02
+        filled: true
+      - step
+      - set: th1
+        at: th1_2
+      - latex: nice!
+        id: targ
+      - arrow:
+          from: thbox
+          to: targ
+```
+
+
