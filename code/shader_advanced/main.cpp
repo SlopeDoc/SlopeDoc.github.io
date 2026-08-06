@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
                 float r = std::sqrt(dx * dx + dy * dy);
                 field[y * N + x] = 0.5f + 0.5f * std::sin(r * 0.5f - float(t.inner_time) * 2.0f);
             }
-        fieldShader->setData(0, field, N, N);
+        fieldShader->setTexture("source", field, N, N);
     };
     show << fieldShader->at(CENTER);
 

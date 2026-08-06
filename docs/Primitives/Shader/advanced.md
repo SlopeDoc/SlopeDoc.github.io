@@ -32,31 +32,63 @@ A hidden pass still has to be streamed into the slide to run: `setHidden` suppre
 blit, not the render. State that is integrated rather than looked at wants
 `setFloatBuffer()` and `Filter::Nearest`.
 
-## Channels
+## Textures
 
-`iChannel0..3` are the pass's sampler inputs, declared by the prelude:
+A pass samples its inputs through named samplers. Declare one in the shader and hand it a
+source from C++:
+
+```glsl
+uniform sampler2D noise;
+uniform vec2      noise_size;   // optional, its size in pixels
+```
+
+```c++
+fx->setTexture("noise", "noise.png");
+```
+
+The name is the link, exactly like any other uniform, and every texture reports its size as
+`<name>_size` if the shader bothers to declare it.
+
+| Signature | Source bound to `name` |
+| --- | --- |
+| `void setTexture(const std::string& name, const path& image_file, Filter f = Filter::Linear, Wrap w = Wrap::Clamp)` | an image file, loaded once |
+| `void setTexture(const std::string& name, const ShaderPtr& src, int attachment = 0)` | another pass's current output |
+| `void setTextureSelf(const std::string& name, int attachment = 0)` | this pass's previous frame (ping-pong) |
+| `void setTexture(const std::string& name, const float* data, int w, int h, int comps = 1, Filter f = Filter::Linear, Wrap wrap = Wrap::Clamp)` | a CPU array as a float texture |
+| `void setTexture(const std::string& name, const std::vector<float>& data, int w, int h, int comps = 1, Filter f = Filter::Linear, Wrap wrap = Wrap::Clamp)` | same, from a vector |
+| `void clearTexture(const std::string& name)` | unbind, freeing the texture if the pass owned one |
+| `void clearTextures()` | the same for all of them |
+| `void retainTextures(const std::vector<std::string>& names)` | drop every file-backed texture whose name is not listed |
+
+`comps` is components per texel, 1 to 4 (R, RG, RGB, RGBA), so the array overloads read
+`w * h * comps` floats in row-major order. Calling one again with the same size and
+component count updates the texture in place instead of recreating it, which is what makes
+a per-frame upload cheap.
+
+`setTextureSelf` allocates a second target and alternates between the two, so the shader
+samples what it wrote last frame while writing the current one.
+
+How many textures one pass can bind at once is the driver's texture unit count, at least 16
+and in practice 32, less one kept aside for the scene depth buffer.
+
+`retainTextures` exists for a declarative owner such as the [deck](../../../deck/manifest),
+which re-declares its whole set on every hot reload: anything no longer named goes away,
+and the ones still declared keep their GL objects. Data textures and inter-pass ones are
+left alone, since they were set from code the manifest never saw.
+
+### ShaderToy channels
+
+`iChannel0..3` are four reserved texture names, declared for you by the prelude:
 
 ```glsl
 uniform sampler2D iChannel0;             // .. iChannel3
 uniform vec3      iChannelResolution[4]; // (w, h, 1) per channel
 ```
 
-| Signature | Source bound to `iChannel`*i* |
-| --- | --- |
-| `void setChannel(int i, const path& image_file, Filter f = Filter::Linear, Wrap w = Wrap::Clamp)` | an image file, loaded once |
-| `void setChannel(int i, const ShaderPtr& src, int attachment = 0)` | another pass's current output |
-| `void setChannelSelf(int i, int attachment = 0)` | this pass's previous frame (ping-pong) |
-| `void setData(int i, const float* data, int w, int h, int comps = 1, Filter f = Filter::Linear, Wrap wrap = Wrap::Clamp)` | a CPU array as a float texture |
-| `void setData(int i, const std::vector<float>& data, int w, int h, int comps = 1, Filter f = Filter::Linear, Wrap wrap = Wrap::Clamp)` | same, from a vector |
-| `void clearChannel(int i)` | unbind, freeing the texture if the channel owned one |
-
-`comps` is components per texel, 1 to 4 (R, RG, RGB, RGBA), so `setData` reads
-`w * h * comps` floats in row-major order. Calling it again with the same size and
-component count updates the texture in place instead of recreating it, which is what makes
-a per-frame upload cheap.
-
-`setChannelSelf` allocates a second target and alternates between the two, so the shader
-samples what it wrote last frame while writing the current one.
+`setChannel`, `setChannelSelf`, `setData` and `clearChannel` are the calls above under those
+reserved names, so a shader written for ShaderToy runs here unchanged. That is all the
+compatibility amounts to: a channel does nothing a named texture cannot, and a name saves
+you from remembering what was in slot 2.
 
 ## Multiple render targets
 
@@ -73,7 +105,7 @@ layout(location = 1) out vec4 oPosition;
 | `int targets() const` | that number |
 
 The slide always shows attachment 0. The others are reached through
-`setChannel(i, src, attachment)` downstream, or `readback(out, attachment)` from the CPU.
+`setTexture(name, src, attachment)` downstream, or `readback(out, attachment)` from the CPU.
 
 ## Storage buffers
 
@@ -162,8 +194,8 @@ the peak density reduced on the GPU and read back as four bytes to normalise the
         auto sim = Shader::FromFile("sim.frag", N, N);
         sim->setFloatBuffer();                    // state, not colour
         sim->setFilter(Shader::Filter::Nearest);  // a texel is a particle
-        sim->setChannelSelf(0);                   // iChannel0 = last frame's state
-        sim->setData(1, weight, M, M);            // iChannel1 = the CPU field
+        sim->setTextureSelf("state");             // last frame's state
+        sim->setTexture("field", weight, M, M);   // the CPU field
         sim->setHidden();
         sim->allocBuffer(0, GRID * GRID * sizeof(unsigned));   // density grid
         sim->allocBuffer(1, sizeof(unsigned));                 // peak density
@@ -197,6 +229,9 @@ the peak density reduced on the GPU and read back as four bytes to normalise the
 
     ```glsl title="sim.frag"
     // one texel = one particle : rg = position, ba = velocity
+    uniform sampler2D state;    // this shader's previous frame
+    uniform sampler2D field;    // the CPU field
+
     layout(std430, binding = 0) buffer Density { uint density[]; };
     layout(std430, binding = 1) buffer Peak    { uint peak[]; };
 
@@ -210,7 +245,7 @@ the peak density reduced on the GPU and read back as four bytes to normalise the
 
     void main() {
         ivec2 id = ivec2(gl_FragCoord.xy);
-        vec4 s = texelFetch(iChannel0, id, 0);
+        vec4 s = texelFetch(state, id, 0);
         vec2 p = s.xy, v = s.zw;
 
         if (iFrame < 1) {                     // seeded here, nothing uploaded at startup
@@ -220,7 +255,7 @@ the peak density reduced on the GPU and read back as four bytes to normalise the
             v = 0.9 * sqrt(r) * vec2(-sin(a), cos(a));
         }
 
-        float w = texture(iChannel1, p * 0.5 + 0.5).r;   // the CPU field
+        float w = texture(field, p * 0.5 + 0.5).r;
         vec2  g = -uAttract * p / pow(dot(p, p) + 0.01, 1.5);
         v += g * (1.0 + 3.0 * w) * DT;
         p += v * DT;

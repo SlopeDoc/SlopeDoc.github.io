@@ -27,8 +27,8 @@ int main(int argc, char** argv) {
     auto sim = Shader::FromFile("sim.frag", N, N);
     sim->setFloatBuffer();                    // state, not colour
     sim->setFilter(Shader::Filter::Nearest);  // a texel is a particle
-    sim->setChannelSelf(0);                   // iChannel0 = last frame's state
-    sim->setData(1, weight, M, M);            // iChannel1 = the CPU field
+    sim->setTextureSelf("state");             // last frame's state
+    sim->setTexture("field", weight, M, M);   // the CPU field
     sim->setHidden();
     sim->allocBuffer(0, GRID * GRID * sizeof(unsigned));   // density grid
     sim->allocBuffer(1, sizeof(unsigned));                 // peak density

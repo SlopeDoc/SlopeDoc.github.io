@@ -1,4 +1,7 @@
 // one texel = one particle : rg = position, ba = velocity
+uniform sampler2D state;    // this shader's previous frame
+uniform sampler2D field;    // the CPU field
+
 layout(std430, binding = 0) buffer Density { uint density[]; };
 layout(std430, binding = 1) buffer Peak    { uint peak[]; };
 
@@ -12,7 +15,7 @@ float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 
 void main() {
     ivec2 id = ivec2(gl_FragCoord.xy);
-    vec4 s = texelFetch(iChannel0, id, 0);
+    vec4 s = texelFetch(state, id, 0);
     vec2 p = s.xy, v = s.zw;
 
     if (iFrame < 1) {                     // seeded here, nothing uploaded at startup
@@ -22,7 +25,7 @@ void main() {
         v = 0.9 * sqrt(r) * vec2(-sin(a), cos(a));
     }
 
-    float w = texture(iChannel1, p * 0.5 + 0.5).r;   // the CPU field
+    float w = texture(field, p * 0.5 + 0.5).r;
     vec2  g = -uAttract * p / pow(dot(p, p) + 0.01, 1.5);
     v += g * (1.0 + 3.0 * w) * DT;
     p += v * DT;

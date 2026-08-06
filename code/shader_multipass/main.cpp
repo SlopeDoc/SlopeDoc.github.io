@@ -10,11 +10,11 @@ int main(int argc, char** argv) {
     show << Latex::Add("Multi-pass \\& feedback")->at(TOP);
 
     auto sim = Shader::FromFile("sim.frag");
-    sim->setChannelSelf(0);         // iChannel0 = its own previous frame
+    sim->setTextureSelf("previous");   // its own previous frame
     sim->setHidden();               // compute-only, feeds view below
 
     auto view = Shader::FromFile("colorize.frag", 700, 700);
-    view->setChannel(0, sim);       // iChannel0 = sim's output
+    view->setTexture("field", sim);    // sim's output
 
     show << sim << view->at(CENTER);   // sim first: it feeds view
 
