@@ -25,12 +25,55 @@ slides:
 | `latex: \emph{inline} latex` | inline text-mode latex |
 | `formula: e^{i\pi}+1=0` | inline math-mode latex |
 | `image: figure.png` | image (optional `scale:`) |
-| `shader: plasma.frag` | single-pass fragment [shader](../../Primitives/Shader/basics) (optional `resolution: [w, h]`) |
+| `shader: plasma.frag` | single-pass fragment [shader](../../Primitives/Shader/basics) (optional `resolution: [w, h]`, `uniforms:`, `textures:`, see [below](#shader-items)) |
 | `object: name` | C++-[registered object](../objects) or group |
 | `mesh: bunny.obj` | mesh from an obj file (optional `smooth:`, `normalize:`; `at:` is a persistent transform label) |
 | `camera: view_name` | camera view from `views/view_name.json` (`fly: true` for a flight transition) |
 | `pause: 3` | [timed pause](../../presenter/pause) in seconds |
 | `keyframe: label` | labels this frame for C++ updaters (see [keyframes](#keyframes)) |
+
+### Shader items
+
+A `shader:` item can declare its uniforms and its textures, which covers most of what a
+single-pass shader needs without touching C++. Multi-pass, ping-pong and storage buffers
+stay on the [C++ side](../../Primitives/Shader/advanced), since they need a streaming order
+the manifest cannot express.
+
+```yaml
+- shader: sky.frag
+  resolution: [900, 600]
+  uniforms:
+    sun:   [0.3, 0.9, 0.2]                  # vec3, type read off the literal
+    tint:  "#ffcc88"                        # color
+    steps: 64                               # int
+    speed: {default: 1.0, min: 0, max: 5}   # bounded, so a slider
+    mode:  {type: int, default: 0}          # explicit type
+  textures:
+    noise: noise.png
+    grad:  {file: gradient.png, filter: nearest, wrap: repeat}
+```
+
+Each uniform becomes a persistent [tunable parameter](../../interactivity): it appears in
+the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
+`views/params.json` and the next run picks it up. The shader follows it every frame.
+
+Types are `float`, `int`, `bool`, `vec2`, `vec3` and `color` (vec4). The type is read off
+the literal when it is unambiguous, and `type:` states it otherwise. Bounds are optional,
+and a bounded parameter is drawn as a slider rather than a drag field.
+
+Each texture binds an image file to the sampler of the same name, which the shader declares
+itself:
+
+```glsl
+uniform sampler2D noise;
+uniform vec2      noise_size;   // optional, its size in pixels
+```
+
+`filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
+image files here: a texture fed by another pass or by a previous frame stays in C++.
+
+Both lists are re-read on every hot reload, so a uniform or a texture you delete from the
+manifest really goes away instead of lingering from the previous load.
 
 ### Placement
 
