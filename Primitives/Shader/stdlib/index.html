@@ -1,0 +1,2610 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://slopedoc.github.io/Primitives/Shader/stdlib/">
+      
+      
+        <link rel="prev" href="../scene/">
+      
+      
+        <link rel="next" href="../advanced/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../static/slope_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>A Shader "STL" - Slope</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libertinus+Math:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Libertinus Math";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/typography.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Slope" class="md-header__button md-logo" aria-label="Slope" data-md-component="logo">
+      
+  <img src="../../../static/slope_icon_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Slope
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A Shader "STL"
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/baptiste-genest/slope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    baptiste-genest/slope
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Slope" class="md-nav__button md-logo" aria-label="Slope" data-md-component="logo">
+      
+  <img src="../../../static/slope_icon_white.png" alt="logo">
+
+    </a>
+    Slope
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/baptiste-genest/slope" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    baptiste-genest/slope
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is Slope?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build & CMake Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paths, Caches & Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ Workflow
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ Workflow
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflow/slide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slide management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workflow/transitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic transitions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step by step example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive deck system
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive deck system
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deck/getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deck/manifest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manifest format
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deck/objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primitives
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Primitives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Colors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen Primitives
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Screen Primitives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../screen_primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Gifs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gifs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shapes & arrows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_5" id="__nav_6_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shaders
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shaders
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interacting with the 3D scene
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Shader "STL"
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced shader usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_6" id="__nav_6_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Latex
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Latex
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Latex/latex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Latex/dynamic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hot Reloading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Latex/titles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Titles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_7" id="__nav_6_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Placement
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Placement
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../placement/absolute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Absolute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../placement/relative_placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relative
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../placement/persistant_placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../placement/tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    World to screen tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polyscope Primitives
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Polyscope Primitives
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../polyscope_primitives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../point_cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point Clouds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../camera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quantities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Polyscope Quantities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interactivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactivity & Widgets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presenter tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Presenter tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../presenter/shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../presenter/pause/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timed pauses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../presenter/timings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rehearsal timings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../presenter/prompter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speaker notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../presenter/export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exporting to PDF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>A Shader "STL"</h1>
+
+<p>Most shaders use a fairly common codebase (Inigo's sdfs, colormaps, camera handling, etc...). To avoid having to recode everything everytime, slope offers common shader functions!</p>
+<p>Here are the current existing functions, and small examples, that you can include in Slope shaders:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:8"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><input id="__tabbed_1_8" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">camera.glsl</label><label for="__tabbed_1_2">sdf.glsl</label><label for="__tabbed_1_3">raymarch.glsl</label><label for="__tabbed_1_4">noise.glsl</label><label for="__tabbed_1_5">colormap.glsl</label><label for="__tabbed_1_6">complex.glsl</label><label for="__tabbed_1_7">plot2d.glsl</label><label for="__tabbed_1_8">slide.glsl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lookAtRay(ro, target, lens, out rd)</code></td>
+<td>ray through this pixel for a camera at <code>ro</code> looking at <code>target</code></td>
+</tr>
+<tr>
+<td><code>orbitRayAt(orbit, radius, target, out ro, out rd)</code></td>
+<td>camera on a sphere around <code>target</code>, <code>orbit</code> = (yaw, pitch) in 0..1</td>
+</tr>
+<tr>
+<td><code>orbitRayTarget(radius, target, out ro, out rd)</code></td>
+<td>driven by the cursor while hovered, a fixed 3/4 view otherwise</td>
+</tr>
+<tr>
+<td><code>orbitRay(out ro, out rd)</code></td>
+<td><code>orbitRayTarget</code> with a stock radius/target</td>
+</tr>
+<tr>
+<td><code>screenPoint()</code></td>
+<td>this fragment's position on the window, 0..1 with y up, whatever rectangle the shader is drawn into</td>
+</tr>
+<tr>
+<td><code>screenToLocal(s)</code></td>
+<td>the way back, a screen position as this shader's own uv</td>
+</tr>
+<tr>
+<td><code>screenAspect()</code></td>
+<td>the window's aspect, where <code>iAspect</code> is the rectangle's</td>
+</tr>
+<tr>
+<td><code>polyscopeNDC()</code></td>
+<td>this fragment's position in polyscope's normalised device coordinates</td>
+</tr>
+<tr>
+<td><code>polyscopeRay(out ro, out rd)</code></td>
+<td>the ray polyscope itself would trace through this fragment</td>
+</tr>
+<tr>
+<td><code>polyscopeDepth(world_pos)</code></td>
+<td>depth of a world point, in polyscope's depth-buffer convention</td>
+</tr>
+<tr>
+<td><code>sceneDepthHere()</code></td>
+<td>polyscope's depth at this fragment (1.0 = nothing drawn there)</td>
+</tr>
+<tr>
+<td><code>visibleOverScene(world_pos)</code></td>
+<td>is <code>world_pos</code> visible in front of polyscope's geometry</td>
+</tr>
+<tr>
+<td><code>sceneEyeDistance()</code></td>
+<td>linear eye-space distance to polyscope's geometry here</td>
+</tr>
+<tr>
+<td><code>sceneClearance(world_pos)</code></td>
+<td>signed distance (world units) from <code>world_pos</code> to the 3D scene</td>
+</tr>
+<tr>
+<td><code>sceneOcclusion(world_pos, fade)</code></td>
+<td>soft occlusion, 0..1, easing over <code>fade</code> world units</td>
+</tr>
+<tr>
+<td><code>sceneWorldPos()</code></td>
+<td>world-space position of the 3D scene's surface at this fragment</td>
+</tr>
+</tbody>
+</table>
+<p>An orbit-camera raymarch, no C++ camera setup involved:</p>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include &lt;sdf.glsl&gt;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include &lt;raymarch.glsl&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">float</span><span class="w"> </span><span class="n">sceneSDF</span><span class="p">(</span><span class="kt">vec3</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opSmoothUnion</span><span class="p">(</span><span class="n">sdSphere</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="n">sdPlane</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">orbitRay</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">);</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marchScene</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">))</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shadeDefault</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">sceneNormal</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">));</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The same scene, registered to polyscope's camera and occluded by real meshes instead (see <a href="../scene">The 3D Scene</a>; calling <code>visibleOverScene</code> here is what turns depth compositing on, no C++ needed):</p>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include &lt;camera.glsl&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include &lt;sdf.glsl&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include &lt;raymarch.glsl&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kt">float</span><span class="w"> </span><span class="n">sceneSDF</span><span class="p">(</span><span class="kt">vec3</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">sdSphere</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.6</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span><span class="w"> </span><span class="n">polyscopeRay</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">);</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marchScene</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visibleOverScene</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">shadeDefault</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">sceneNormal</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">else</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="k">discard</span><span class="p">;</span><span class="w">   </span><span class="c1">// let the 3D scene show through</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Signed distance fields: negative inside, zero on the surface, positive outside.</p>
+<p><strong>2D</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sdCircle(p, r)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdBox2(p, half_size)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdRoundBox2(p, half_size, r)</code></td>
+<td>uniform corner radius</td>
+</tr>
+<tr>
+<td><code>sdSegment2(p, a, b)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdNgon(p, r, n)</code></td>
+<td>regular n-gon, circumradius r</td>
+</tr>
+<tr>
+<td><code>sdTriangle(p, p0, p1, p2)</code></td>
+<td>exact, any winding</td>
+</tr>
+<tr>
+<td><code>sdArc(p, sc, ra, rb)</code></td>
+<td>ring wedge; <code>sc</code> = (sin,cos) of the half-aperture</td>
+</tr>
+<tr>
+<td><code>sdPie(p, c, r)</code></td>
+<td>filled pie slice; <code>c</code> = (sin,cos) of the half-aperture</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3D</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sdSphere(p, r)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdPlane(p, n, h)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdBox(p, half_size)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdRoundBox(p, half_size, r)</code></td>
+<td>uniform corner radius</td>
+</tr>
+<tr>
+<td><code>sdTorus(p, t)</code></td>
+<td><code>t</code> = (major radius, minor radius)</td>
+</tr>
+<tr>
+<td><code>sdCapsule(p, a, b, r)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sdCylinder(p, h, r)</code></td>
+<td>capped, y-axis</td>
+</tr>
+<tr>
+<td><code>sdCappedCone(p, a, b, ra, rb)</code></td>
+<td>frustum between two points; either radius may be 0 for a plain cone</td>
+</tr>
+<tr>
+<td><code>sdRoundCone(p, a, b, r1, r2)</code></td>
+<td>like <code>sdCapsule</code> but tapered, smooth tip</td>
+</tr>
+<tr>
+<td><code>sdEllipsoid(p, r)</code></td>
+<td>bound, not exact; <code>r</code> = the three semi-axes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combining</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opUnion(a, b)</code> / <code>opIntersect(a, b)</code> / <code>opSubtract(a, b)</code></td>
+<td><code>b</code> minus <code>a</code></td>
+</tr>
+<tr>
+<td><code>opSmoothUnion(a, b, k)</code> / <code>opSmoothIntersect(a, b, k)</code> / <code>opSmoothSubtract(a, b, k)</code></td>
+<td>filleted by <code>k</code></td>
+</tr>
+<tr>
+<td><code>opShell(d, t)</code></td>
+<td>hollow shell, thickness <code>2t</code></td>
+</tr>
+<tr>
+<td><code>opRound(d, r)</code></td>
+<td>rounds any field's sharp edges, apply before combining</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain</strong></p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opRepeat(p, c)</code> / <code>opRepeat2(p, c)</code></td>
+<td>tile space with period <code>c</code></td>
+</tr>
+<tr>
+<td><code>opMirrorX(p)</code></td>
+<td>mirror across x = 0</td>
+</tr>
+<tr>
+<td><code>opRotateY(p, a)</code> / <code>opRotate2(p, a)</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>A capped cone, a round cone and an ellipsoid, over a checkered ground (see the <code>raymarch.glsl</code> tab):</p>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include &lt;sdf.glsl&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include &lt;raymarch.glsl&gt;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kt">float</span><span class="w"> </span><span class="n">sceneSDF</span><span class="p">(</span><span class="kt">vec3</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">cone</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">sdCappedCone</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="o">-</span><span class="mf">1.7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">);</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">rcone</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">sdRoundCone</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">ell</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">sdEllipsoid</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="w"> </span><span class="mf">1.7</span><span class="p">,</span><span class="w">  </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">));</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">ground</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdPlane</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mo">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mo">0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.7</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">opUnion</span><span class="p">(</span><span class="n">opUnion</span><span class="p">(</span><span class="n">opUnion</span><span class="p">(</span><span class="n">cone</span><span class="p">,</span><span class="w"> </span><span class="n">rcone</span><span class="p">),</span><span class="w"> </span><span class="n">ell</span><span class="p">),</span><span class="w"> </span><span class="n">ground</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">;</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">orbitRayTarget</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">);</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">marchScene</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="kt">vec3</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sceneNormal</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">chk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checker</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">xz</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shadeDefault</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">,</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.85</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.55</span><span class="p">),</span><span class="w"> </span><span class="n">chk</span><span class="p">),</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">));</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The 2D primitives, drawn flat, no raymarching, just a sign test:</p>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">#include &lt;sdf.glsl&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">uv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">xy</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">iResolution</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">iAspect</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uv</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.2</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">tri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdTriangle</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.7</span><span class="p">));</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">arc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdArc</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.9</span><span class="p">),</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)),</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">0.12</span><span class="p">);</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">pie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdPie</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span><span class="w"> </span><span class="mf">0.7</span><span class="p">);</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">smoothstep</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">tri</span><span class="p">));</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">0.9</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">smoothstep</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">arc</span><span class="p">));</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.35</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">smoothstep</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="n">pie</span><span class="p">));</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Sphere tracing over an SDF, plus the shading terms that make the result read as a rendering rather than a depth map. Every shader including this one must define <code>sceneSDF(vec3 p)</code>: the functions here call it, so leaving it undefined is a link error even if you never call them yourself.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>marchScene(ro, rd, out pos)</code></td>
+<td>walks the ray to the surface; returns whether it hit</td>
+</tr>
+<tr>
+<td><code>marchDistance(ro, rd)</code></td>
+<td>distance along the ray, or <code>MARCH_MAX_DIST</code> if it escaped</td>
+</tr>
+<tr>
+<td><code>sceneNormal(p)</code></td>
+<td>the SDF's gradient, by central differences</td>
+</tr>
+<tr>
+<td><code>softShadow(ro, rd, mint, maxt, sharpness)</code></td>
+<td>penumbra comes free from the distance field</td>
+</tr>
+<tr>
+<td><code>ambientOcclusion(p, n)</code></td>
+<td>how enclosed a point is</td>
+</tr>
+<tr>
+<td><code>fresnel(rd, n, power)</code></td>
+<td>grazing-angle rim light</td>
+</tr>
+<tr>
+<td><code>checker(p, scale)</code></td>
+<td>checkerboard in world-space plane coordinates</td>
+</tr>
+<tr>
+<td><code>shadeDefault(p, n, rd, albedo, light_dir)</code></td>
+<td>one key light, soft shadow, ambient, rim</td>
+</tr>
+</tbody>
+</table>
+<p><code>MARCH_STEPS</code> / <code>MARCH_MAX_DIST</code> / <code>MARCH_EPS</code> are <code>#define</code>s, overridable before the <code>#include</code> if the defaults march too coarse or too far for your scene. See the <code>sdf.glsl</code> tab above for a full scene using these.</p>
+</div>
+<div class="tabbed-block">
+<p>Hash-based: no textures, no seeds, and the same input always gives the same output, which is exactly what makes it safe to use inside a ping-pong feedback loop.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hash11(p)</code> / <code>hash12(p)</code> / <code>hash13(p)</code></td>
+<td>scalar hash, float/vec2/vec3 input</td>
+</tr>
+<tr>
+<td><code>hash22(p)</code> / <code>hash33(p)</code></td>
+<td>vec2/vec3 hash</td>
+</tr>
+<tr>
+<td><code>valueNoise(p)</code></td>
+<td>2D or 3D, quintic-interpolated lattice hash</td>
+</tr>
+<tr>
+<td><code>gradientNoise(p)</code></td>
+<td>Perlin-style, -1..1</td>
+</tr>
+<tr>
+<td><code>fbm(p, octaves)</code></td>
+<td>fractal sum of <code>valueNoise</code>, 2D or 3D</td>
+</tr>
+<tr>
+<td><code>ridgedFbm(p, octaves)</code></td>
+<td>creases instead of blobs</td>
+</tr>
+<tr>
+<td><code>domainWarp(p, octaves, strength)</code></td>
+<td>warp the domain by more noise</td>
+</tr>
+<tr>
+<td><code>worley(p)</code></td>
+<td>(nearest, second-nearest) cell-point distance</td>
+</tr>
+<tr>
+<td><code>curlNoise(p, eps)</code></td>
+<td>divergence-free 2D flow</td>
+</tr>
+</tbody>
+</table>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">#include &lt;noise.glsl&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">uv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">xy</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">iResolution</span><span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fbm</span><span class="p">(</span><span class="n">uv</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">6.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="kt">vec3</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Scientific colour maps, as polynomial fits over <code>t</code> in 0..1. The sequential ones are perceptually uniform (equal steps in <code>t</code> read as equal steps in brightness), which a raw hue ramp never gives you for free.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viridis(t)</code> / <code>magma(t)</code> / <code>inferno(t)</code> / <code>plasma(t)</code> / <code>turbo(t)</code></td>
+<td>perceptually uniform sequential maps (except turbo)</td>
+</tr>
+<tr>
+<td><code>grayscale(t)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>coolwarm(t)</code></td>
+<td>diverging, neutral colour at <code>t = 0.5</code></td>
+</tr>
+<tr>
+<td><code>cosinePalette(t, offset, amp, freq, phase)</code></td>
+<td>Inigo Quilez's cosine-gradient formula, tunes a whole custom scheme from four vectors</td>
+</tr>
+<tr>
+<td><code>remap(v, lo, hi)</code></td>
+<td>maps <code>v</code> to 0..1 across <code>[lo, hi]</code></td>
+</tr>
+<tr>
+<td><code>signedRemap(v, amplitude)</code></td>
+<td>signed <code>v</code> to 0..1, zero at 0.5, for a diverging map</td>
+</tr>
+<tr>
+<td><code>hsv2rgb(c)</code></td>
+<td>for an angle: phase, orientation, winding. Hue isn't perceptually ordered, so a poor choice for a plain scalar</td>
+</tr>
+<tr>
+<td><code>isoline(v, spacing, grad, width_px)</code></td>
+<td>1 on the isolines of <code>v</code>, constant pixel width</td>
+</tr>
+</tbody>
+</table>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#include &lt;colormap.glsl&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">density</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">iResolution</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">viridis</span><span class="p">(</span><span class="n">density</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Complex arithmetic on <code>vec2</code> (x = real, y = imaginary), and domain colouring, the standard way to put an entire complex function on one picture. Includes <code>&lt;colormap.glsl&gt;</code> for <code>hsv2rgb</code>, so its names are in scope here too.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cadd</code> / <code>csub</code> / <code>cmul</code> / <code>cdiv</code> / <code>cinv</code> / <code>cconj</code></td>
+<td>arithmetic</td>
+</tr>
+<tr>
+<td><code>carg(a)</code> / <code>cabs(a)</code></td>
+<td>argument, modulus</td>
+</tr>
+<tr>
+<td><code>cexp(a)</code> / <code>clog(a)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cpow(a, k)</code> / <code>cpow(a, b)</code> / <code>csqrt(a)</code></td>
+<td>real or complex exponent</td>
+</tr>
+<tr>
+<td><code>csin(a)</code> / <code>ccos(a)</code> / <code>ctan(a)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mobius(z, a, b, c, d)</code></td>
+<td>(az+b)/(cz+d)</td>
+</tr>
+<tr>
+<td><code>domainColor(w)</code></td>
+<td>hue = argument, brightness bands at doublings of <code>\|w\|</code></td>
+</tr>
+<tr>
+<td><code>domainColorGrid(w, spokes)</code></td>
+<td><code>domainColor</code> plus argument contour lines</td>
+</tr>
+</tbody>
+</table>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">#include &lt;complex.glsl&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cp">#include &lt;plot2d.glsl&gt;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plotPoint</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cdiv</span><span class="p">(</span><span class="n">csub</span><span class="p">(</span><span class="n">cpow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">),</span><span class="w"> </span><span class="n">ONE</span><span class="p">),</span><span class="w"> </span><span class="n">cadd</span><span class="p">(</span><span class="n">cmul</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">),</span><span class="w"> </span><span class="n">ONE</span><span class="p">));</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">domainColorGrid</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Graphs and grids in plot coordinates, with line widths that stay put in pixels however the plot ends up scaled.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unitsPerPixel(xmin, xmax)</code></td>
+<td>plot units covered by one pixel</td>
+</tr>
+<tr>
+<td><code>plotPoint(xmin, xmax)</code> / <code>plotPointAt(xmin, xmax, ycenter)</code></td>
+<td>this fragment's position in plot coordinates</td>
+</tr>
+<tr>
+<td><code>graphDist(y, fx, dfx)</code></td>
+<td>distance to the graph <code>y = f(x)</code>, first order</td>
+</tr>
+<tr>
+<td><code>stroke(d, hw, aa)</code></td>
+<td>1 inside a stroke of half-width <code>hw</code></td>
+</tr>
+<tr>
+<td><code>curveMask(p, fx, dfx, width_px, upp)</code></td>
+<td>a curve of constant pixel width</td>
+</tr>
+<tr>
+<td><code>pointMask(p, center, r_px, upp)</code></td>
+<td>a filled disc marker, for scatter data</td>
+</tr>
+<tr>
+<td><code>PLOT_SLOPE(f, x, upp)</code></td>
+<td>macro: slope of <code>f</code> at <code>x</code> by central differences</td>
+</tr>
+<tr>
+<td><code>gridMask</code> / <code>gridMaskMinor(p, spacing, ...)</code></td>
+<td>grid lines, optionally coarse-over-fine</td>
+</tr>
+<tr>
+<td><code>axesMask(p, upp)</code></td>
+<td>the two axes</td>
+</tr>
+<tr>
+<td><code>xTickMask</code> / <code>yTickMask(p, spacing, len_px, upp)</code></td>
+<td>tick marks</td>
+</tr>
+<tr>
+<td><code>underCurve(p, fx, upp)</code></td>
+<td>1 below the graph</td>
+</tr>
+<tr>
+<td><code>betweenCurves(p, lo, hi, upp)</code></td>
+<td>1 between two graphs</td>
+</tr>
+</tbody>
+</table>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">#include &lt;plot2d.glsl&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">upp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unitsPerPixel</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">);</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kt">vec2</span><span class="w">  </span><span class="n">p</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">plotPoint</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">);</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.85</span><span class="p">),</span><span class="w"> </span><span class="mf">0.6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">gridMask</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">upp</span><span class="p">));</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="w">  </span><span class="n">axesMask</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">upp</span><span class="p">));</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span><span class="w"> </span><span class="n">curveMask</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="n">upp</span><span class="p">));</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.8</span><span class="p">),</span><span class="w"> </span><span class="n">pointMask</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)),</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="n">upp</span><span class="p">));</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Sugar over the <code>TimeObject</code> uniforms and keyframe <code>#define</code>s from the <a href="../basics#following-the-talk">basics</a> page, so a shader can stage itself against the talk with none of it spelled out by hand.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fadeIn(seconds)</code> / <code>fadeInSmooth(seconds)</code></td>
+<td>0→1 over the first <code>seconds</code> of the slide</td>
+</tr>
+<tr>
+<td><code>fadeOut(seconds)</code></td>
+<td>1→0</td>
+</tr>
+<tr>
+<td><code>pulse(attack, release)</code></td>
+<td>rises then falls</td>
+</tr>
+<tr>
+<td><code>fadeInAt(kf, seconds)</code> / <code>fadeInAtSmooth(kf, seconds)</code></td>
+<td>0 before a keyframe, then ramps</td>
+</tr>
+<tr>
+<td><code>onceAt(kf)</code></td>
+<td>hard 0/1 switch at a keyframe</td>
+</tr>
+<tr>
+<td><code>betweenKeyframes(from_kf, to_kf)</code></td>
+<td>1 only between two keyframes</td>
+</tr>
+<tr>
+<td><code>stageAfter(kf, count)</code> / <code>stageAfterSmooth(kf, count, seconds)</code></td>
+<td>staged reveal, <code>count</code> steps</td>
+</tr>
+<tr>
+<td><code>slideAlpha()</code></td>
+<td>the deck's own intro/outro, eased</td>
+</tr>
+<tr>
+<td><code>shaderTime()</code></td>
+<td>seconds since this shader appeared (does not reset per slide)</td>
+</tr>
+</tbody>
+</table>
+<div class="language-glsl highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#include &lt;slide.glsl&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kt">void</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fadeInSmooth</span><span class="p">(</span><span class="mf">0.6</span><span class="p">);</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">afterKeyframe</span><span class="p">(</span><span class="n">reveal</span><span class="p">))</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="n">col</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">stageAfter</span><span class="p">(</span><span class="n">reveal</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="n">fragColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec4</span><span class="p">(</span><span class="n">col</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">slideAlpha</span><span class="p">(),</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><code>reveal</code> here is a deck keyframe name, baked in as a <code>#define</code>.</p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Include path resolution</p>
+<p><code>#include</code>d files resolve against the including file first, then the project data path, then this stdlib (<code>Options::ShaderPath</code>, the <code>src/shaders/</code> directory, configurable via the <code>SLOPE_SHADER_PATH</code> cmake cache variable, installed under <code>share/slope/shaders</code> too).</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant.preview", "navigation.expand", "content.code.select", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

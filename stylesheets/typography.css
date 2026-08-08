@@ -1,0 +1,42 @@
+/* Change la taille de base du texte */
+:root {
+  --md-text-font-size: 2rem;  /* Par défaut ≈ 1rem (16px) */
+  --md-typeset-font-size: 2rem;
+  --md-typeset-line-height: 3;
+}
+
+/* Reference tables: readable size, independent of the oversized body text */
+.md-typeset table:not([class]) {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.6em 1em;
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) td:first-child,
+.md-typeset table:not([class]) th:first-child {
+  border-left: none;
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
