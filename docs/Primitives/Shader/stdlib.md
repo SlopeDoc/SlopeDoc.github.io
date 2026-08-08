@@ -14,6 +14,9 @@ Here are the current existing functions, and small examples, that you can includ
     | `orbitRayAt(orbit, radius, target, out ro, out rd)` | camera on a sphere around `target`, `orbit` = (yaw, pitch) in 0..1 |
     | `orbitRayTarget(radius, target, out ro, out rd)` | driven by the cursor while hovered, a fixed 3/4 view otherwise |
     | `orbitRay(out ro, out rd)` | `orbitRayTarget` with a stock radius/target |
+    | `screenPoint()` | this fragment's position on the window, 0..1 with y up, whatever rectangle the shader is drawn into |
+    | `screenToLocal(s)` | the way back, a screen position as this shader's own uv |
+    | `screenAspect()` | the window's aspect, where `iAspect` is the rectangle's |
     | `polyscopeNDC()` | this fragment's position in polyscope's normalised device coordinates |
     | `polyscopeRay(out ro, out rd)` | the ray polyscope itself would trace through this fragment |
     | `polyscopeDepth(world_pos)` | depth of a world point, in polyscope's depth-buffer convention |
