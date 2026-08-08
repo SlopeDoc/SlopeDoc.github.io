@@ -39,7 +39,7 @@ These act on [persistent screen primitives](../placement/persistant_placement).
 | ``W`` | Color palette editor |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
-| ``A`` | Tuner panel: [tunable parameters](../interactivity) of the current slide |
+| ``A`` | Tuner panel: [tunable parameters](../interactivity) of the current slide, and their handles |
 | ``P`` | Screenshot (saved to ``/tmp/screenshot_*.png``) |
 | ``R`` | Reset [rehearsal timings](timings) |
 | ``Space`` | Pause/resume the rehearsal timer |

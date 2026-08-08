@@ -135,11 +135,11 @@ the manifest cannot express.
 - shader: sky.frag
   resolution: [900, 600]
   uniforms:
-    sun:   [0.3, 0.9, 0.2]                  # vec3, type read off the literal
-    tint:  "#ffcc88"                        # color
-    steps: 64                               # int
-    speed: {default: 1.0, min: 0, max: 5}   # bounded, so a slider
-    mode:  {type: int, default: 0}          # explicit type
+    sun:      dir                                       # a type name on its own
+    steps:    {type: int, default: 64}                  # long form, with a default
+    tint:     {type: color, default: "#ffcc88"}
+    speed:    {type: float, default: 1.0, min: 0, max: 5}   # bounded, so a slider
+    controls: "vec3[8]"                                 # an array
   textures:
     noise: noise.png
     grad:  {file: gradient.png, filter: nearest, wrap: repeat}
@@ -149,9 +149,15 @@ Each uniform becomes a persistent [tunable parameter](../../interactivity): it a
 the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
 `views/params.json` and the next run picks it up. The shader follows it every frame.
 
-Types are `float`, `int`, `bool`, `vec2`, `vec3` and `color` (vec4). The type is read off
-the literal when it is unambiguous, and `type:` states it otherwise. Bounds are optional,
-and a bounded parameter is drawn as a slider rather than a drag field.
+Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
+unit vector, aimed on a ball rather than typed component by component. Bounds are
+optional, and a bounded parameter is drawn as a slider rather than a drag field.
+
+`<type>[N]` declares an array, from 1 to 64 elements. The shader sees
+`uniform vec3 controls[8];` and the panel shows one parameter per element, named
+`controls[0]` to `controls[7]`, each with its own handle. Its `default` is a list of one
+value per element. Watch the quotes: inside a flow mapping yaml reads the brackets itself,
+so write `{type: "vec3[8]", default: [...]}`.
 
 Each texture binds an image file to the sampler of the same name, which the shader declares
 itself:
@@ -164,6 +170,4 @@ uniform vec2      noise_size;   // optional, its size in pixels
 `filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
 image files here: a texture fed by another pass or by a previous frame stays in C++.
 
-Both lists are re-read on every hot reload, so a uniform or a texture you delete from the
-manifest really goes away instead of lingering from the previous load.
 

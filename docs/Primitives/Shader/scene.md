@@ -17,6 +17,16 @@ void main() {
 }
 ```
 
+??? "Sharing the screen instead of the scene"
+    A flat shader has the same problem one dimension down: it draws into its own rectangle, so
+    `gl_FragCoord.xy / iResolution` means nothing to anything outside it. `screenPoint()` is the
+    answer `polyscopeRay` gives for the 3D case, the position of this fragment on the window,
+    `0..1` with `y` up, wherever the shader is placed and whatever its resolution is.
+
+    That is the space [`vec2` parameters](../../interactivity.md) live in, so a point dragged in
+    the panel and the object the shader draws for it stay together.
+
+
 ## Using polyscope depth buffer
 
 To make polyscope objects coherent with a shader, you can use its depth buffer. Reach for `visibleOverScene` (or any of the other `scene*` functions in `camera.glsl`) and the buffer is passed on automatically:
