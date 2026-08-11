@@ -46,8 +46,8 @@ slides:
   - frame:
       - title: A mesh, from C++
       - object: spot
-      - step:
-          - load: my_key        # content from the latex definitions file
+      - step
+      - load: my_key        # content from the latex definitions file
 ```
 
 `init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble, both hot-reloaded too. Their paths are given at the top of the manifest with the `latex:` and `commands:` keys; when omitted, the project's `latex.json` and `commands.tex` are used if they exist.
