@@ -29,7 +29,7 @@ int main(int argc,char** argv) {
     return 0;
 }
 ```
-We use ```Latex::UsePackage``` to append before all latex files the *libertine* package to set the font for the text and formulas and ```LatexLoader::Init("text.json)``` to indicate the file for the [hot reloading](../Primtitives/Latex/dynamic.md) of the text. Even for simple text, assume that you will have to edit the text many times so using the hot-reloading is always a good idea.
+We use ```Latex::UsePackage``` to append before all latex files the *libertine* package to set the font for the text and formulas and ```LatexLoader::Init("text.json")``` to indicate the file for the [hot reloading](../Primitives/Latex/dynamic) of the text. Even for simple text, assume that you will have to edit the text many times so using the hot-reloading is always a good idea.
 
 Note that a good idea to reduce compilation time would be to generate each group of slides in different cpp files to avoid recompiling everything at each edits, but let's do everything in one block for the sake of clarity.
 
@@ -73,7 +73,7 @@ We first adapt the camera to the scene by changing it as usual with polyscope an
 
 ## Text and hot-reloading
 
-We can also start adding text, do it by modifing the latex souce file, here ```test.json```:
+We can also start adding text, do it by modifying the latex source file, here ```text.json```:
 === "main.cpp"
     ``` cpp
         show << LatexLoader::LoadWithAnchor("moon1");
@@ -81,11 +81,11 @@ We can also start adding text, do it by modifing the latex souce file, here ```t
 === "text.json"
     ```json
     {
-        "moon1":[0,"The moon is essentialy a very big rock"]
+        "moon1":[0,"The moon is essentially a very big rock"]
     }
     ```
 
-We can hot-reload the text (and its width) in the json file, and we can move (and scale) the text as we loaded it with a [(persistent) anchor](Primitives/placement/persistant_placement.md).
+We can hot-reload the text (and its width) in the json file, and we can move (and scale) the text as we loaded it with a [(persistent) anchor](../placement/persistant_placement).
 
 <video src="../static/tuto2.mp4" muted autoplay loop controls width="100%" >
 </video>
@@ -113,7 +113,7 @@ We can also make a scalar field appear at a different moment than the mesh itsel
 ```cpp
     Vec tide = Vec::Zero(planet->getVertices().size());
     auto q = planet->pc->addVertexScalarQuantity("tide",tide);
-    auto tide_plot = PolyscopeQuantity<polyscope::SurfaceVertexScalarQuantity>::Add(q);
+    auto tide_plot = AddPolyscopeQuantity(q);
     tide_plot->q->setColorMap("blues");
 ```
 
@@ -154,7 +154,7 @@ Slideshow show;
 
 void init () {
     Latex::UsePackage("libertine"); // set font
-    LatexLoader::Init("test.json"); // set latex source
+    LatexLoader::Init("text.json"); // set latex source
 
     show << Title("The moon and the tides")->at(CENTER);
     show << inNextFrame << TOP;
@@ -164,7 +164,7 @@ void init () {
     planet->pc->setSurfaceColor(glm::vec3(0.5,0.6,1));
 
 
-    show << CameraView::Add("base");
+    show << CameraView::Add("view1");
 
     show << LatexLoader::LoadWithAnchor("moon1");
 
@@ -180,7 +180,7 @@ void init () {
     show << moon;
     show << Latex::Add("The moon")->track([moon] () {return moon->getCurrentPos();}, vec2(0,-0.05));
 
-    Vec tide = Vec::Random(planet->getVertices().size());
+    Vec tide = Vec::Zero(planet->getVertices().size());
     auto q = planet->pc->addVertexScalarQuantity("tide",tide);
     auto tide_plot = AddPolyscopeQuantity(q);
 

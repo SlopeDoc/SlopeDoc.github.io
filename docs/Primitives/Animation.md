@@ -1,20 +1,20 @@
-The way animations can be programatically conceived is through updaters.
+The way animations can be programmatically conceived is through updaters.
 
-All primitives have an updater object that is called at each frame such that each primitive can be time-dependant:
+All primitives have an updater object that is called at each frame such that each primitive can be time-dependent:
 
 ```cpp
 auto pc = PointCloud::Add(positions);
 pc->updater = [pc] (TimeObject t) {
 
-    if (t.relative_frame == 0) {
+    if (t.relative_frame_number == 0) {
         auto P = pc->getPoints();
         for (auto& x : P) 
             x(0) += std::sin(t.inner_time);
         pc->updateCloud(P);
-    } else if (t.relative_frame == 1) {
+    } else if (t.relative_frame_number == 1) {
         // do something else
     }
-}
+};
 ```
 
 If you want to avoid having to code each behavior for each relative frame (and be resilient to slide changes), you can replace an updater starting at another frame directly:  
@@ -23,7 +23,7 @@ If you want to avoid having to code each behavior for each relative frame (and b
 auto pc = PointCloud::Add(positions);
 pc->updater = [pc] (TimeObject t) {
     // default behavior
-}
+};
 show << inNextFrame << pc;
 // do stuff, create new slides, etc...
 show << pc->setUpdater([pc] (TimeObject time){
@@ -37,9 +37,9 @@ show << pc->setUpdater([pc] (TimeObject time){
 
     - ```from_begin``` (s) : time from start of the program
     - ```from_action``` (s) : time from last slide change
-    - ```inner_time``` (s) : time from first appearence on screen
+    - ```inner_time``` (s) : time from first appearance on screen
     - ```absolute_frame_number``` (int) : current frame number from first slide
-    - ```relative_frame_number``` (int) : number of slides from first appearence of this primitive
+    - ```relative_frame_number``` (int) : number of slides from first appearance of this primitive
 
 ## Keyframes
 

@@ -18,7 +18,7 @@ To make interactive presentations, you can use ImGui widgets as a primitive:
     },"window name");
 ```
 
-!!! note "```ImGuiWidgets::Add(std::function<void()>& callback,std::string window_name)```"
+!!! note "```ImGuiWidgets::Add(const std::function<void()>& callback,std::string window_name)```"
 
 <video width="100%" autoplay loop muted>
   <source src="../static/interactivity.mp4" type="video/mp4">
@@ -27,7 +27,7 @@ To make interactive presentations, you can use ImGui widgets as a primitive:
 
 ## Tunable parameters
 
-For scalar-like parameters that need tuning for animation, you can add a `Params` object. runtime-tunable, **persistent** parameters next to the code that uses them:
+For scalar-like parameters that need tuning for animation, you can add a `Params` object: runtime-tunable, **persistent** parameters declared next to the code that uses them:
 
 ```c++
 auto amp   = Params::Add("amplitude", 0.2, 0., 1.);  // slider in [0,1]

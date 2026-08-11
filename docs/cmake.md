@@ -2,7 +2,7 @@
 title: Build & CMake Integration
 ---
 
-Slope is designed to be easilty integrated on top of any cmake project in order to merge scientific code and your presentations!
+Slope is designed to be easily integrated on top of any cmake project in order to merge scientific code and your presentations!
 
 
 
@@ -29,7 +29,7 @@ Slope is designed to be easilty integrated on top of any cmake project in order 
     FetchContent_Declare(
       slope
       GIT_REPOSITORY https://github.com/baptiste-genest/slope.git
-      GIT_TAG v0.1.1
+      GIT_TAG v0.1.2
     )
     FetchContent_MakeAvailable(slope)
     ```
@@ -38,8 +38,17 @@ Slope is designed to be easilty integrated on top of any cmake project in order 
 - the same as [Polyscope](https://polyscope.run/about/dependencies/)
 - Imagick (```convert``` command) : Make sure that the convert command is allowed to convert pdf to png, see [here](https://stackoverflow.com/a/53180170).
 - ```pdflatex```
+- ```ffmpeg``` and ```ffprobe```, optional, only for the [Video and Webcam](../Primitives/video) primitives.
 
-[Paths](../options) to Imagick and pdflatex are found by cmake.
+[Paths](../options) to Imagick, pdflatex and ffmpeg are found by cmake.
+
+On a Debian or Ubuntu machine, ```ffmpeg``` ships both tools and
+```imagemagick``` provides ```convert```:
+
+```
+sudo apt install texlive-latex-extra imagemagick ffmpeg
+```
+
 
 ### Build and run !
 

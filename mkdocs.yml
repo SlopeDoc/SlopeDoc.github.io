@@ -67,7 +67,7 @@ nav:
     - Screen Primitives:
       - Primitives/screen_primitives.md
       - Primitives/images.md
-      - Primitives/Gifs.md
+      - Primitives/video.md
       - Primitives/shapes.md
       - Shaders:
         - Primitives/Shader/basics.md

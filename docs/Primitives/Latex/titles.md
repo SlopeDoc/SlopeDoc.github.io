@@ -16,3 +16,14 @@ As titles are a special kind of text, you can use the ```Title(std::string text)
 As titles are unique, you can use them to jump between slides: by pressing ```tab``` you get the list of all titles and clicking on one will make you jump directly to the first slide with this title, useful for questions during presentations!
 
 It is then good practice that each slide has a title (or else it will appear in the table of contents as its slide number).
+
+## Manifest format
+
+```yaml
+- frame:
+    - title: First slide    # replaces any previous title
+      at: TOP
+- frame:
+    - ...
+  same_title: true          # a frame key, not an item: keep the previous title
+```

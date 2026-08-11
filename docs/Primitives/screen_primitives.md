@@ -3,11 +3,11 @@ title: Basics
 ---
 ## Screen Primitives
 
-- [Image](../images)
-- Gif
-- Latex
+- [Image & Gif](../images)
+- [Video & Webcam](../video)
+- [Latex](../Latex/latex)
 - [Shapes & arrows](../shapes)
-- Shader
+- [Shader](../Shader/basics)
 - [Stacks](../stacks)
 
 Screen primitives can be placed on the screen using various 2D referential, with the ```at``` method (see [Placement](../../placement/relative_placement)).

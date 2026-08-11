@@ -52,7 +52,7 @@ show << box;
 
 Like any primitive, the box is drawn at its insertion rank in the slide: add it *before* its targets to frame them, *after* to cover them.
 
-In a deck manifest, arrows and boxes are available as the `arrow:` and `box:` items (see [manifest format](../../deck/manifest)).
+In a deck manifest, arrows and boxes are the `arrow:` and `box:` items, [below](#manifest-format).
 
 ## Example:
 
@@ -86,3 +86,31 @@ In a deck manifest, arrows and boxes are available as the `arrow:` and `box:` it
 ```
 
 
+
+## Manifest format
+
+```yaml
+- arrow:
+    from: KR2               # an item id, a [x, y] position, or a label
+    to: KR2_sub
+    bend: 0.25              # curvature, 0 being straight
+    color: "#aa0000"
+    from_offset: [0, 0.02]  # shift the attach points
+```
+
+Endpoints follow their target every frame, so an arrow between two items stays
+attached while they move.
+
+A `box:` holds items rather than taking a position, it draws a rectangle around
+them and follows them as they move:
+
+```yaml
+- box:
+    - latex: framed content
+    - image: fig.png
+  padding: 0.02         # margin around the contents, also padx / pady
+  color: "#333333"      # the outline
+  thickness: 2
+  filled: true          # also fill_color, alpha
+  id: my_box            # so operations can refer to the box itself
+```

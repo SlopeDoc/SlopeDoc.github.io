@@ -4,7 +4,7 @@ title: Hot Reloading
 
 When creating the slides, text is more often edited than the rest. In order to avoid recompiling, hot reloading of an external source file is possible.
 
-=== "Json LateX source"
+=== "Json LaTeX source"
 
     ``` json
     {

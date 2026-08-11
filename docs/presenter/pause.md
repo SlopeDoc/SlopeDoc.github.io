@@ -12,3 +12,9 @@ Instead of directly going to the next slide when you press ``right arrow``, if y
     show << newFrame << Title("Done!")->at(TOP);
 ```
 
+
+## Manifest format
+
+```yaml
+- pause: 3              # hold this slide 3 seconds before moving on
+```
