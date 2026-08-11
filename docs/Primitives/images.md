@@ -68,4 +68,16 @@ See the [manifest format](../../deck/manifest) for the placement keys.
 ```yaml
 - image: figure.png     # the file, relative to the data path
   at: fig               # placement, defaults to a label from the filename
+  scale: 0.5            # default size (default: 1)
 ```
+
+```yaml
+- gif: puppy_dance.gif  # every frame held as a texture
+  at: puppy
+  fps: 10               # playback speed (default: 10)
+  scale: 0.5            # default size (default: 1)
+  loop: false           # stop on the last frame instead of restarting
+```
+
+`scale` sizes the image itself. To scale one *placement* of it, and animate that
+between steps, use `zoom` (see the [manifest format](../../deck/manifest)).

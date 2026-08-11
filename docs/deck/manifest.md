@@ -42,6 +42,23 @@ Screen items take one placement key:
 
 When omitted, `load`/`image` items default to a label derived from their key or filename, so everything is drag-editable out of the box.
 
+### State
+
+Any screen item also takes the fields the slide *state* carries. They are not
+part of the primitive, they describe this placement of it:
+
+```yaml
+- image: fig.png
+  at: fig
+  alpha: 0.5              # opacity
+  rot: 20                 # rotation, in degrees
+  zoom: 1.5               # scales this placement
+```
+
+??? note "`zoom` and `scale` are different things"
+    `scale` (on `image`, `gif`, `video`, `latex`) is how big the primitive
+    itself is, its default size. `zoom` scales one placement of it, and animates.
+
 ### Steps
 
 A bare `- step` marker splits a frame into clicks (the equivalent of `inNextFrame`): every item after it appears on the next click.
@@ -87,6 +104,9 @@ After a `- step` (or in a later frame), existing items can be manipulated:
   with: {image: better_fig.png}
 - set: isurf                      # re-place an existing item,
   at: new_label                   # transition animated
+- set: fig                        # or restyle it without moving it,
+  alpha: 0.3                      # any of the state fields above
+  rot: -20
 ```
 
 !!! warning "Typos"
