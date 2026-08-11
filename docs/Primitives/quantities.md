@@ -20,7 +20,7 @@ One can do it simply in the following way:
     auto field = AddPolyscopeQuantity(sf);
 
     // displays mesh first, then the scalar field
-    show << mesh << InNextFrame << field;
+    show << mesh << inNextFrame << field;
 
 ```
 

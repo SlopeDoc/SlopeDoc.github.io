@@ -8,14 +8,14 @@ While a presentation is running, Slope reacts to the keys below. You can also pr
 
 | Key | Action |
 | --- | --- |
-| ``→`` right arrow | Next slide, or start the slide's [timed pause](../workflow/pause) if it has one |
+| ``→`` right arrow | Next slide, or start the slide's [timed pause](../pause) if it has one |
 | ``←`` left arrow | Previous slide |
 | ``↓`` down arrow | Skip to the next slide **without** transition |
-| ``Tab`` | Slide menu: jump to any slide and read [rehearsal timings](timings) |
+| ``Tab`` | Slide menu: jump to any slide and read [rehearsal timings](../timings) |
 
 ### Interactive placement
 
-These act on [persistent screen primitives](../placement/persistant_placement).
+These act on [persistent screen primitives](../../placement/persistant_placement).
 
 | Key / mouse | Action |
 | --- | --- |
@@ -28,7 +28,7 @@ These act on [persistent screen primitives](../placement/persistant_placement).
 | ``Ctrl`` + ``Shift`` + drag | Marquee selection: every primitive entirely enclosed by the box joins the group |
 | left drag (with a group selected) | Move the whole group, preserving relative spacing (a short click clears the selection) |
 | ``Ctrl`` + ``Z`` | Undo the last move |
-| ``Ctrl`` + ``S`` | Save all dragged positions and edited [parameters](../interactivity) to disk |
+| ``Ctrl`` + ``S`` | Save all dragged positions and edited [parameters](../../interactivity) to disk |
 | ``T`` | Transform guizmo editor (3D objects) |
 
 ### Tools & windows
@@ -39,7 +39,7 @@ These act on [persistent screen primitives](../placement/persistant_placement).
 | ``W`` | Color palette editor |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
-| ``A`` | Tuner panel: [tunable parameters](../interactivity) of the current slide, and their handles |
+| ``A`` | Tuner panel: [tunable parameters](../../interactivity) of the current slide, and their handles |
 | ``P`` | Screenshot (saved to ``/tmp/screenshot_*.png``) |
-| ``R`` | Reset [rehearsal timings](timings) |
+| ``R`` | Reset [rehearsal timings](../timings) |
 | ``Space`` | Pause/resume the rehearsal timer |

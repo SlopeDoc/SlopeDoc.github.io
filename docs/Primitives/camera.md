@@ -13,3 +13,13 @@ state of the camera, by pressing ```C```, under a key name (must be unique), whi
 ??? note "```CameraView::Add(std::string key, bool flyTo = false)```"
     Pretty transitions between cameras is possible using the FlyTo options:
 
+
+## Manifest format
+
+```yaml
+- camera: side_view     # the view saved in views/side_view.json
+  fly: true             # fly to it instead of cutting (default: false)
+```
+
+A `camera:` item takes no placement, it moves the viewpoint rather than putting
+anything on the slide.

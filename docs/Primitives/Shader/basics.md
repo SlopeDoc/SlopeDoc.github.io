@@ -109,3 +109,49 @@ fx->bind("radius", [&]{ return slider_value; });
 
 Plain textual inclusion, expanded before the source ever reaches the GL compiler. You can use `#pragma once`, and include cycles are refused.
 
+
+## Manifest format
+
+A `shader:` item in a [deck manifest](../../../deck/manifest) can declare its uniforms and its
+textures, which covers most of what a single-pass shader needs without touching C++. Multi-pass, ping-pong and storage buffers
+stay on the [C++ side](../advanced), since they need a streaming order
+the manifest cannot express.
+
+```yaml
+- shader: sky.frag
+  resolution: [900, 600]
+  uniforms:
+    sun:      dir                                       # a type name on its own
+    steps:    {type: int, default: 64}                  # long form, with a default
+    tint:     {type: color, default: "#ffcc88"}
+    speed:    {type: float, default: 1.0, min: 0, max: 5}   # bounded, so a slider
+    controls: "vec3[8]"                                 # an array
+  textures:
+    noise: noise.png
+    grad:  {file: gradient.png, filter: nearest, wrap: repeat}
+```
+
+Each uniform becomes a persistent [tunable parameter](../../../interactivity): it appears in
+the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
+`views/params.json` and the next run picks it up. The shader follows it every frame.
+
+Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
+unit vector, aimed on a ball rather than typed component by component. Bounds are
+optional, and a bounded parameter is drawn as a slider rather than a drag field.
+
+`<type>[N]` declares an array, from 1 to 64 elements. The shader sees
+`uniform vec3 controls[8];` and the panel shows one parameter per element, named
+`controls[0]` to `controls[7]`, each with its own handle. Its `default` is a list of one
+value per element. Watch the quotes: inside a flow mapping yaml reads the brackets itself,
+so write `{type: "vec3[8]", default: [...]}`.
+
+Each texture binds an image file to the sampler of the same name, which the shader declares
+itself:
+
+```glsl
+uniform sampler2D noise;
+uniform vec2      noise_size;   // optional, its size in pixels
+```
+
+`filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
+image files here: a texture fed by another pass or by a previous frame stays in C++.

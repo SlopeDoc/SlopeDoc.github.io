@@ -7,10 +7,10 @@ Primitives can be placed with respect to another one. The main way to do so is w
 !!! note "```PlaceRelative(ScreenPrimitivePtr A,ScreenPrimitivePtr other,placeX X,placeY Y,scalar paddingX,scalar paddingY)```"
     - ```ScreenPrimitivePtr A``` primitive to place wrt to B
     - ```ScreenPrimitivePtr other``` reference Primitive
-    - ```placeX X``` can be:  ```REL_LEFT, ABS_LEFT, CENTER_X,SAME_X,REL_RIGHT,ABS_RIGHT``` for example ```REL_X``` will place A to the left of B, ```ABS_RIGHT``` will place A to the right of the screen
+    - ```placeX X``` can be:  ```REL_LEFT, ABS_LEFT, CENTER_X,SAME_X,REL_RIGHT,ABS_RIGHT``` for example ```REL_LEFT``` will place A to the left of B, ```ABS_RIGHT``` will place A to the right of the screen
     - ```placeY Y``` can be:  ```REL_TOP, ABS_TOP, CENTER_Y,SAME_Y,REL_BOTTOM,ABS_BOTTOM```
     - ```scalar paddingX ``` offset in the opposite direction of the placeX in the x-coord
-    - ```scalar paddingY ``` offset in the opposite direction of the placeY in the x-coord
+    - ```scalar paddingY ``` offset in the opposite direction of the placeY in the y-coord
 
 !!! info "Dynamic tracking"
 
@@ -37,6 +37,7 @@ Of course, many wrappers exist over this to simplify stuff for common constructi
     side 0 = left, side 1 = right
 
 !!! note "```PlaceBelow(ScreenPrimitivePtr ptr,ScreenPrimitivePtr other,scalar paddingy = 0.01)```"
+!!! note "```PlaceBelow(ScreenPrimitivePtr ptr,scalar paddingy = 0.01)```: relative to the last primitive inserted"
 !!! note "```PlaceAbove(ScreenPrimitivePtr ptr,ScreenPrimitivePtr other,scalar paddingy = 0.01)```"
 
 !!! tip "**Last primitive inserted**"

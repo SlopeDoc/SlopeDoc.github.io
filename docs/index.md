@@ -3,7 +3,7 @@ title: What is Slope?
 ---
 
 
-Exporting scientific results or complicated concepts into pretty presentations is a very hard proces that very often leads to a sad succession of screenshots and equations.
+Exporting scientific results or complicated concepts into pretty presentations is a very hard process that very often leads to a sad succession of screenshots and equations.
 
 
 But talking about graphics and geometry without 3D is both a waste of joy and clarity.
@@ -21,8 +21,8 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 ### Main features:
 
 - Easy integration of all polyscope primitives and quantities
-- LateX compilation, with hot-reloading
-- Slides can composed in a hot-reloadable YAML manifest, editable while running
+- LaTeX compilation, with hot-reloading
+- Slides can be composed in a hot-reloadable YAML manifest, editable while running
 - Full control over objects and animations
 - Automatic transitions
 - :fire: **Live shaders, synchronizable with polyscope!** :fire:

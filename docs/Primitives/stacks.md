@@ -27,4 +27,16 @@ The stack draws nothing itself; it exists as a screen primitive so that arrows a
 | `align` | `LEFT`, `CENTER` or `RIGHT` |
 | `handle` | block center; a label makes the block drag-editable |
 
-In a deck manifest, stacks are available as the `stack:` item (see [manifest format](../../deck/manifest)).
+In a deck manifest, stacks are the `stack:` item, [below](#manifest-format).
+
+## Manifest format
+
+```yaml
+- stack:                    # children laid out below one another
+    - latex: first paragraph
+    - step                  # space is reserved from the start, so
+    - latex: appears later   # children already shown never move
+  at: column_handle
+  spacing: 0.02
+  align: left               # left | center | right
+```

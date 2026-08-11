@@ -5,7 +5,7 @@ title: Basics
 - [Mesh](../Mesh)
 - Curve3D
 - [Camera view](../camera)
-- [Polyscope quantites](../quantities)
+- [Polyscope quantities](../quantities)
 
 Polyscope primitives live in a common 3D referential.
 

@@ -16,7 +16,7 @@ Dragged positions are kept only for the current session until you save them: pre
 ```
 
 !!! warning "Warning"
-    Labels must be unique, if you set the same label to another primitive, they will share the same position (can be usefull to replace a primitive by another one).
+    Labels must be unique, if you set the same label to another primitive, they will share the same position (can be useful to replace a primitive by another one).
 
 
 <video src="../../static/persistant.mp4" muted autoplay loop controls width="100%" >

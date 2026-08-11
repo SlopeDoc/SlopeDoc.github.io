@@ -2,7 +2,7 @@
 title: World to screen tracking
 ---
 
-You can force a 2D object, for instance a label, to follow a 3D object of the scene using the ```screenprimtiveptr->track``` method.
+You can force a 2D object, for instance a label, to follow a 3D object of the scene using the ```screenprimitiveptr->track``` method.
 
 !!! note "```track(const std::function<vec()>& placer,vec2 offset)```"
     - ```const std::function<vec()>& placer``` should return the 3D position to follow, the lambda is intended to capture the element to follow, see Example.

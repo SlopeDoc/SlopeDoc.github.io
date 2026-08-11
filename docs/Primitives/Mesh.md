@@ -18,3 +18,32 @@ What would we do without meshes? You can load one either from a file or a handma
     - ```const faces& F``` faces = ```std::vector<std::vector<size_t>```.
     - ```bool smooth``` polyscope shading mode (if false then visible edges)
 
+## Scalar fields
+
+While you could display a scalar field by using the common approach of [Quantities](../quantities), 
+slope offers a custom wrapper for scalar fields for a proper continuous intro/outro display.
+
+??? note "```c++ MeshScalarField::Add(const Mesh::MeshPtr& mesh, const std::string& name, const Vec& values, const std::string& colormap = 'viridis'); ```"
+    - ```const Mesh::MeshPtr& mesh``` the mesh carrying the field.
+    - ```const std::string& name``` the quantity name, as polyscope shows it.
+    - ```const Vec& values``` one value per vertex (```scalars``` also accepted).
+    - ```const std::string& colormap``` any polyscope colormap.
+
+    ```void setBaseline(scalar v)``` the value every vertex starts from,
+      the field's minimum by default.
+
+
+    ```scalar color_split``` fraction of the intro spent fading the mesh
+      colour to ```colormap(baseline)``` before the field grows, so the surface
+      colour does not pop. ```0``` disables that stage.
+
+
+
+## Manifest format
+
+```yaml
+- mesh: bunny.obj       # the obj file, relative to the data path
+  at: bunny_transform   # a persistent transform label, not a screen position
+  smooth: false         # polyscope shading mode, false shows the edges
+  normalize: true       # rescale the mesh to fit the scene
+```

@@ -6,7 +6,7 @@ title: Getting started
 
 While you can build all your slides in pure C++, you have to recompile each time you want to see an update.
 This can be frustrating for simple slide creation like text, math and images. To avoid this, you can instead build your presentation
-fully interactivly without having to recompile most of the time.
+fully interactively without having to recompile most of the time.
 
 The deck system splits a presentation in two:
 

@@ -4,7 +4,7 @@ Some objects, like the background color, can use a special Color structure:
 ```cpp
 BackgroundColor::Default = Color(1,0,0); // pure red
 ```
-- Or a reference to a palette that can be changed and stored dynamicaly by pressing ```w```:
+- Or a reference to a palette that can be changed and stored dynamically by pressing ```w```:
 ```cpp
 BackgroundColor::Default = Color("base");
 ```

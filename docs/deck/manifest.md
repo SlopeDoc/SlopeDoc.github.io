@@ -18,19 +18,11 @@ slides:
 
 ### Content items
 
-| Item | Content |
-| --- | --- |
-| `title: text` | slide title |
-| `load: key` | latex content from the [definitions file](../getting_started) (text/formula mode comes from the entry) |
-| `latex: \emph{inline} latex` | inline text-mode latex |
-| `formula: e^{i\pi}+1=0` | inline math-mode latex |
-| `image: figure.png` | image (optional `scale:`) |
-| `shader: plasma.frag` | single-pass fragment [shader](../../Primitives/Shader/basics) (optional `resolution: [w, h]`, `uniforms:`, `textures:`, see [below](#shader-items)) |
-| `object: name` | C++-[registered object](../objects) or group |
-| `mesh: bunny.obj` | mesh from an obj file (optional `smooth:`, `normalize:`; `at:` is a persistent transform label) |
-| `camera: view_name` | camera view from `views/view_name.json` (`fly: true` for a flight transition) |
-| `pause: 3` | [timed pause](../../presenter/pause) in seconds |
-| `keyframe: label` | labels this frame for C++ updaters (see [keyframes](#keyframes)) |
+Every primitive that can be written in a manifest documents its own keys, in a
+**Manifest format** section on its own page.
+
+The keys on this page are the ones that belong to the deck itself rather than to
+any one primitive: placement, steps, keyframes, ids and groups, and operations.
 
 ### Placement
 
@@ -97,77 +89,5 @@ After a `- step` (or in a later frame), existing items can be manipulated:
   at: new_label                   # transition animated
 ```
 
-### Connectors and layout
-
-```yaml
-- arrow: {from: KR2, to: KR2_sub, bend: 0.25, color: "#aa0000"}
-```
-
-Arrow endpoints follow their target every frame: an item id, a `[x,y]` position, or a label. `from_offset` / `to_offset` shift the attach points (see [shapes & arrows](../../Primitives/shapes)).
-
-```yaml
-- box:                       # rectangle englobing its items, following them
-    - latex: framed content
-    - image: fig.png
-  padding: 0.02              # also padx/pady, color, thickness,
-  filled: true               # filled, fill_color, alpha, id
-
-- stack:                     # children laid out below one another
-    - latex: first paragraph
-    - step
-    - latex: appears later     # space is reserved, earlier children
-  at: column_handle            # never move (see stacks page)
-  spacing: 0.02
-  align: left                # left | center | right
-```
-
 !!! warning "Typos"
     Unknown keys are reported in the terminal instead of being silently ignored. If an item does not move where you expect, check the indentation: a field must be aligned with the first key after its item's dash.
-
-### Shader items
-
-A `shader:` item can declare its uniforms and its textures, which covers most of what a
-single-pass shader needs without touching C++. Multi-pass, ping-pong and storage buffers
-stay on the [C++ side](../../Primitives/Shader/advanced), since they need a streaming order
-the manifest cannot express.
-
-```yaml
-- shader: sky.frag
-  resolution: [900, 600]
-  uniforms:
-    sun:      dir                                       # a type name on its own
-    steps:    {type: int, default: 64}                  # long form, with a default
-    tint:     {type: color, default: "#ffcc88"}
-    speed:    {type: float, default: 1.0, min: 0, max: 5}   # bounded, so a slider
-    controls: "vec3[8]"                                 # an array
-  textures:
-    noise: noise.png
-    grad:  {file: gradient.png, filter: nearest, wrap: repeat}
-```
-
-Each uniform becomes a persistent [tunable parameter](../../interactivity): it appears in
-the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
-`views/params.json` and the next run picks it up. The shader follows it every frame.
-
-Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
-unit vector, aimed on a ball rather than typed component by component. Bounds are
-optional, and a bounded parameter is drawn as a slider rather than a drag field.
-
-`<type>[N]` declares an array, from 1 to 64 elements. The shader sees
-`uniform vec3 controls[8];` and the panel shows one parameter per element, named
-`controls[0]` to `controls[7]`, each with its own handle. Its `default` is a list of one
-value per element. Watch the quotes: inside a flow mapping yaml reads the brackets itself,
-so write `{type: "vec3[8]", default: [...]}`.
-
-Each texture binds an image file to the sampler of the same name, which the shader declares
-itself:
-
-```glsl
-uniform sampler2D noise;
-uniform vec2      noise_size;   // optional, its size in pixels
-```
-
-`filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
-image files here: a texture fed by another pass or by a previous frame stays in C++.
-
-
