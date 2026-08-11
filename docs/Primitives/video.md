@@ -135,6 +135,7 @@ a snapshot refills a texture instead of inserting a primitive.
 ```yaml
 - video: clip.mp4       # streamed from disk, one ffmpeg pipe
   at: vid
+  scale: 0.5            # default size (default: 1)
   decode_width: 960     # decode at this width (default: the window width)
   loop: false           # stop at the last frame instead of restarting
   autoplay: false       # hold the first frame until clicked
@@ -145,6 +146,7 @@ a snapshot refills a texture instead of inserting a primitive.
 ```yaml
 - webcam: /dev/video0   # a live camera
   at: cam
+  scale: 0.5            # default size (default: 1)
   width: 1280           # the mode to open the device in, it is
   height: 720           # told and not probed
   fps: 30
@@ -152,6 +154,6 @@ a snapshot refills a texture instead of inserting a primitive.
   stats: true           # overlay the decode counters
 ```
 
-Changing `speed` or `stats` reloads without restarting the decoder. Changing
+Changing `scale`, `speed` or `stats` reloads without restarting the decoder. Changing
 anything that shapes the decode, `decode_width` or a camera's mode, restarts
 it, which is the honest cost of that change.

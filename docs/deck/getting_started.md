@@ -64,11 +64,12 @@ slides:
 | File | Effect when edited |
 | --- | --- |
 | `deck.yaml` | slides are recomposed in place |
-| latex definitions file | edited entries are recompiled |
+| latex definitions file | edited entries are recompiled, and the slides recomposed |
 | latex preamble file | every formula is recompiled |
 | saved camera views | the view is reloaded |
 | `views/params.json` | [tunable parameters](../../interactivity) are updated |
 
 A parse error in the manifest is printed to the terminal and the previous composition stays on screen.
+
 
 Next: the full [manifest format](../manifest), and [registering C++ objects](../objects).
