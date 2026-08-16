@@ -1,31 +1,10 @@
 ---
-title: Interactivity & Widgets
+title: Tunable parameters
 ---
 
-Since Slope works on top of polyscope, you keep the control over the camera with usual mouse control.
-
-To make interactive presentations, you can use ImGui widgets as a primitive:
-```c++
-    float* f = new float(1); // make sure to allocate on heap
-
-    show << Point::Add([f](TimeObject t) {
-        scalar th = (*f)*t.inner_time;
-        return vec(cos(th),sin(th),0);
-    });
-
-    show << ImGuiWidgets::Add([f]() {
-        ImGui::SliderFloat("speed",f,0,10);
-    },"window name");
-```
-
-!!! note "```ImGuiWidgets::Add(const std::function<void()>& callback,std::string window_name)```"
-
-<video width="100%" autoplay loop muted>
-  <source src="../static/interactivity.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 ## Tunable parameters
+
+A parameter is a number declared next to the code that reads it, tuned live in a panel, and saved for the next run. Parameters hold the constants a talk animates on, [snippets](snippets.md) the logic that turns them into motion, and both live in one namespace.
 
 For scalar-like parameters that need tuning for animation, you can add a `Params` object: runtime-tunable, **persistent** parameters declared next to the code that uses them:
 
@@ -44,14 +23,16 @@ The handle reads the live value (a plain conversion, usable in hot loops). Press
 
 Edited values are saved with ``Ctrl+S`` to `views/params.json`. Only ever-edited parameters are written, so untouched ones keep following their code defaults. The file is loaded back on startup, and hot-reloaded when edited by hand.
 
-### Handles
+A parameter can also be declared from a [snippet](snippets.md) with `param("name", def, min, max)` or from a shader's [`uniforms:`](../Primitives/Shader/basics.md#manifest-format): same registry, same panel.
+
+## Handles
 
 A position is easier to aim than to type, so the geometric parameters carry a widget on top of their sliders:
 
 | Type | Button | Widget |
 | --- | --- | --- |
 | `vec3` | `3D` | a translation gizmo in the scene, the same one the `T` editor uses for transforms |
-| `dir` (`AddDir`) | | a ball oriented like the camera: the mouse aims the unit vector, right click flips the hemisphere |
+| `dir` | - | a ball oriented like the camera: the mouse aims the unit vector, right click flips the hemisphere |
 | `vec2` | `2D` | a crosshair dragged on the screen |
 
 `all` and `none`, next to the panel's checkbox, switch every handle of the listed parameters on or off at once. While a handle is live the slide stops taking mouse input, so dragging never spins the camera by accident, and closing the panel puts everything back.
@@ -68,5 +49,4 @@ void main() {
 }
 ```
 
-`screenPoint()` reports where this fragment falls on the window, so the agreement holds wherever the shader is placed and whatever its `resolution:` is. It is the 2D counterpart of `polyscopeRay` for [3D scenes](Primitives/Shader/scene.md).
-
+`screenPoint()` reports where this fragment falls on the window, so the agreement holds wherever the shader is placed and whatever its `resolution:` is. It is the 2D counterpart of `polyscopeRay` for [3D scenes](../Primitives/Shader/scene.md).

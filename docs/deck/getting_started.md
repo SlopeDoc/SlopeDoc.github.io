@@ -8,12 +8,13 @@ While you can build all your slides in pure C++, you have to recompile each time
 This can be frustrating for simple slide creation like text, math and images. To avoid this, you can instead build your presentation
 fully interactively without having to recompile most of the time.
 
-The deck system splits a presentation in two:
+The deck system splits a presentation in three, by how often you edit each part:
 
 - **composition** (which content, on which slide, at which position) lives in a `deck.yaml` manifest, **hot-reloaded** while the presentation runs;
-- **behavior** (updaters, computed meshes, anything that needs real code) stays in C++ and is exposed to the manifest by *registering objects*.
+- **what it animates on** lives next to it: [tunable parameters](../../live/params) for the constants, [Lua snippets](../../live/snippets) for the logic, both re-read on save;
+- **computation** (meshes, solves, simulation steps) stays in C++ and is exposed to the manifest by *registering objects*.
 
-Editing the manifest, a latex definition, or a saved camera while the show runs recomposes the slides in place.
+Only the last costs a rebuild. Editing the manifest, a snippet, a latex definition or a saved camera takes effect on the next frame.
 
 ### A minimal deck project
 
@@ -50,11 +51,12 @@ slides:
       - load: my_key        # content from the latex definitions file
 ```
 
-`init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble, both hot-reloaded too. Their paths are given at the top of the manifest with the `latex:` and `commands:` keys; when omitted, the project's `latex.json` and `commands.tex` are used if they exist.
+`init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble, both hot-reloaded too. Their paths are given at the top of the manifest with the `latex:` and `commands:` keys; when omitted, the project's `latex.json` and `commands.tex` are used if they exist. `snippets:` names the [Lua files](../../live/snippets) the deck animates with, one or several.
 
 ```yaml
 latex: my_definitions.json
 commands: my_preamble.tex
+snippets: snippets.lua
 slides:
   - ...
 ```
@@ -67,9 +69,7 @@ slides:
 | latex definitions file | edited entries are recompiled, and the slides recomposed |
 | latex preamble file | every formula is recompiled |
 | saved camera views | the view is reloaded |
-| `views/params.json` | [tunable parameters](../../interactivity) are updated |
-
-A parse error in the manifest is printed to the terminal and the previous composition stays on screen.
-
+| `views/params.json` | [tunable parameters](../../live/params) are updated |
+| a [snippet](../../live/snippets) file | the sections are re-read, and the next frame animates with them |
 
 Next: the full [manifest format](../manifest), and [registering C++ objects](../objects).

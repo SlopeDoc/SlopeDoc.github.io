@@ -23,7 +23,7 @@ void main() {
     answer `polyscopeRay` gives for the 3D case, the position of this fragment on the window,
     `0..1` with `y` up, wherever the shader is placed and whatever its resolution is.
 
-    That is the space [`vec2` parameters](../../interactivity.md) live in, so a point dragged in
+    That is the space [`vec2` parameters](../../live/params.md) live in, so a point dragged in
     the panel and the object the shader draws for it stay together.
 
 

@@ -28,7 +28,7 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 | ``Ctrl`` + ``Shift`` + drag | Marquee selection: every primitive entirely enclosed by the box joins the group |
 | left drag (with a group selected) | Move the whole group, preserving relative spacing (a short click clears the selection) |
 | ``Ctrl`` + ``Z`` | Undo the last move |
-| ``Ctrl`` + ``S`` | Save all dragged positions and edited [parameters](../../interactivity) to disk |
+| ``Ctrl`` + ``S`` | Save all dragged positions and edited [parameters](../../live/params) to disk |
 | ``T`` | Transform guizmo editor (3D objects) |
 
 ### Tools & windows
@@ -39,7 +39,7 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 | ``W`` | Color palette editor |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
-| ``A`` | Tuner panel: [tunable parameters](../../interactivity) of the current slide, and their handles |
+| ``A`` | Tuner panel: [tunable parameters](../../live/params) of the current slide, and their handles |
 | ``P`` | Screenshot (saved to ``/tmp/screenshot_*.png``) |
 | ``R`` | Reset [rehearsal timings](../timings) |
 | ``Space`` | Pause/resume the rehearsal timer |

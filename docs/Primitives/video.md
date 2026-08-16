@@ -50,7 +50,7 @@ v->togglePlay();
 bool running = v->isPlaying();
 ```
 
-Speed is a callable read every frame, so a [tunable parameter](../../interactivity)
+Speed is a callable read every frame, so a [tunable parameter](../../live/params)
 can drive it live while you talk:
 
 ```c++
@@ -115,7 +115,7 @@ show << cam->at("cam")
         }, "camera");
 ```
 
-The button belongs in an [ImGui widget](../../interactivity), not in the
+The button belongs in an [ImGui widget](../../live/interactivity), not in the
 camera's `updater`. The widget opens and closes its own window around the
 callback, and it is a primitive like any other, so the button is only on screen
 while the slide is.
