@@ -10,7 +10,7 @@ theme:
     repo: fontawesome/brands/git-alt
   features:
     - navigation.instant.preview
-    - navigation.expand
+    - navigation.top
     - content.code.select
     - content.code.copy
   palette:
@@ -61,6 +61,10 @@ nav:
     - deck/getting_started.md
     - deck/manifest.md
     - deck/objects.md
+  - Live authoring:
+    - live/params.md
+    - live/snippets.md
+    - live/interactivity.md
   - Primitives:
     - Primitives/Animation.md
     - Primitives/colors.md
@@ -90,7 +94,6 @@ nav:
       - Primitives/Mesh.md
       - Primitives/camera.md
       - Primitives/quantities.md
-  - interactivity.md
   - Presenter tools:
     - presenter/shortcuts.md
     - presenter/pause.md

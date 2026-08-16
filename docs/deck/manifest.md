@@ -38,9 +38,14 @@ Screen items take one placement key:
 - image: fig.png
   below: my_key           # below/above/right_of/left_of another item
   padding: 0.05
+- formula: p
+  follow: fx.center       # rides a moving point instead of a fixed position
+  offset: [0.025, -0.03]
 ```
 
 When omitted, `load`/`image` items default to a label derived from their key or filename, so everything is drag-editable out of the box.
+
+`follow:` places an item on a moving value: a point of the 3D scene, of the screen, or of a shader's world space, see [tracking](../../placement/tracking#manifest-format).
 
 ### State
 

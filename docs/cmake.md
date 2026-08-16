@@ -10,7 +10,7 @@ Slope is designed to be easily integrated on top of any cmake project in order t
     
     ```cmake linenums="1"
     project(slope_project)
-    cmake_minimum_required(VERSION 3.12)
+    cmake_minimum_required(VERSION 3.5)
         
     list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
@@ -29,7 +29,7 @@ Slope is designed to be easily integrated on top of any cmake project in order t
     FetchContent_Declare(
       slope
       GIT_REPOSITORY https://github.com/baptiste-genest/slope.git
-      GIT_TAG v0.1.2
+      GIT_TAG v0.1.3
     )
     FetchContent_MakeAvailable(slope)
     ```

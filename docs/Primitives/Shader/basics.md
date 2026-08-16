@@ -81,6 +81,8 @@ Like all primitives, shaders also have updaters that get TimeObjects! Even bette
 | `relative_frame_number` | slides since this shader appeared |
 | `transition_parameter` | 0 → 1 across the intro/outro |
 
+A keyframe branch or an ease is written in a [snippet](../../../live/snippets) and read as a uniform, see [uniforms by name](#a-uniform-fed-by-a-value-that-already-exists).
+
 ## How to declare your own Uniforms
 
 Declare `uniform float radius;` in the shader, then from C++ push a fixed value:
@@ -97,6 +99,15 @@ fx->bind("radius", [&]{ return slider_value; });
 
 `set`/`bind` accept `float`, `int`, `vec2`, `vec` (vec3) and `RGBA` (vec4).
 
+`bind` also takes a **name on its own**, feeding the uniform from the [parameter or snippet variable](../../../live/snippets) of that name, with no lambda and no C++ owner:
+
+```c++
+fx->bind("reveal");                          // uniform <- the value called "reveal"
+fx->bind({"show_field", "show_basin"});      // several at once
+```
+
+The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a bare name in a manifest, below.
+
 !!! tip "Unknown names never throw"
     A uniform the shader doesn't currently declare is silently ignored rather than thrown, so you can  exactly what you want while editing the shader live and adding/removing uniforms as you go.
 
@@ -112,10 +123,11 @@ Plain textual inclusion, expanded before the source ever reaches the GL compiler
 
 ## Manifest format
 
-A `shader:` item in a [deck manifest](../../../deck/manifest) can declare its uniforms and its
-textures, which covers most of what a single-pass shader needs without touching C++. Multi-pass, ping-pong and storage buffers
-stay on the [C++ side](../advanced), since they need a streaming order
-the manifest cannot express.
+A `shader:` item in a [deck manifest](../../../deck/manifest) declares what goes *into* the
+shader: its uniforms, its textures, and the region of the plane it draws. That covers most of
+what a single-pass shader needs without touching C++. Multi-pass, ping-pong and storage
+buffers need a streaming order the manifest cannot express, and stay on the
+[C++ side](../advanced).
 
 ```yaml
 - shader: sky.frag
@@ -131,9 +143,10 @@ the manifest cannot express.
     grad:  {file: gradient.png, filter: nearest, wrap: repeat}
 ```
 
-Each uniform becomes a persistent [tunable parameter](../../../interactivity): it appears in
+Each uniform **declared with a type** becomes a persistent [tunable parameter](../../../live/params): it appears in
 the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
-`views/params.json` and the next run picks it up. The shader follows it every frame.
+`views/params.json` and the next run picks it up. The shader follows it every frame. An entry
+with no type declares nothing and reads an existing value instead, below.
 
 Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
 unit vector, aimed on a ball rather than typed component by component. Bounds are
@@ -155,3 +168,54 @@ uniform vec2      noise_size;   // optional, its size in pixels
 
 `filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
 image files here: a texture fed by another pass or by a previous frame stays in C++.
+
+### A uniform fed by a value that already exists
+
+A list entry with **no type** declares nothing: the uniform is fed by the [snippet
+variable](../../../live/snippets) or [parameter](../../../live/params) of that name, which is
+how a value computed elsewhere reaches a shader with nothing in between:
+
+```yaml
+- shader: field.frag
+  id: fx
+  uniforms:
+    - center                   # a snippet variable, or a parameter, already declared
+    - radius
+    speed: {type: float, default: 1.0, max: 5}   # the typed form still applies
+```
+
+### `view` : the shader's world space
+
+`view:` says which region of the plane the shader draws, which makes its pixels addressable
+from outside:
+
+```yaml
+- shader: field.frag
+  view: {half: 4}                       # half the height it shows, in world units
+- shader: other.frag
+  view: {center: [1, 0], half: zoom}    # a fixed center, and a half-height read live
+```
+
+`view: 4` on its own is `{half: 4}`, centered on the origin. `half` and `center` can each be
+a snippet or parameter name instead of a number, so the framing can animate.
+
+A label can then be placed on a point *of that space*, with `tracker` or `follow:` on the
+[tracking page](../../../placement/tracking#following-a-point-of-a-shader), and it lands on
+what the shader draws for that value. Without a `view:` a shader has no world points.
+
+### On a shader registered from C++
+
+All three keys also apply to an `object:` naming a shader, so a shader that needed C++ for
+its updater does not lose the declarative layer with it:
+
+```yaml
+- object: field
+  view: {half: 2}
+  uniforms:
+    - reveal
+```
+
+Its parameters are named after the object, not the item's `id:`, so they hold however many
+slides show it, and a hot reload drops only what the manifest declared last time, leaving its
+C++ owner's own binds standing. Declaring these keys on more than one item is reported, and
+an `object:` that is a group, or not a shader, refuses them.

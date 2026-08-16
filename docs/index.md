@@ -24,10 +24,11 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 - LaTeX compilation, with hot-reloading
 - Slides can be composed in a hot-reloadable YAML manifest, editable while running
 - Full control over objects and animations
+- :fire: **Animation logic in hot-reloaded Lua snippets** :fire:, and values tunable live while the show runs
 - Automatic transitions
 - :fire: **Live shaders, synchronizable with polyscope!** :fire:
 - Interactivity with ImGui widgets
-- Possible forced breaks to control the pace of the presentation
+- Possible forced breaks to control the pace of the presentation and talk rehearsal mode
 - 3D world to screen tracking
 
 ### Presentations with *Slope*:

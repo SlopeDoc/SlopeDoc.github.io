@@ -4,7 +4,9 @@ title: C++ objects
 
 ## Registering C++ objects
 
-Anything the manifest cannot express (updaters, computed geometry, quantities) is defined in C++ and registered under a name, then placed by the manifest with `object: name`.
+Anything the manifest cannot express (computed geometry, quantities, a simulation step) is defined in C++ and registered under a name, then placed by the manifest with `object: name`.
+
+Register an object for the computation, not for the choreography: a value that only needs tuning is a [parameter](../../live/params), and the shape of a motion can be a [snippet](../../live/snippets).
 
 ```c++
     auto spot = Mesh::Add("spot.obj");
@@ -21,9 +23,9 @@ Anything the manifest cannot express (updaters, computed geometry, quantities) i
 
 Factories are called lazily, the first time the manifest uses the name, and the result is cached: a hot reload re-places the same primitive instead of rebuilding it, so meshes, textures and compiled latex survive edits.
 
-### With tunable parameters
+### Keeping the tunable part out of C++
 
-Registered objects combine naturally with [tunable parameters](../../interactivity): declare the parameter next to the updater that reads it, and tune the animation live while editing the deck.
+Even a heavy updater reads *numbers*, which need not be compiled in. Declare a [parameter](../../live/params) next to the updater that reads it, and tune it live:
 
 ```c++
 deck.registerObject("wobbly_spot", []() {
@@ -34,6 +36,27 @@ deck.registerObject("wobbly_spot", []() {
     });
     return spot;
 });
+```
+
+When what you keep editing is the *shape* of the motion rather than a constant, read it from a [snippet](../../live/snippets) and the C++ side stops changing:
+
+```c++
+spot->setUpdater([=](TimeObject t){
+    deform(spot, Snippet::get("amp"), Snippet::get("phase"));
+});
+```
+
+The mesh, the deform loop and the upload stay compiled; the amplitude and the phase are a file you save.
+
+### A registered shader keeps its manifest inputs
+
+A shader registered from C++ for an updater, a multi-pass setup or a data texture does not lose the declarative layer with it: [`uniforms:`, `textures:` and `view:`](../../Primitives/Shader/basics#on-a-shader-registered-from-c) apply to an `object:` as to a `shader:` item.
+
+```yaml
+- object: field
+  view: {half: 2}
+  uniforms:
+    - reveal          # a snippet variable, fed with no C++ in the path
 ```
 
 ### Synchronizing with the deck : keyframes
@@ -54,3 +77,5 @@ spot->setUpdater([=](TimeObject t){
 ```
 
 `afterKeyframe` is true from the marked frame on, `atKeyframe` exactly on it, `beforeKeyframe` strictly before. An unknown label warns once in the terminal and answers false.
+
+A keyframe is also a *clock* and a *weight*, which lets an updater ease and blend rather than only switch: see [animation](../../Primitives/Animation#counting-from-a-keyframe).
