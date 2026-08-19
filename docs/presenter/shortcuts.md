@@ -22,6 +22,8 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 | ``Ctrl`` + left click | Pick the primitive under the cursor; click again on the same spot to cycle down through primitives stacked there |
 | drag | Move the picked primitive (light-blue guides snap it to other primitives) |
 | mouse wheel | Scale the picked primitive |
+| ``Shift``+wheel | Change the alpha of the picked primitive |
+| ``Ctrl``+wheel | Rotate the picked primitive |
 | ``H`` | Center it horizontally |
 | ``V`` | Center it vertically |
 | ``Ctrl`` + ``Shift`` + left click | Toggle the primitive in/out of a group selection |
