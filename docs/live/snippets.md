@@ -4,7 +4,7 @@ title: Lua snippets
 
 Suppose that you want to plot a scalar field, but what should it look like? $\sin(xyz)$? $\cos(x)\cos(y)\cos(z)$? I don't know! But if you have to recompile at each guess, that's where crafting slides takes long. So instead, use snippets!
 
-Snippets are also usefull to define variables/functions that are accessible everywhere so you can easily synchronize polyscope, shaders and even latex placement.
+Snippets are also useful to define variables/functions that are accessible everywhere so you can easily synchronize polyscope, shaders and even latex placement.
 
 You can write them all in one `snippets.lua` file (or in several):
 
