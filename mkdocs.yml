@@ -87,11 +87,13 @@ nav:
         - placement/relative_placement.md
         - placement/persistant_placement.md
         - placement/tracking.md
+        - placement/world_planes.md
     - Polyscope Primitives:
       - Primitives/polyscope_primitives.md
       - Primitives/transforms.md
       - Primitives/point_cloud.md
       - Primitives/Mesh.md
+      - Primitives/snippet_objects.md
       - Primitives/camera.md
       - Primitives/quantities.md
   - Presenter tools:

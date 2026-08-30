@@ -15,7 +15,7 @@ show << Background("bg");
 box->color = Color("shape/clay");
 ```
 
-A named color is a [tunable parameter](../../live/params) like any other. It shows up in the Tuner (```A```),
+A named color is a [tunable parameter](../../live/params) like any other. It shows up in the Tuner (```A```).
 
 Because it is one namespace, a color can also be read from a [snippet](../../live/snippets) by its name, or bound to a shader uniform. You can define a snippet to override a color:
 
