@@ -50,3 +50,36 @@ void main() {
 ```
 
 `screenPoint()` reports where this fragment falls on the window, so the agreement holds wherever the shader is placed and whatever its `resolution:` is. It is the 2D counterpart of `polyscopeRay` for [3D scenes](../Primitives/Shader/scene.md).
+
+## Writing one from code
+
+A parameter is usually what your code reads, but it can be what your code writes too:
+
+```c++
+Params::write("cursor", p);   // by name
+amp.set(0.4);                 // or through the handle
+```
+
+## Use in a live demo
+
+While params can be used to finetune animation parameter, you can decide that they should appear as part of your slides for a live demo. By default, its visibility is tied to the tuner panel, but you can change it:
+
+
+
+```c++
+Params::setVisible("speed",  Params::Visible::None);    // nothing, unless the Tuner is open
+Params::setVisible("energy", Params::Visible::Panel);   // its widget, in a small window
+Params::setVisible("grab",   Params::Visible::Handle);  // its manipulator, in the scene
+Params::setVisible("center", Params::Visible::Both);    // the widget and the manipulator
+```
+
+`None` is what every parameter starts as. A manipulator is the [handle](#handles) of its type, a gizmo for a `vec3` and a crosshair for a `vec2`.
+
+From a deck the same four are spelled `none`, `panel`, `handle` and `both`:
+
+```yaml title="deck.yaml"
+- shader: field.frag
+  uniforms:
+    grab: {type: vec3, visible: handle}
+```
+

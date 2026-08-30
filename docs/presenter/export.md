@@ -16,3 +16,4 @@ This runs headless and writes ``<project_path>/<project name>.pdf`` in one pass.
 - the slide's camera is applied directly, skipping any [``flyTo`` flight](../../Primitives/camera)
 - a screenshot (including the ImGui-drawn UI, etc...) is taken for each slide, then all of them are concatenated into the PDF with ImageMagick's ``convert``
 
+

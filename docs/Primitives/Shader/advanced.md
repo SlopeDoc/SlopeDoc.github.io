@@ -32,6 +32,27 @@ A hidden pass still has to be streamed into the slide to run: `setHidden` suppre
 blit, not the render. State that is integrated rather than looked at wants
 `setFloatBuffer()` and `Filter::Nearest`.
 
+## Array uniforms
+
+A uniform declared with a length in the shader is fed from a vector:
+
+```glsl
+uniform float energies[64];
+uniform int   energies_count;   // optional, how many were written
+```
+
+| Signature | Effect |
+| --- | --- |
+| `void set(const std::string& name, const std::vector<float>& v)` | upload once, also `vec2` and `vec` vectors |
+| `void bindArray(const std::string& name, std::function<std::vector<float>()> f)` | re-read every frame, like `bind` |
+
+The upload is clamped to the declared length, and `<name>_count` gets how many elements were
+written. Uniform storage is a few thousand floats for the whole shader, so this is for a few
+hundred values at most: a grid wants a texture, and bigger data a buffer.
+
+This is data, not knobs. A deck's [`controls: vec3[8]`](../basics#manifest-format) is the other
+half, one tunable parameter per element, and the two must not name the same uniform.
+
 ## Textures
 
 A pass samples its inputs through named samplers. Declare one in the shader and hand it a

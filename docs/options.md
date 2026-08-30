@@ -42,6 +42,18 @@ All coordinates in slope are expressed in a relative manner wrt to screen size, 
 !!! note "```size_t ScreenResolutionWidth```"
 !!! note "```size_t ScreenResolutionHeight```"
 
-### Misc
+### Command line
 
-!!! note "```Eigen::Vector3d DefaultBackgroundColor``` (rgb 0-1)"
+| Flag | Effect |
+| --- | --- |
+| ``--project_path <dir>`` | the project folder, required |
+| ``--data_path <dir>`` | where data is fetched from, the project path by default |
+| ``--resolution WxH`` | window size, ``1920x1080`` by default |
+| ``--export`` | render the deck to a PDF and quit, see [exporting](presenter/export.md) |
+| ``--export_transitions <n>`` | the same, sampling ``n`` stills through each slide change |
+| ``--check_labels`` | report unused, duplicated and defaulted anchor labels at startup |
+| ``--rehearse`` | start with [rehearsal timings](presenter/timings.md) on |
+| ``--no_slide_numbers`` | hide the slide counter |
+| ``--clear_cache`` | empty the latex and GIF caches before starting |
+| ``--ignore_cache`` | rebuild everything without emptying it |
+| ``--seed <n>`` | fix the random seed |

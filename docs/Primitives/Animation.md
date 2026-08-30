@@ -93,4 +93,12 @@ pos = rest * t.duringKeyframe("a") + moved * t.duringKeyframe("b");
 
 One name is a single slide, for a window use `t.duringKeyframe("from", "to")` opens the window at `from` and closes it at `to`. Unknown names weigh 0, so if each state is an *offset* from a resting value, the resting state needs no weight of its own.
 
+`sinceKeyframe` rises exactly like `duringKeyframe`, but never comes back down, for a value that should stay where its keyframe put it:
+
+```cpp
+alpha = t.sinceKeyframe("reveal");
+```
+
+Both take a last argument `sequential`, which makes a window close before the next one opens instead of overlapping it, so two states are never seen mixed.
+
 A snippet spells them the same way, `t.duringKeyframe("a")`, and a shader calls them bare, `duringKeyframe("a")`.

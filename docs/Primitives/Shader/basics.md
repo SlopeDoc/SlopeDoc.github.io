@@ -167,8 +167,9 @@ uniform sampler2D noise;
 uniform vec2      noise_size;   // optional, its size in pixels
 ```
 
-`filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`. Only
-image files here: a texture fed by another pass or by a previous frame stays in C++.
+`filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`.
+
+Only image files here: a texture fed by another pass or by a previous frame stays in C++.
 
 ### A uniform fed by a value that already exists
 
@@ -220,3 +221,8 @@ Its parameters are named after the object, not the item's `id:`, so they hold ho
 slides show it, and a hot reload drops only what the manifest declared last time, leaving its
 C++ owner's own binds standing. Declaring these keys on more than one item is reported, and
 an `object:` that is a group, or not a shader, refuses them.
+
+## Snippet textures
+
+A texture can also be fed by a lua function instead of an image file, see [snippet functions in
+shaders](../../../live/snippets#snippet-functions-in-shaders).

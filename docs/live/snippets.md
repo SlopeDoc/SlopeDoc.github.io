@@ -148,11 +148,36 @@ if (Snippet::dirty({"center", "radius"}))
 
 ## Snippet functions in shaders
 
-A callable is also the way to hand a shader something a uniform cannot hold. A Lua closure cannot cross to the GPU, but its values can: sample it in C++ and upload the samples as a texture.
+You can write the result of a snippet function directly in a shader texture (e.g. to plot heightfields or functions).
+
+```yaml title="deck.yaml"
+- shader: field.frag
+  textures:
+    profile: {snippet: profile, resolution: 512, domain: [-6, 6]}
+```
+
+```glsl
+uniform sampler2D profile;   // texture(profile, vec2(u, 0)).r
+```
+
+A single `resolution` samples the section over a segment, calling it with one number. A `[w, h]` one samples it over a rectangle, calling it with a `vec2`:
+
+```yaml title="deck.yaml"
+    flow: {snippet: flow, resolution: [256, 256], domain: [[-3, 3], [-3, 3]], components: 3}
+```
+
+```lua title="snippets.lua"
+--- flow
+return function(p) return math.exp(-p.x*p.x - p.y*p.y), -p.y, p.x end
+```
+
+A section reading `t` is resampled every frame, one that does not is sampled once and again on a reload.
+
+The same thing from C++:
 
 ```c++
-static auto profile = Snippet::fn<scalar(scalar)>("profile");
-for (int k = 0; k < N; k++)
-    grid[k] = float(profile(X0 + (X1 - X0) * (k + 0.5) / N));
-fx->setTexture("profile", grid, N, 1, 1);
+SnippetTexture::Spec sp;
+sp.fn = "profile";
+sp.u  = vec2(-6, 6);        // what the width covers
+fx->setTexture("profile", sp);
 ```

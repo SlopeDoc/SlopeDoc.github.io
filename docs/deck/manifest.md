@@ -87,6 +87,53 @@ A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives
 - load: reconstruct
 ```
 
+### A template on every frame
+
+`template:`, beside `slides:`, holds the items every frame gets, drawn behind its own. A frame opts out with `no_template`.
+
+```yaml
+template:
+  - latex: \color{gray} My talk
+    at: footer
+slides:
+  - frame:
+      - title: First slide
+  - frame:
+      - title: A frame without the footer
+    no_template: true
+```
+
+It is built once and the same primitives are re-used, so a footer stays put across a slide change instead of cross-fading with itself. It cannot contain a `- step`.
+
+### Named groups
+
+Any other top-level list is a group of items, expanded wherever its bare name appears in a frame:
+
+```yaml
+axes:
+  - object: grid
+  - latex: x
+    at: x_label
+slides:
+  - frame:
+      - axes
+      - object: curve
+  - frame:
+      - axes
+      - object: other_curve
+```
+
+Like a template, a group is built on first use and re-added afterwards, so a group opening several frames keeps its objects across the slide change rather than fading them out and back in. It cannot contain a `- step` either.
+
+### Background
+
+`background:` sets the [background color](../../Primitives/colors#background) from that frame on:
+
+```yaml
+- background: bg              # a named color
+- background: [0.05, 0.05, 0.08]
+```
+
 ### Referencing items : ids and groups
 
 Operations refer to items by their key (latex key, image filename stem, object name, `title`), or an explicit `id:`. Any item can also join a tagged group with `group: name`; a group has no position of its own, operations simply map over its members.
