@@ -70,7 +70,7 @@ In shaders or screen placement, see [tracking](../placement/tracking.md#manifest
 
 ### Built-ins
 
-As all primitives, snippets have acess to a global TimeObject `t` to be time-varying. Just remember that in lua attributes are accessed with dots `t.from_begin`, while methods with: `t:afterKeyframe("test")`.
+As all primitives, snippets have acess to a global TimeObject `t` to be time-varying. It carries the same fields and the same [keyframe queries](../Primitives/Animation.md#keyframes) as in C++, under the same names. Snippets don't have `inner_time` nor `relative_frame_number`.
 
 You also have Lua's `math`, `string`, `table`.
 

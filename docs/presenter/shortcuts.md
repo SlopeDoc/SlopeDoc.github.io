@@ -2,7 +2,7 @@
 title: Keyboard shortcuts
 ---
 
-While a presentation is running, Slope reacts to the keys below. You can also print this list in the terminal by launching your executable with ``--help``.
+While a presentation is running, Slope reacts to the keys below.
 
 ### Navigation
 
@@ -38,7 +38,6 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 | Key | Action |
 | --- | --- |
 | ``C`` | Export the current camera view |
-| ``W`` | Color palette editor |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
 | ``A`` | Tuner panel: [tunable parameters](../../live/params) of the current slide, and their handles |

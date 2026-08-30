@@ -80,6 +80,7 @@ Like all primitives, shaders also have updaters that get TimeObjects! Even bette
 | `absolute_frame_number` | current slide index in the deck |
 | `relative_frame_number` | slides since this shader appeared |
 | `transition_parameter` | 0 → 1 across the intro/outro |
+| `slide_progress` | 0 → 1 across the whole slide change, the same for every primitive |
 
 A keyframe branch or an ease is written in a [snippet](../../../live/snippets) and read as a uniform, see [uniforms by name](#a-uniform-fed-by-a-value-that-already-exists).
 

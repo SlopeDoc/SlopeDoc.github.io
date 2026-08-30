@@ -44,9 +44,10 @@ show << pc->setUpdater([pc] (TimeObject time){
     - ```inner_time``` (s) : time from first appearance on screen
     - ```absolute_frame_number``` (int) : current frame number from first slide
     - ```relative_frame_number``` (int) : number of slides from first appearance of this primitive
-    - ```transition_parameter``` : 0 to 1 across a slide change, 1 once settled
+    - ```transition_parameter``` : 0 to 1 across *this primitive's* own intro or outro
+    - ```slide_progress``` : 0 to 1 across the whole slide change, the same for every primitive
 
-    The same fields reach [shaders as uniforms](../Shader/basics#following-the-talk) and [snippets](../../live/snippets#what-t-gives-you) under the same names.
+    The same fields reach [shaders as uniforms](../Shader/basics#following-the-talk) and [snippets](../../live/snippets#built-ins) under the same names.
 
 ## Keyframes
 
@@ -92,4 +93,4 @@ pos = rest * t.duringKeyframe("a") + moved * t.duringKeyframe("b");
 
 One name is a single slide, for a window use `t.duringKeyframe("from", "to")` opens the window at `from` and closes it at `to`. Unknown names weigh 0, so if each state is an *offset* from a resting value, the resting state needs no weight of its own.
 
-In a [snippet](../../live/snippets) the three are spelled `t:slidesSince`, `t:secondsSince` and `t:during`.
+A snippet spells them the same way, `t.duringKeyframe("a")`, and a shader calls them bare, `duringKeyframe("a")`.
