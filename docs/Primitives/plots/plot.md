@@ -20,7 +20,7 @@ show << Plot::Add("sine", "fig", [](scalar x){ return std::sin(x); });
     ```
 
 A callable and a [Lua section](../../../live/snippets) are sampled over the
-board's x range (possibly time-dependant). A csv is re-read when it is saved, so a figure updates while the experiment
+board's x range (possibly time-dependent). A csv is re-read when it is saved, so a figure updates while the experiment
 runs.
 
 

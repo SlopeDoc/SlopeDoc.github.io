@@ -99,7 +99,7 @@ saved like any other. Assigning a literal `Color` to one of the `style` links it
 
 Highlighting comes from [tree-sitter](https://tree-sitter.github.io/).
 **python, glsl, cpp and yaml** are built by default. As a deck is yaml, slope
-can show its own decks. Changing or adding a grammer is set in cmake
+can show its own decks. Changing or adding a grammar is set in cmake
 variables, see [build](../../cmake#code-highlighting).
 
 An unknown extension is drawn as plain text.

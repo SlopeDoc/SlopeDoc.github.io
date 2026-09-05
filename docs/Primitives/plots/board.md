@@ -18,7 +18,7 @@ show << Board::Add("fig", vec2(-M_PI, M_PI), vec2(-1.2, 1.2))->at("figure")
 | [`Scatter`](../scatter) | the measurements themselves, as marks |
 | `Legend` | what the curves of a board are called, in one of its corners |
 
-Each plot primitive is indenpendant so you can make them appear and disappear when you want. You can edit each primitive shader to customize the look.
+Each plot primitive is independent so you can make them appear and disappear when you want. You can edit each primitive shader to customize the look.
 
 ## Adding one
 
@@ -65,9 +65,7 @@ show << fig->label(Formula::Add("\\varepsilon_{20}"), vec2(20, 1e-4), vec2(-0.03
 The point is resolved every frame, so the label rides the view: `setRange`, or a
 snippet owning `fig/xrange`, carries it along.
 
-If you are doing computer science, algorithms and 
-You can put a source file on a slide, syntax highlighted, and walk through it
-line by line (e.g. to explain an algorithm next to the figure it produces).
+From a deck, `follow:` places anything at a point of the board:
 
 ```yaml
 - formula: \varepsilon_{20}

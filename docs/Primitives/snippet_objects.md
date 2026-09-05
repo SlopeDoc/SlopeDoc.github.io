@@ -6,7 +6,7 @@ If you want to create parameterized pritmives from functions, you can and should
 
 ## Surfaces
 
-Surfaces can be created from, possibly time-dependant, parameterizations, taking a `vec2` and returning a `vec3`:
+Surfaces can be created from, possibly time-dependent, parameterizations, taking a `vec2` and returning a `vec3`:
 
 ```lua title="snippets.lua"
 --- wave
