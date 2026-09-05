@@ -27,7 +27,7 @@ end
 Editing the domain or the resolution reconfigures the object in place, so you can tune the grid while the show runs.
 
 ??? note "```SnippetSurface::Add(const std::string& fn,int resolution = 64)```, also taking a ```Spec```"
-    The ```Spec``` carries the same fields as the manifest: ```fn```, ```u```, ```v```, ```res_u```, ```res_v```, ```closed_u```, ```closed_v``` and ```smooth```.
+    The ```Spec``` carries the same fields as the deck format: ```fn```, ```u```, ```v```, ```res_u```, ```res_v```, ```closed_u```, ```closed_v``` and ```smooth```.
 
 ## Curves
 

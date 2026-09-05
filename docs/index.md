@@ -22,11 +22,13 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 
 - Easy integration of all polyscope primitives and quantities
 - LaTeX compilation, with hot-reloading
-- Slides can be composed in a hot-reloadable YAML manifest, editable while running
+- Slides can be composed in a hot-reloadable YAML deck, editable while running
 - Full control over objects and animations
 - :fire: **Animation logic in hot-reloaded Lua snippets** :fire:, and values tunable live while the show runs
 - Automatic transitions
 - :fire: **Live shaders, synchronizable with polyscope!** :fire:
+- Step by step code display
+- Plots drawn live: curves, scatters and log axes, from a file, a formula or your own data
 - Interactivity with ImGui widgets
 - Possible forced breaks to control the pace of the presentation and talk rehearsal mode
 - 3D world to screen tracking

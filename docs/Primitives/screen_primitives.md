@@ -7,6 +7,8 @@ title: Basics
 - [Video & Webcam](../video)
 - [Latex](../Latex/latex)
 - [Shapes & arrows](../shapes)
+- [Step by step code](../code)
+- [Plots](../plots/board)
 - [Shader](../Shader/basics)
 - [Stacks](../stacks)
 

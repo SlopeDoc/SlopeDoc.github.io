@@ -50,7 +50,7 @@ To make polyscope objects coherent with a shader, you can use its depth buffer. 
     }
     ```
 
-=== "Deck manifest"
+=== "Deck format"
 
     ```yaml title="deck.yaml"
     slides:

@@ -14,7 +14,7 @@ state of the camera, by pressing ```C```, under a key name (must be unique), whi
     Pretty transitions between cameras is possible using the FlyTo options:
 
 
-## Manifest format
+## Deck format
 
 ```yaml
 - camera: side_view     # the view saved in views/side_view.json

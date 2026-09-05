@@ -61,9 +61,9 @@ show << Gif::Add("puppy_dance.gif");
     a few seconds, prefer [Video](../video), which streams instead of holding
     every frame.
 
-See the [manifest format](../../deck/manifest) for the placement keys.
+See the [deck format](../../deck/deck_format) for the placement keys.
 
-## Manifest format
+## Deck format
 
 ```yaml
 - image: figure.png     # the file, relative to the data path
@@ -80,4 +80,4 @@ See the [manifest format](../../deck/manifest) for the placement keys.
 ```
 
 `scale` sizes the image itself. To scale one *placement* of it, and animate that
-between steps, use `zoom` (see the [manifest format](../../deck/manifest)).
+between steps, use `zoom` (see the [deck format](../../deck/deck_format)).

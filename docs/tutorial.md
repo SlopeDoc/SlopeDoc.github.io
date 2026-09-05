@@ -4,7 +4,7 @@ title: Step by step example
 
 Let's create a simple set of slides, in the full C++ way, to illustrate the global behavior of the library.
 
-Note that the [Manifest way](../deck/getting_started/) is simpler and nicer to use, but the C++ way has complete control over everything.
+Note that the [deck way](../deck/getting_started/) is simpler and nicer to use, but the C++ way has complete control over everything.
 
 ## Simple template
 

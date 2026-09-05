@@ -50,8 +50,7 @@ The upload is clamped to the declared length, and `<name>_count` gets how many e
 written. Uniform storage is a few thousand floats for the whole shader, so this is for a few
 hundred values at most: a grid wants a texture, and bigger data a buffer.
 
-This is data, not knobs. A deck's [`controls: vec3[8]`](../basics#manifest-format) is the other
-half, one tunable parameter per element, and the two must not name the same uniform.
+
 
 ## Textures
 
@@ -92,10 +91,7 @@ samples what it wrote last frame while writing the current one.
 How many textures one pass can bind at once is the driver's texture unit count, at least 16
 and in practice 32, less one kept aside for the scene depth buffer.
 
-`retainTextures` exists for a declarative owner such as the [deck](../../../deck/manifest),
-which re-declares its whole set on every hot reload: anything no longer named goes away,
-and the ones still declared keep their GL objects. Data textures and inter-pass ones are
-left alone, since they were set from code the manifest never saw.
+
 
 ### ShaderToy channels
 

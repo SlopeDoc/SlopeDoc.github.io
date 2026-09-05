@@ -32,7 +32,7 @@ Then:
     Snippet::load("snippets.lua");     // resolved against the project data path
     ```
 
-=== "Deck manifest"
+=== "Deck format"
     ```yaml title="deck.yaml"
     snippets: snippets.lua        # or a list of files
     slides:
@@ -56,7 +56,7 @@ mesh->updater = [mesh, V0](TimeObject) {
 };
 ```
 
-In shaders or screen placement, see [tracking](../placement/tracking.md#manifest-format):
+In shaders or screen placement, see [tracking](../placement/tracking.md#deck-format):
 
 ```yaml title="deck.yaml"
 - shader: myshader.frag

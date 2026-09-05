@@ -46,9 +46,9 @@ show << lbl->at(fx->tracker([]{ return Snippet::get("center").v2(); }, vec2(0.02
 
 The point is read through the view and rect the shader was last drawn with, so the label agrees with the pixels under it whatever its placement and `resolution:`. The view itself can move (`bindView`), and the label follows.
 
-## Manifest format
+## Deck format
 
-`follow:` is the manifest form of both: an item placed on a moving value rather than at a position.
+`follow:` is the deck form of both: an item placed on a moving value rather than at a position.
 
 ```yaml
 - latex: here

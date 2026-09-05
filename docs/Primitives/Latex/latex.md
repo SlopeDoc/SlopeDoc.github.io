@@ -31,7 +31,7 @@ Latex files are then hashed and stored in a cache to only generate them once.
 
 
 
-## Manifest format
+## Deck format
 
 Three item keys produce latex, differing only in where the source comes from and
 whether it is text mode or math mode:
@@ -45,6 +45,6 @@ whether it is text mode or math mode:
   at: my_label                 # defaults to a label derived from the key
 ```
 
-`load:` is the one to prefer: the manifest keeps the structure of the talk and
+`load:` is the one to prefer: the deck keeps the structure of the talk and
 the [definitions file](../../../deck/getting_started) keeps the prose, so
 neither is buried in the other.

@@ -27,9 +27,9 @@ The stack draws nothing itself; it exists as a screen primitive so that arrows a
 | `align` | `LEFT`, `CENTER` or `RIGHT` |
 | `handle` | block center; a label makes the block drag-editable |
 
-In a deck manifest, stacks are the `stack:` item, [below](#manifest-format).
+In a deck, stacks are the `stack:` item, [below](#deck-format).
 
-## Manifest format
+## Deck format
 
 ```yaml
 - stack:                    # children laid out below one another

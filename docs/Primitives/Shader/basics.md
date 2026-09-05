@@ -25,8 +25,8 @@ Slope offers ShaderToy style shaders, and basics of GPU compute, that are all ho
     }
     ```
 
-=== "Deck manifest"
-    Only pure fragment shaders can be created in deck manifests.
+=== "Deck format"
+    Only pure fragment shaders can be created in decks.
 
     ```yaml title="deck.yaml"
     slides:
@@ -107,7 +107,7 @@ fx->bind("reveal");                          // uniform <- the value called "rev
 fx->bind({"show_field", "show_basin"});      // several at once
 ```
 
-The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a bare name in a manifest, below.
+The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a bare name in a deck, below.
 
 !!! tip "Unknown names never throw"
     A uniform the shader doesn't currently declare is silently ignored rather than thrown, so you can  exactly what you want while editing the shader live and adding/removing uniforms as you go.
@@ -122,12 +122,12 @@ The width follows the value, 1 to 4 components, so one call serves a `float` and
 Plain textual inclusion, expanded before the source ever reaches the GL compiler. You can use `#pragma once`, and include cycles are refused.
 
 
-## Manifest format
+## Deck format
 
-A `shader:` item in a [deck manifest](../../../deck/manifest) declares what goes *into* the
+A `shader:` item in a [deck format](../../../deck/deck_format) declares what goes *into* the
 shader: its uniforms, its textures, and the region of the plane it draws. That covers most of
 what a single-pass shader needs without touching C++. Multi-pass, ping-pong and storage
-buffers need a streaming order the manifest cannot express, and stay on the
+buffers need a streaming order the deck cannot express, and stay on the
 [C++ side](../advanced).
 
 ```yaml
@@ -201,6 +201,19 @@ from outside:
 `view: 4` on its own is `{half: 4}`, centered on the origin. `half` and `center` can each be
 a snippet or parameter name instead of a number, so the framing can animate.
 
+An interval per axis is the other form, for a world whose x and y are not the same quantity,
+a plot or a spectrogram. Neither scale then follows the aspect ratio.
+
+```yaml
+- shader: convergence.frag
+  view: {x: [0, 20], y: [-5, 0.5]}      # from C++: setViewRect(lo, hi)
+```
+
+In the shader, `iWorld()` is this fragment's world point either way, and `iPixelXY()` the size
+of one pixel in world units, per axis, where `iPixel()` reports the vertical one. Measuring a
+line width with `iPixelXY()` is what keeps it at the same thickness however the axes are
+scaled.
+
 A label can then be placed on a point *of that space*, with `tracker` or `follow:` on the
 [tracking page](../../../placement/tracking#following-a-point-of-a-shader), and it lands on
 what the shader draws for that value. Without a `view:` a shader has no world points.
@@ -218,7 +231,7 @@ its updater does not lose the declarative layer with it:
 ```
 
 Its parameters are named after the object, not the item's `id:`, so they hold however many
-slides show it, and a hot reload drops only what the manifest declared last time, leaving its
+slides show it, and a hot reload drops only what the deck declared last time, leaving its
 C++ owner's own binds standing. Declaring these keys on more than one item is reported, and
 an `object:` that is a group, or not a shader, refuses them.
 

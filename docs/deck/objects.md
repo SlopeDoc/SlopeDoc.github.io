@@ -4,7 +4,7 @@ title: C++ objects
 
 ## Registering C++ objects
 
-Anything the manifest cannot express (computed geometry, quantities, a simulation step) is defined in C++ and registered under a name, then placed by the manifest with `object: name`.
+Anything the deck cannot express (computed geometry, quantities, a simulation step) is defined in C++ and registered under a name, then placed by the deck with `object: name`.
 
 Register an object for the computation, not for the choreography: a value that only needs tuning is a [parameter](../../live/params), and the shape of a motion can be a [snippet](../../live/snippets).
 
@@ -21,7 +21,7 @@ Register an object for the computation, not for the choreography: a value that o
 !!! note "```registerObject(name, PrimitivePtr)``` / ```registerObject(name, PrimitiveInSlide)```: already-built"
 !!! note "```registerObject(name, PrimitiveGroup)``` (or its factory): several primitives placed together"
 
-Factories are called lazily, the first time the manifest uses the name, and the result is cached: a hot reload re-places the same primitive instead of rebuilding it, so meshes, textures and compiled latex survive edits.
+Factories are called lazily, the first time the deck uses the name, and the result is cached: a hot reload re-places the same primitive instead of rebuilding it, so meshes, textures and compiled latex survive edits.
 
 ### Keeping the tunable part out of C++
 
@@ -48,7 +48,7 @@ spot->setUpdater([=](TimeObject t){
 
 The mesh, the deform loop and the upload stay compiled; the amplitude and the phase are a file you save.
 
-### A registered shader keeps its manifest inputs
+### A registered shader keeps its deck inputs
 
 A shader registered from C++ for an updater, a multi-pass setup or a data texture does not lose the declarative layer with it: [`uniforms:`, `textures:` and `view:`](../../Primitives/Shader/basics#on-a-shader-registered-from-c) apply to an `object:` as to a `shader:` item.
 
@@ -61,7 +61,7 @@ A shader registered from C++ for an updater, a multi-pass setup or a data textur
 
 ### Synchronizing with the deck : keyframes
 
-An updater branching on `t.relative_frame_number` assumes a step structure that the manifest can freely reorder. Instead, mark the relevant frame in the manifest with a [keyframe](../manifest#keyframes) and test it by name: the branch follows the label wherever it moves:
+An updater branching on `t.relative_frame_number` assumes a step structure that the deck can freely reorder. Instead, mark the relevant frame in the deck with a [keyframe](../deck_format#keyframes) and test it by name: the branch follows the label wherever it moves:
 
 ```yaml
 - object: wobbly_spot

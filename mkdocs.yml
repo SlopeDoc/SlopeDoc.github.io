@@ -39,6 +39,9 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+hooks:
+  - hooks/review.py
+
 extra_javascript:
   - javascripts/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
@@ -59,7 +62,7 @@ nav:
     - tutorial.md
   - Interactive deck system:
     - deck/getting_started.md
-    - deck/manifest.md
+    - deck/deck_format.md
     - deck/objects.md
   - Live authoring:
     - live/params.md
@@ -73,6 +76,11 @@ nav:
       - Primitives/images.md
       - Primitives/video.md
       - Primitives/shapes.md
+      - Primitives/code.md
+      - Plots:
+        - Primitives/plots/board.md
+        - Primitives/plots/plot.md
+        - Primitives/plots/scatter.md
       - Shaders:
         - Primitives/Shader/basics.md
         - Primitives/Shader/scene.md

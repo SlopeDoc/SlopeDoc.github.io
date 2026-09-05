@@ -19,11 +19,22 @@ spot->setUpdater([=](TimeObject t) {
 
 !!! note "```Params::Add(name, default, min, max)```, also ```AddInt```, ```AddBool```, ```AddColor```, ```AddVec2```, ```AddVec```, ```AddDir```"
 
+`min == max` makes it unconstrained. `AddAtLeast(name, default, min)` sets a mininmum but uncapped value.
+
+If you want to change method during live for instance, you can add choices among names as a parameter. Drawn as a dropdown:
+
+```c++
+auto side = Params::AddEnum("fig/yticks", {"left", "right", "none"}, "left");
+if (side.is("none")) ...
+```
+
+
+
 The handle reads the live value (a plain conversion, usable in hot loops). Pressing ``A`` opens the **Tuner** panel, showing the parameters read by the current slide's updaters (a checkbox reveals all of them), grouped by their `"group/name"` prefix. The polyscope camera is not affected while you tweak.
 
 Edited values are saved with ``Ctrl+S`` to `views/params.json`. Only ever-edited parameters are written, so untouched ones keep following their code defaults. The file is loaded back on startup, and hot-reloaded when edited by hand.
 
-A parameter can also be declared from a [snippet](snippets.md) with `param("name", def, min, max)` or from a shader's [`uniforms:`](../Primitives/Shader/basics.md#manifest-format): same registry, same panel.
+A parameter can also be declared from a [snippet](snippets.md) with `param("name", def, min, max)` or from a shader's [`uniforms:`](../Primitives/Shader/basics.md#deck-format), all in the common namespace.
 
 ## Handles
 
@@ -50,6 +61,18 @@ void main() {
 ```
 
 `screenPoint()` reports where this fragment falls on the window, so the agreement holds wherever the shader is placed and whatever its `resolution:` is. It is the 2D counterpart of `polyscopeRay` for [3D scenes](../Primitives/Shader/scene.md).
+
+## Overriding value
+
+
+
+| | |
+| --- | --- |
+| `Params::setDefault(name, value)` | what it falls back to when nothing has edited it. A saved or edited value still wins |
+| `Params::drive(name, value)` | drives it outright: never saved, and it outranks what the Tuner holds |
+| `Params::valueOf(name)` | reads it back |
+
+
 
 ## Writing one from code
 

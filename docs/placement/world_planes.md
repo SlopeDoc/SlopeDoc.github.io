@@ -21,9 +21,9 @@ You can also give the plane parameters yourself, as an origin, an in-plane direc
 show << fig->onPlane(vec(0,0,0), vec(0.6,0,0), vec(0,0,1));
 ```
 
-## Manifest format
+## Deck format
 
-`on:` is the manifest form of both.
+`on:` is the deck form of both.
 
 ```yaml
 - image: chart.png

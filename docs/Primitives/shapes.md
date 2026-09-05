@@ -52,7 +52,7 @@ show << box;
 
 Like any primitive, the box is drawn at its insertion rank in the slide: add it *before* its targets to frame them, *after* to cover them.
 
-In a deck manifest, arrows and boxes are the `arrow:` and `box:` items, [below](#manifest-format).
+In a deck, arrows and boxes are the `arrow:` and `box:` items, [below](#deck-format).
 
 ## Example:
 
@@ -87,7 +87,7 @@ In a deck manifest, arrows and boxes are the `arrow:` and `box:` items, [below](
 
 
 
-## Manifest format
+## Deck format
 
 ```yaml
 - arrow:

@@ -20,7 +20,7 @@ Want to play a demo? Run a video! Unlike Gifs, videos are streamed using ```ffmp
     }
     ```
 
-=== "Deck manifest"
+=== "Deck format"
 
     ```yaml title="deck.yaml"
     slides:
@@ -80,7 +80,7 @@ you can feed a video stream like your webcam:
     show << Webcam::Add()->at(CENTER);
     ```
 
-=== "Deck manifest"
+=== "Deck format"
 
     ```yaml title="deck.yaml"
     - webcam: /dev/video0
@@ -130,7 +130,7 @@ a snapshot refills a texture instead of inserting a primitive.
 !!! note "```c++ bool saveFrame(const std::string& file) const;```"
     Writes that frame to a png.
 
-## Manifest format
+## Deck format
 
 ```yaml
 - video: clip.mp4       # streamed from disk, one ffmpeg pipe

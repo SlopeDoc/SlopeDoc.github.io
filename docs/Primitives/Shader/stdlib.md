@@ -259,37 +259,44 @@ Here are the current existing functions, and small examples, that you can includ
     }
     ```
 
-=== "plot2d.glsl"
 
-    Graphs and grids in plot coordinates, with line widths that stay put in pixels however the plot ends up scaled.
+    ```
+
+=== "plot.glsl"
+
+    Curves, grids and frames in **data** coordinates, at widths that stay in pixels however the two axes are scaled. This is what the [plot primitives](../../plots/board) draw with, and what their `views/<name>.glsl` files include; it reads the shader's own rectangular view as `iWorld()`, and both pixel sizes as `iPixelXY()`.
 
     | Function | |
     | --- | --- |
-    | `unitsPerPixel(xmin, xmax)` | plot units covered by one pixel |
-    | `plotPoint(xmin, xmax)` / `plotPointAt(xmin, xmax, ycenter)` | this fragment's position in plot coordinates |
-    | `graphDist(y, fx, dfx)` | distance to the graph `y = f(x)`, first order |
-    | `stroke(d, hw, aa)` | 1 inside a stroke of half-width `hw` |
-    | `curveMask(p, fx, dfx, width_px, upp)` | a curve of constant pixel width |
-    | `pointMask(p, center, r_px, upp)` | a filled disc marker, for scatter data |
-    | `PLOT_SLOPE(f, x, upp)` | macro: slope of `f` at `x` by central differences |
-    | `gridMask` / `gridMaskMinor(p, spacing, ...)` | grid lines, optionally coarse-over-fine |
-    | `axesMask(p, upp)` | the two axes |
-    | `xTickMask` / `yTickMask(p, spacing, len_px, upp)` | tick marks |
-    | `underCurve(p, fx, upp)` | 1 below the graph |
-    | `betweenCurves(p, lo, hi, upp)` | 1 between two graphs |
+    | `sdGraph(p, fx, dfx, px)` | signed distance in pixels to the graph `y = f(x)`, its slope term keeping a steep curve from drawing thicker than a flat one |
+    | `stroke(d_px, width_px)` | 1 inside a stroke of that width, antialiased |
+    | `dashMask(p, vec2(mark, gap), px)` | a dash pattern along x, in pixels |
+    | `gridAxis(v, step, pxv, width_px)` | lines every `step` data units, one axis |
+    | `gridMask(p, step, px, width_px)` | both axes at once |
+    | `axesMask(p, px, width_px)` | the two lines x = 0 and y = 0 |
+    | `frameMask(p, lo, hi, px, width_px)` | a border just inside the data rectangle |
+    | `dataAt(tex, span, x)` / `dataSlope(tex, span, x)` | a curve uploaded as a 1-D texture of values over `span`, and its slope |
+    | `inSpan(x, span, pxx)` | 1 inside the interval the data covers |
+    | `revealMask(x, span, u, pxx)` | drawn on from left to right as `u` goes 0 → 1 |
+    | `Ink` / `inkClear()` / `inkOver(k, col, a)` / `inkResolve(k)` | coverage accumulator: a plot is blitted over the slide, so it stacks ink instead of painting a background. What goes in first stays on top |
+
+    A curve of its own, over whatever else the slide holds:
 
     ```glsl
-    #include <plot2d.glsl>
+    #include <plot.glsl>
+    uniform sampler2D samples;
+    uniform vec2  span;
+    uniform vec4  color;
+    uniform float line_width, reveal;
 
     void main() {
-        float upp = unitsPerPixel(-4.0, 4.0);
-        vec2  p   = plotPoint(-4.0, 4.0);
-        vec3 col = vec3(1.0);
-        col = mix(col, vec3(0.85), 0.6 * gridMask(p, 1.0, upp));
-        col = mix(col, vec3(0.0),  axesMask(p, upp));
-        col = mix(col, vec3(0.8,0.1,0.1), curveMask(p, sin(p.x), cos(p.x), 3.0, upp));
-        col = mix(col, vec3(0.1,0.3,0.8), pointMask(p, vec2(1.5, sin(1.5)), 5.0, upp));
-        fragColor = vec4(col, 1.0);
+        vec2 px = iPixelXY(), p = iWorld();
+        float a = color.a
+                * stroke(sdGraph(p, dataAt(samples, span, p.x),
+                                    dataSlope(samples, span, p.x), px), line_width)
+                * inSpan(p.x, span, px.x)
+                * revealMask(p.x, span, reveal, px.x);
+        fragColor = vec4(color.rgb, a);
     }
     ```
 

@@ -50,6 +50,25 @@ sudo apt install texlive-latex-extra imagemagick ffmpeg
 ```
 
 
+### Code syntax highlighting
+
+[Code](../Primitives/code) is highlighted by tree-sitter, which cmake fetches like
+the other dependencies. It produces one grammar per language, compiled once (takes roughly 1 minute)
+
+**python, glsl, cpp and yaml** are built by default. `SLOPE_LANGUAGES` trims that list, down
+to nothing (listings are then drawn as plain text), and `SLOPE_EXTRA_LANGUAGES` adds any
+grammar repository carrying a `src/parser.c` and a `queries/highlights.scm`, as
+`name|repo|tag|extensions`:
+
+```cmake
+set(SLOPE_LANGUAGES python glsl CACHE STRING "")
+set(SLOPE_EXTRA_LANGUAGES "rust|tree-sitter/tree-sitter-rust|v0.23.2|rs" CACHE STRING "")
+```
+
+Both are cache variables. Set them before the first configure, or pass
+`cmake -DSLOPE_LANGUAGES="python;glsl" .` to a build directory that already exists. The
+highlight queries are installed alongside the library, under `share/slope/queries`.
+
 ### Build and run !
 
 ```

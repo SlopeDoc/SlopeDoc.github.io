@@ -39,7 +39,7 @@ slope offers a custom wrapper for scalar fields for a proper continuous intro/ou
 
 
 
-## Manifest format
+## Deck format
 
 ```yaml
 - mesh: bunny.obj       # the obj file, relative to the data path

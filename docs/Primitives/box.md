@@ -5,7 +5,7 @@ title: Boxes
 ### Fixed Box
 
 ### Englobing Box
-## Manifest format
+## Deck format
 
 A `box:` holds items rather than taking a position, it draws a rectangle around
 them and follows them as they move.

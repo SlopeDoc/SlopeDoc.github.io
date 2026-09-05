@@ -17,7 +17,7 @@ As titles are unique, you can use them to jump between slides: by pressing ```ta
 
 It is then good practice that each slide has a title (or else it will appear in the table of contents as its slide number).
 
-## Manifest format
+## Deck format
 
 ```yaml
 - frame:

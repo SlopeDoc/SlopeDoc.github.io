@@ -1,8 +1,8 @@
 ---
-title: Manifest format
+title: Deck format
 ---
 
-## Manifest format
+## Deck format
 
 A deck is a list of frames, each frame a list of *items*:
 
@@ -18,8 +18,8 @@ slides:
 
 ### Content items
 
-Every primitive that can be written in a manifest documents its own keys, in a
-**Manifest format** section on its own page.
+Every primitive that can be written in a deck documents its own keys, in a
+**Deck format** section on its own page.
 
 The keys on this page are the ones that belong to the deck itself rather than to
 any one primitive: placement, steps, keyframes, ids and groups, and operations.
@@ -45,7 +45,7 @@ Screen items take one placement key:
 
 When omitted, `load`/`image` items default to a label derived from their key or filename, so everything is drag-editable out of the box.
 
-`follow:` places an item on a moving value: a point of the 3D scene, of the screen, or of a shader's world space, see [tracking](../../placement/tracking#manifest-format).
+`follow:` places an item on a moving value: a point of the 3D scene, of the screen, or of a shader's world space, see [tracking](../../placement/tracking#deck-format).
 
 ### State
 
@@ -78,7 +78,7 @@ A bare `- step` marker splits a frame into clicks (the equivalent of `inNextFram
 
 ### Keyframes
 
-A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives/Animation) can branch on `t.afterKeyframe("label")` (also `atKeyframe`, `beforeKeyframe`) instead of counting frames: the test follows the label wherever manifest edits move it.
+A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives/Animation) can branch on `t.afterKeyframe("label")` (also `atKeyframe`, `beforeKeyframe`) instead of counting frames: the test follows the label wherever deck edits move it.
 
 ```yaml
 - load: usual_pipeline

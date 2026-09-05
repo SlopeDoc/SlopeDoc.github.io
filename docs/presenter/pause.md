@@ -13,7 +13,7 @@ Instead of directly going to the next slide when you press ``right arrow``, if y
 ```
 
 
-## Manifest format
+## Deck format
 
 ```yaml
 - pause: 3              # hold this slide 3 seconds before moving on

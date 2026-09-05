@@ -69,7 +69,7 @@ pc->updater = [pc] (TimeObject t) {
 - ```t.atKeyframe("label")``` : true exactly on the labeled frame
 - ```t.beforeKeyframe("label")``` : true strictly before it
 
-An unknown label warns once in the terminal and answers false. In a [deck manifest](../../deck/manifest), the same mark is written `- keyframe: label`.
+An unknown label warns once in the terminal and answers false. In a [deck format](../../deck/deck_format), the same mark is written `- keyframe: label`.
 
 ### Counting from a keyframe
 
