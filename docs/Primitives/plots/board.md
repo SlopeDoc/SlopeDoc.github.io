@@ -4,6 +4,9 @@ title: Board
 
 When talking about math, it's hard to dodge function plots, when talking about results it's hard to dodge curves, so write them on a board!
 
+<video src="../../../static/board.mp4" muted autoplay loop controls width="100%" >
+</video>
+
 ```c++
 show << Board::Add("fig", vec2(-M_PI, M_PI), vec2(-1.2, 1.2))->at("figure")
      << inNextFrame

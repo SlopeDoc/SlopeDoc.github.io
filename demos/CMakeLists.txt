@@ -17,3 +17,4 @@ endif()
 FetchContent_MakeAvailable(slope)
 
 add_subdirectory(code)
+add_subdirectory(plots)
