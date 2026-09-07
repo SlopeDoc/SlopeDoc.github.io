@@ -91,8 +91,7 @@ code->style.font_scale   = 2.0f;
 Every colour is a [named parameter](../../live/params) — `code/text`,
 `code/keyword`, `code/type`, `code/comment`, `code/literal`, `code/preproc`,
 `code/function`, `code/constant`, `code/variable`, `code/operator`,
-`code/line_number`, `code/highlight`, `code/background` — live in the Tuner and
-saved like any other. Assigning a literal `Color` to one of the `style` links it to a previously defined color to set a common style.
+`code/line_number`, `code/highlight`, `code/background`. Assigning a literal `Color` to one of the `style` links it to a previously defined color to set a common style.
 
 ## Languages
 
@@ -124,5 +123,3 @@ An unknown extension is drawn as plain text.
   focus: relax            # a region, [label, label], [first, last], or null
 ```
 
-The file and the slice make the listing; every other key is restyling, so a
-colour or a font edit re-places the primitive that is already there.
