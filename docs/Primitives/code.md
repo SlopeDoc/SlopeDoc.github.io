@@ -8,6 +8,9 @@ If you are doing computer science, algorithms and code is very often something y
 You can put a source file on a slide, syntax highlighted, and walk through it
 line by line.
 
+<video src="../../static/code.mp4" muted autoplay loop controls width="100%" >
+</video>
+
 ```c++
 auto code = Code::FromFile("newton.py");
 show << code->at("code") << code->reveal(START);
