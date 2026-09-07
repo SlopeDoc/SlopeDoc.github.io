@@ -17,9 +17,7 @@ show << code->at("code") << code->reveal(START);
 show << inNextFrame << code->reveal("loop") << code->focus("loop");
 ```
 
-A listing is drawn with ImGui rather than through the LaTeX pipeline, so line
-positions are known exactly, and a file edited while the talk runs is re-read on
-the next frame.
+If you are displaying the content of a file, the file is watched to be hot-reloaded.
 
 ### Builders
 
@@ -28,13 +26,12 @@ the next frame.
 !!! note "```c++ Code::FromFile(path file, std::string begin_marker, std::string end_marker);``` — the span between two markers, markers excluded"
 !!! note "```c++ Code::Add(std::string source, CodeLanguage lang = CodeLanguage::PlainText());``` — a string written in C++"
 
-Each takes an optional trailing `CodeLanguage` to override what the extension
+Each constructor takes an optional `CodeLanguage` to override what the extension
 says: `CodeLanguage::ForName("python")`, `ForExtension("py")`.
 
 ## Named regions
 
-A file can carry its own marks, in comments, so the deck names parts of the code
-instead of counting lines:
+To avoid counting lines, you can annotate the source file
 
 ```python
 # slope:begin relax
@@ -45,8 +42,7 @@ for v in verts:
 ```
 
 `slope:begin` / `slope:end` name a **region**, `slope:here` a **point**. Marker
-lines are stripped from what is shown, so the file stays runnable, and a region
-survives edits above it.
+lines are not shown.
 
 ## Revealing and focusing
 
