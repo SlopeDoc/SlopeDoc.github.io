@@ -8,6 +8,9 @@ If you are doing computer science, algorithms and code is very often something y
 You can put a source file on a slide, syntax highlighted, and walk through it
 line by line.
 
+<video src="../../static/code.mp4" muted autoplay loop controls width="100%" >
+</video>
+
 ```c++
 auto code = Code::FromFile("newton.py");
 show << code->at("code") << code->reveal(START);
@@ -24,13 +27,12 @@ the next frame.
 !!! note "```c++ Code::FromFile(path file, std::string begin_marker, std::string end_marker);``` — the span between two markers, markers excluded"
 !!! note "```c++ Code::Add(std::string source, CodeLanguage lang = CodeLanguage::PlainText());``` — a string written in C++"
 
-Each takes an optional trailing `CodeLanguage` to override what the extension
+Each constructor takes an optional `CodeLanguage` to override what the extension
 says: `CodeLanguage::ForName("python")`, `ForExtension("py")`.
 
 ## Named regions
 
-A file can carry its own marks, in comments, so the deck names parts of the code
-instead of counting lines:
+To avoid counting lines, you can annotate the source file
 
 ```python
 # slope:begin relax
@@ -41,8 +43,7 @@ for v in verts:
 ```
 
 `slope:begin` / `slope:end` name a **region**, `slope:here` a **point**. Marker
-lines are stripped from what is shown, so the file stays runnable, and a region
-survives edits above it.
+lines are not shown.
 
 ## Revealing and focusing
 
@@ -91,8 +92,7 @@ code->style.font_scale   = 2.0f;
 Every colour is a [named parameter](../../live/params) — `code/text`,
 `code/keyword`, `code/type`, `code/comment`, `code/literal`, `code/preproc`,
 `code/function`, `code/constant`, `code/variable`, `code/operator`,
-`code/line_number`, `code/highlight`, `code/background` — live in the Tuner and
-saved like any other. Assigning a literal `Color` to one of the `style` links it to a previously defined color to set a common style.
+`code/line_number`, `code/highlight`, `code/background`. Assigning a literal `Color` to one of the `style` links it to a previously defined color to set a common style.
 
 ## Languages
 
@@ -164,8 +164,6 @@ one mark, `focus("relax", "relaxed")` the span between two.
   reveal: relax           # START, END, a label, or a line number
   focus: relax            # a region, [label, label], [first, last], or null
 ```
-
-
 
 Pseudocode is an `algo:` item, with the same keys:
 

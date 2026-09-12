@@ -148,7 +148,7 @@ Each uniform **declared with a type** becomes a persistent [tunable parameter](.
 with no type declares nothing and reads an existing value instead, below.
 
 Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
-unit vector, aimed on a ball rather than typed component by component. Bounds are
+unit vector. Bounds are
 optional, and a bounded parameter is drawn as a slider rather than a drag field.
 
 `<type>[N]` declares an array, from 1 to 64 elements. The shader sees
@@ -167,7 +167,7 @@ uniform vec2      noise_size;   // optional, its size in pixels
 
 `filter` is `linear` (default) or `nearest`, `wrap` is `clamp` (default) or `repeat`.
 
-Only image files here: a texture fed by another pass or by a previous frame stays in C++.
+Only image files here.
 
 ### A uniform fed by a value that already exists
 
