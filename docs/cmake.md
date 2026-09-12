@@ -29,7 +29,7 @@ Slope is designed to be easily integrated on top of any cmake project in order t
     FetchContent_Declare(
       slope
       GIT_REPOSITORY https://github.com/baptiste-genest/slope.git
-      GIT_TAG v0.1.3
+      GIT_TAG v0.1.6
     )
     FetchContent_MakeAvailable(slope)
     ```
