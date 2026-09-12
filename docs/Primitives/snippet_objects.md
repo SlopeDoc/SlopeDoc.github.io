@@ -2,7 +2,7 @@
 title: Snippet objects
 ---
 
-If you want to create parameterized pritmives from functions, you can and should do it by using snippets to tune their shapes as you'd like them to be, directly in a deck and with lua snippets.
+If you want to create parameterized primitives from functions, you can and should do it by using snippets to tune their shapes as you'd like them to be, directly in a deck and with lua snippets.
 
 ## Surfaces
 
@@ -52,7 +52,7 @@ end
 
 ## Points
 
-A single point rides a snippet variable, or a given world coordinate:
+A single point follows a snippet variable, or a given world coordinate:
 
 ```yaml
 - point: apex           # follows the variable "apex"

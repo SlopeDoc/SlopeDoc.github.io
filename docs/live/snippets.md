@@ -40,7 +40,7 @@ Then:
     ```
 
 
-The interest is that those expression are hot-reloaded while the slides are running, so if you have them in an updater, you can tweak any formula and see the result instantly! 
+The interest is that those expressions are hot-reloaded while the slides are running, so if you have them in an updater, you can edit any formula and see the result instantly! 
 
 All the variables defined in this file are in a common namespace (shared with [tunable parameters](params.md)) accessible from anywhere in your slides.
 
@@ -102,7 +102,7 @@ A `Value` carries its component count `n` and converts on assignment to `scalar`
 integrate(Snippet::get("center").v2(), Snippet::get("radius").num());
 ```
 
-### Doing the heavy lifting in C++
+### Doing the heavy computation in C++
 
 If some more intense computation must happen but that depends on a snippet, you can compute in C++ and send it back to the global namespace:
 
@@ -134,7 +134,7 @@ The same idea to gate an expensive rebuild:
 
 ```c++
 if (Snippet::dirty({"center", "radius"}))
-    rebuild();                       // skipped while they sit still
+    rebuild();                       // skipped while they do not change
 ```
 
 ??? note "```bool Snippet::dirty(name | {names...}, const char* tag = nullptr)```"
@@ -144,7 +144,7 @@ if (Snippet::dirty({"center", "radius"}))
     True on the first call, then whenever one of the values has moved since *this call site* last asked. Keyed by call site, so two consumers of one variable never clear each other's flag.
 
 ??? note "```long Snippet::changed(const std::string& name)```"
-    A counter bumped whenever the value differs from the previous frame's, to track by hand when one consumer watches many names.
+    A counter incremented whenever the value differs from the previous frame's, to track by hand when one consumer watches many names.
 
 ## Snippet functions in shaders
 

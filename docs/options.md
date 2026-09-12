@@ -51,9 +51,13 @@ All coordinates in slope are expressed in a relative manner wrt to screen size, 
 | ``--resolution WxH`` | window size, ``1920x1080`` by default |
 | ``--export`` | render the deck to a PDF and quit, see [exporting](presenter/export.md) |
 | ``--export_transitions <n>`` | the same, sampling ``n`` stills through each slide change |
+| ``--record`` | render the deck to an mp4 and quit, see [recording](presenter/record.md) |
+| ``--fps <n>`` | frame rate of a recording, ``30`` by default |
+| ``--record_dwell <s>`` | seconds a settled slide is held while recording, ``2`` by default |
 | ``--check_labels`` | report unused, duplicated and defaulted anchor labels at startup |
 | ``--rehearse`` | start with [rehearsal timings](presenter/timings.md) on |
 | ``--no_slide_numbers`` | hide the slide counter |
+| ``--auto-suggest`` | copy ``at: <free label>`` to the clipboard every time the deck is saved, see [naming a new item](placement/persistant_placement.md#a-name-for-a-new-item) |
 | ``--clear_cache`` | empty the latex and GIF caches before starting |
 | ``--ignore_cache`` | rebuild everything without emptying it |
 | ``--seed <n>`` | fix the random seed |

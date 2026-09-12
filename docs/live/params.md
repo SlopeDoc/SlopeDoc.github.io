@@ -30,7 +30,7 @@ if (side.is("none")) ...
 
 
 
-The handle reads the live value (a plain conversion, usable in hot loops). Pressing ``A`` opens the **Tuner** panel, showing the parameters read by the current slide's updaters (a checkbox reveals all of them), grouped by their `"group/name"` prefix. The polyscope camera is not affected while you tweak.
+The handle reads the live value (a plain conversion, usable in hot loops). Pressing ``A`` opens the **Tuner** panel, showing the parameters read by the current slide's updaters (a checkbox reveals all of them), grouped by their `"group/name"` prefix. The polyscope camera is not affected while you edit a value.
 
 Edited values are saved with ``Ctrl+S`` to `views/params.json`. Only ever-edited parameters are written, so untouched ones keep following their code defaults. The file is loaded back on startup, and hot-reloaded when edited by hand.
 
@@ -46,7 +46,7 @@ A position is easier to aim than to type, so the geometric parameters carry a wi
 | `dir` | - | a ball oriented like the camera: the mouse aims the unit vector, right click flips the hemisphere |
 | `vec2` | `2D` | a crosshair dragged on the screen |
 
-`all` and `none`, next to the panel's checkbox, switch every handle of the listed parameters on or off at once. While a handle is live the slide stops taking mouse input, so dragging never spins the camera by accident, and closing the panel puts everything back.
+`all` and `none`, next to the panel's checkbox, switch every handle of the listed parameters on or off at once. While a handle is live the slide stops taking mouse input, so dragging never spins the camera by accident, and closing the panel restores it.
 
 A `vec2` parameter is in **screen coordinates**: `0..1` across the window, `y` up. That is `gl_FragCoord`'s convention, the opposite of the screen anchors', and it is what lets a shader put an object exactly under its handle:
 
@@ -68,7 +68,7 @@ void main() {
 
 | | |
 | --- | --- |
-| `Params::setDefault(name, value)` | what it falls back to when nothing has edited it. A saved or edited value still wins |
+| `Params::setDefault(name, value)` | what it falls back to when nothing has edited it. A saved or edited value still takes precedence |
 | `Params::drive(name, value)` | drives it outright: never saved, and it outranks what the Tuner holds |
 | `Params::valueOf(name)` | reads it back |
 

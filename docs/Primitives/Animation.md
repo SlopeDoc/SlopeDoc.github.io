@@ -81,7 +81,7 @@ scalar a  = smoothstep(t.secondsSinceKeyframe("wobble") / 0.8); // in seconds
 ```
 
 - ```t.slidesSinceKeyframe("label")``` : negative before the keyframe, 0 on it. An unreached label answers a large negative value, so the usual `>= n` tests stay false like `afterKeyframe`.
-- ```t.secondsSinceKeyframe("label")``` : seconds since that keyframe was **reached**, the clock an ease wants. `from_action` restarts on every slide change, even an unrelated one, so easing on it snaps back. Never negative, and 0 before the keyframe, so an ease needs no guard.
+- ```t.secondsSinceKeyframe("label")``` : seconds since that keyframe was **reached**, the clock an ease wants. `from_action` restarts on every slide change, even an unrelated one, so an ease built on it restarts too. Never negative, and 0 before the keyframe, so an ease needs no guard.
 
 ### Blending states helper
 
@@ -91,7 +91,7 @@ scalar a  = smoothstep(t.secondsSinceKeyframe("wobble") / 0.8); // in seconds
 pos = rest * t.duringKeyframe("a") + moved * t.duringKeyframe("b");
 ```
 
-One name is a single slide, for a window use `t.duringKeyframe("from", "to")` opens the window at `from` and closes it at `to`. Unknown names weigh 0, so if each state is an *offset* from a resting value, the resting state needs no weight of its own.
+One name is a single slide. `t.duringKeyframe("from", "to")` opens the window at `from` and closes it at `to`. Unknown names weigh 0, so if each state is an *offset* from a resting value, the resting state needs no weight of its own.
 
 `sinceKeyframe` rises exactly like `duringKeyframe`, but never comes back down, for a value that should stay where its keyframe put it:
 

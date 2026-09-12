@@ -40,10 +40,10 @@ Everything the board is made of is published under its name:
 | `fig/xstep` `fig/ystep` | data units between ticks, 0 for round numbers from the range | 0 |
 | `fig/tick_font` | `latex` or `text` | latex |
 | `fig/tick_size` | how big the tick labels are | 0.4 |
-| `fig/xticks` | which edge the labels hang off: `bottom` `top` `none` | bottom |
+| `fig/xticks` | which edge carries the labels: `bottom` `top` `none` | bottom |
 | `fig/yticks` | `left` `right` `none` | left |
 | `fig/show_grid` `fig/show_axes` `fig/show_frame` | the grid, the lines x = 0 and y = 0, the border | true |
-| `fig/background` `fig/grid` `fig/axis` | the rectangle, the grid lines, the axes and labels | |
+| `fig/background` `fig/grid` `fig/axis` | the rectangle, the grid lines, the axes and labels | white |
 | `fig/line_width` | pixels, the frame and axis weight | 1.8 |
 
 Latex ticks cost a compile per label, so a range that moves every frame wants
@@ -62,8 +62,8 @@ You may use `label(primitive, at)` to follow a point in the data space.
 show << fig->label(Formula::Add("\\varepsilon_{20}"), vec2(20, 1e-4), vec2(-0.03, 0));
 ```
 
-The point is resolved every frame, so the label rides the view: `setRange`, or a
-snippet owning `fig/xrange`, carries it along.
+The point is resolved every frame, so the label follows the view: `setRange`, or a
+snippet owning `fig/xrange`, moves it.
 
 From a deck, `follow:` places anything at a point of the board:
 
@@ -83,8 +83,8 @@ From a deck, `follow:` places anything at a point of the board:
 
 ## Setting a value
 
-Every name a board, a curve or a legend publishes is settable three ways, and
-this is the order that wins:
+Every name a board, a curve or a legend publishes is settable three ways, in
+this order of priority:
 
 | | |
 | --- | --- |
@@ -113,7 +113,7 @@ name. It publishes under `fig_legend/`:
 | `fig_legend/corner` | `top_left` `top_right` `bottom_left` `bottom_right` | top_right |
 | `fig_legend/text_size` | how big the captions are | 0.4 |
 | `fig_legend/swatch` | length of a swatch, in pixels | 46 |
-| `fig_legend/padding` | the air around and between | 12 |
+| `fig_legend/padding` | the space around and between | 12 |
 | `fig_legend/background` `fig_legend/border` `fig_legend/text` | the box, its edge, the captions | |
 
 ## The shader is a file you edit

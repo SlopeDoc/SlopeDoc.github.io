@@ -35,7 +35,7 @@ slope offers a custom wrapper for scalar fields for a proper continuous intro/ou
 
     ```scalar color_split``` fraction of the intro spent fading the mesh
       colour to ```colormap(baseline)``` before the field grows, so the surface
-      colour does not pop. ```0``` disables that stage.
+      colour does not change abruptly. ```0``` disables that stage.
 
 
 

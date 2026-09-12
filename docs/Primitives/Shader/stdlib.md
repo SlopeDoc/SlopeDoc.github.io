@@ -2,7 +2,7 @@
 title: A Shader "STL" 
 ---
 
-Most shaders use a fairly common codebase (Inigo's sdfs, colormaps, camera handling, etc...). To avoid having to recode everything everytime, slope offers common shader functions!
+Most shaders use a fairly common codebase (Inigo's sdfs, colormaps, camera handling, etc...). To avoid having to recode everything every time, slope offers common shader functions!
 
 Here are the current existing functions, and small examples, that you can include in Slope shaders:
 
@@ -211,7 +211,7 @@ Here are the current existing functions, and small examples, that you can includ
 
 === "colormap.glsl"
 
-    Scientific colour maps, as polynomial fits over `t` in 0..1. The sequential ones are perceptually uniform (equal steps in `t` read as equal steps in brightness), which a raw hue ramp never gives you for free.
+    Scientific colour maps, as polynomial fits over `t` in 0..1. The sequential ones are perceptually uniform (equal steps in `t` read as equal steps in brightness), which a raw hue ramp does not give.
 
     | Function | |
     | --- | --- |
@@ -302,7 +302,7 @@ Here are the current existing functions, and small examples, that you can includ
 
 === "slide.glsl"
 
-    Sugar over the `TimeObject` uniforms and keyframe `#define`s from the [basics](../basics#following-the-talk) page, so a shader can stage itself against the talk with none of it spelled out by hand.
+    Sugar over the `TimeObject` uniforms and keyframe `#define`s from the [basics](../basics#following-the-talk) page, so a shader can stage itself against the talk without writing any of it by hand.
 
     | Function | |
     | --- | --- |

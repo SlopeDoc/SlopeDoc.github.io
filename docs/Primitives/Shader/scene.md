@@ -29,7 +29,7 @@ void main() {
 
 ## Using polyscope depth buffer
 
-To make polyscope objects coherent with a shader, you can use its depth buffer. Reach for `visibleOverScene` (or any of the other `scene*` functions in `camera.glsl`) and the buffer is passed on automatically:
+To make polyscope objects coherent with a shader, you can use its depth buffer. Call `visibleOverScene` (or any of the other `scene*` functions in `camera.glsl`) and the buffer is passed on automatically:
 
 ## Minimal example
 
@@ -87,4 +87,4 @@ void main() {
 
 
 ??? note "When you need to activate the depth buffer"
-    Currently, the scanner that checks if you need the depth buffer only reads the shader's own text, not what it pulls in through `#include`. A helper header of your own that wraps `visibleOverScene` internally won't be picked up, the shader that includes it has to call `shader->useSceneDepth()` from C++ instead, once.
+    Currently, the scanner that checks if you need the depth buffer only reads the shader's own text, not what it pulls in through `#include`. A helper header of your own that wraps `visibleOverScene` internally is not detected, the shader that includes it has to call `shader->useSceneDepth()` from C++ instead, once.

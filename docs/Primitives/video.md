@@ -99,9 +99,9 @@ you can feed a video stream like your webcam:
 
 ## Snapshots
 
-A frame can be pulled out of either primitive, which pairs with
-[`Image::updateImage`](../images#changing-an-image-while-the-talk-runs) to drop
-a still into a slide that is already running:
+A frame can be read from either primitive, and combined with
+[`Image::updateImage`](../images#changing-an-image-while-the-talk-runs) to put a
+still image into a slide that is already running:
 
 ```c++
 auto cam   = Webcam::Add();
@@ -156,4 +156,4 @@ a snapshot refills a texture instead of inserting a primitive.
 
 Changing `scale`, `speed` or `stats` reloads without restarting the decoder. Changing
 anything that shapes the decode, `decode_width` or a camera's mode, restarts
-it, which is the honest cost of that change.
+it.

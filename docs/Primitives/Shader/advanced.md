@@ -2,7 +2,7 @@
 title: Advanced shader usage
 ---
 
-This page described the more advanced features that could be used to implement your more advanced GPU programs for live-demos.
+This page describes the more advanced features that could be used to implement your more advanced GPU programs for live-demos.
 
 Passes run in the order they are streamed into the slide, `show << producer << consumer`,
 and each primitive's `updater` runs right after that primitive has drawn.
@@ -67,7 +67,7 @@ fx->setTexture("noise", "noise.png");
 ```
 
 The name is the link, exactly like any other uniform, and every texture reports its size as
-`<name>_size` if the shader bothers to declare it.
+`<name>_size` if the shader declares it.
 
 | Signature | Source bound to `name` |
 | --- | --- |
@@ -154,7 +154,7 @@ pass is bound and readable from C++ even if that pass's GLSL never declares it.
 
 Core GLSL has `atomicAdd`, `atomicMin`, `atomicMax`, `atomicExchange` and
 `atomicCompSwap` on `uint` and `int`, but nothing on `float`, so accumulating a real
-quantity means scaling it into fixed point and dividing on the way out. Size the scale so
+quantity means scaling it into fixed point and dividing when reading it back. Size the scale so
 that contributors × largest contribution × scale stays well under 2³²: an overflow is
 silent.
 
@@ -167,8 +167,8 @@ silent.
 | `RGBA readbackPixel(int x, int y, int attachment = 0) const` | one texel |
 
 An 8-bit target comes back normalised to 0..1, a float target exact. All three are
-synchronous: the call returns only once the GPU has caught up, and that stall, not the byte
-count, is what a per-frame readback costs. Reducing on the GPU and reading a handful of
+synchronous: the call returns only once the GPU has finished, and that stall, not the byte
+count, is what a per-frame readback costs. Reducing on the GPU and reading a few
 bytes out of a buffer is the cheap alternative, which is what the example below does.
 
 An `updater` runs after its pass has drawn, so a readback there sees the frame that was

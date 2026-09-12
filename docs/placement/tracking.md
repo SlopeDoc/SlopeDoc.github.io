@@ -69,4 +69,4 @@ The name is a [snippet variable](../../live/snippets), a [tunable parameter](../
 Nothing is inferred: a prefix naming something that is not a shader, a shader with no `view:`, a 3D value asked for in a shader's space, or a name resolving to nothing, each says so. A prefix is only read as one when it really names an item, so a parameter with a dot in its name is read whole.
 
 !!! warning "`follow:` takes no `at:`"
-    The item rides a moving point, so it has no position of its own to place. Use `offset:` to shift it from that point.
+    The item follows a moving point, so it has no position of its own to place. Use `offset:` to shift it from that point.

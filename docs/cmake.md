@@ -42,7 +42,7 @@ Slope is designed to be easily integrated on top of any cmake project in order t
 
 [Paths](../options) to Imagick, pdflatex and ffmpeg are found by cmake.
 
-On a Debian or Ubuntu machine, ```ffmpeg``` ships both tools and
+On a Debian or Ubuntu machine, ```ffmpeg``` provides both tools and
 ```imagemagick``` provides ```convert```:
 
 ```
@@ -56,7 +56,7 @@ sudo apt install texlive-latex-extra imagemagick ffmpeg
 the other dependencies. It produces one grammar per language, compiled once (takes roughly 1 minute)
 
 **python, glsl, cpp and yaml** are built by default. `SLOPE_LANGUAGES` trims that list, down
-to nothing (listings are then drawn as plain text), and `SLOPE_EXTRA_LANGUAGES` adds any
+to nothing (code is then drawn as plain text), and `SLOPE_EXTRA_LANGUAGES` adds any
 grammar repository carrying a `src/parser.c` and a `queries/highlights.scm`, as
 `name|repo|tag|extensions`:
 

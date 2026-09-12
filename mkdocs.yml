@@ -68,6 +68,7 @@ nav:
     - live/params.md
     - live/snippets.md
     - live/interactivity.md
+    - live/editor.md
   - Primitives:
     - Primitives/Animation.md
     - Primitives/colors.md
@@ -110,6 +111,7 @@ nav:
     - presenter/timings.md
     - presenter/prompter.md
     - presenter/export.md
+    - presenter/record.md
   - limitations.md
   - about.md
 

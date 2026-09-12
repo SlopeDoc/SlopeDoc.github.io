@@ -2,7 +2,7 @@
 title: Exporting to PDF
 ---
 
-Slope can render your whole presentation to a PDF, one page per slide, without touching a screenshot key. Launch with ``--export`` instead of running the live show:
+Slope can render your whole presentation to a PDF, one page per slide. Launch with ``--export`` instead of running the live show:
 
 ```
 ./project_exe --project_path /home/.../slope_project --export

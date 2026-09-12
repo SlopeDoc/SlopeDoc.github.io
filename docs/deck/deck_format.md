@@ -35,15 +35,21 @@ Screen items take one placement key:
   at: [0.5, 0.4]          # fixed position
 - latex: some text
   at: TOP                 # TOP | CENTER | BOTTOM
+- image: logo.png
+  at: BOTTOM_RIGHT        # flush to an edge or a corner
 - image: fig.png
   below: my_key           # below/above/right_of/left_of another item
   padding: 0.05
 - formula: p
-  follow: fx.center       # rides a moving point instead of a fixed position
+  follow: fx.center       # follows a moving point instead of a fixed position
   offset: [0.025, -0.03]
 ```
 
-When omitted, `load`/`image` items default to a label derived from their key or filename, so everything is drag-editable out of the box.
+`TOP_LEFT`, `TOP_RIGHT`, `BOTTOM_LEFT`, `BOTTOM_RIGHT`, `LEFT` and `RIGHT` sit
+the item against that edge of the window, `config: margin` away. The item's own
+size is taken into account, so a logo and a caption are both flush with it.
+
+When omitted, `load`/`image` items default to a label derived from their key or filename, so everything is drag-editable by default.
 
 `follow:` places an item on a moving value: a point of the 3D scene, of the screen, or of a shader's world space, see [tracking](../../placement/tracking#deck-format).
 
@@ -89,7 +95,7 @@ A `keyframe:` labels the frame it appears in, so C++ [updaters](../../Primitives
 
 ### A template on every frame
 
-`template:`, beside `slides:`, holds the items every frame gets, drawn behind its own. A frame opts out with `no_template`.
+`template:`, beside `slides:`, holds the items every frame gets, drawn behind its own. A frame excludes it with `no_template`.
 
 ```yaml
 template:
@@ -103,7 +109,7 @@ slides:
     no_template: true
 ```
 
-It is built once and the same primitives are re-used, so a footer stays put across a slide change instead of cross-fading with itself. It cannot contain a `- step`.
+It is built once and the same primitives are re-used, so a footer stays in place across a slide change instead of cross-fading with itself. It cannot contain a `- step`.
 
 ### Named groups
 

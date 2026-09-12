@@ -30,7 +30,7 @@ show << Arrow2D::Add(Arrow2D::Attach(formula),        // a screen primitive
                      Arrow2D::AttachLabel("target")); // a persistent label
 ```
 
-An endpoint is a fixed position, a label, or a screen primitive, in which case the arrow attaches at the boundary of its bounding box, keeping a small `margin`. Each endpoint also takes an `offset`, applied after attachment, to fine-tune where the arrow starts and lands.
+An endpoint is a fixed position, a label, or a screen primitive, in which case the arrow attaches at the boundary of its bounding box, keeping a small `margin`. Each endpoint also takes an `offset`, applied after attachment, to adjust where the arrow starts and ends.
 
 | Field | Effect |
 | --- | --- |

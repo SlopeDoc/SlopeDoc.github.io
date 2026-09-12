@@ -1,5 +1,5 @@
 ---
-title: Code display
+title: Code and algorithms
 ---
 
 ## Step by step code display
@@ -14,8 +14,7 @@ show << code->at("code") << code->reveal(START);
 show << inNextFrame << code->reveal("loop") << code->focus("loop");
 ```
 
-A listing is drawn with ImGui rather than through the LaTeX pipeline, so line
-positions are known exactly, and a file edited while the talk runs is re-read on
+A file edited while the talk runs is re-read on
 the next frame.
 
 ### Builders
@@ -104,11 +103,52 @@ variables, see [build](../../cmake#code-highlighting).
 
 An unknown extension is drawn as plain text.
 
+## Pseudocode
+
+To explain an algorithm you often want pseudocode instead of source code,
+written in the LaTeX. An `Algorithm`
+is that environment, revealed and focused like the code above.
+
+```c++
+auto algo = Algorithm::FromFile("bfs.tex");
+show << algo->at("pseudocode") << algo->focus("loop");
+```
+
+```latex
+\begin{algorithmic}
+\Procedure{BFS}{$G, s$}
+  \State $Q \gets \{s\}$
+  \While{$Q \neq \emptyset$} \slopemark{loop}
+    \State $u \gets \Call{Pop}{Q}$ \Comment{oldest first}
+    \For{$v \in N(u) \setminus \mathrm{seen}$} \slopemark{relax}
+      \State \Call{Push}{$Q, v$}
+    \EndFor \slopemark{relaxed}
+  \EndWhile
+\EndProcedure
+\end{algorithmic}
+```
+
+!!! note "```c++ Algorithm::FromFile(path file, scalar scale = 1, int width = -1);``` — a `.tex` holding the environment"
+!!! note "```c++ Algorithm::Add(TexObject tex, scalar scale = 1, int width = -1);``` — the same written in C++"
+
+
+
+### Marks instead of regions
+
+`\slopemark{name}` names the line it sits on, and the
+[cues](#revealing-and-focusing) take those names. `focus("relax")` is the line of
+one mark, `focus("relax", "relaxed")` the span between two.
+
+
+
+
+
 ## Deck format
 
 ```yaml
 - code: newton.py         # the file, relative to the data path
-  at: listing             # placement, defaults to a label from the filename
+  id: newton
+  at: source              # placement, defaults to a label from the filename
   lines: [12, 40]         # a slice, 1-based
   language: python        # overrides the extension
   line_numbers: absolute  # true | false | absolute | relative
@@ -120,10 +160,28 @@ An unknown extension is drawn as plain text.
   dim: 0.35               # style.dim_factor
 
 - step
-- code: newton.py         # the same file is the same listing
+- set: newton             # the code stays where it is
   reveal: relax           # START, END, a label, or a line number
   focus: relax            # a region, [label, label], [first, last], or null
 ```
 
-The file and the slice make the listing; every other key is restyling, so a
-colour or a font edit re-places the primitive that is already there.
+
+
+Pseudocode is an `algo:` item, with the same keys:
+
+```yaml
+- algo: bfs.tex           # the file, relative to the data path
+  id: bfs
+  at: pseudocode          # defaults to a label from the filename
+  scale: 1.0
+  width: 300              # pt
+  dim: 0.35
+
+- step
+- set: bfs
+  focus: loop             # a mark, [from, to], [first, last], or null
+  reveal: relax           # START, END, a mark, or a line number
+```
+
+The content of the `.tex` is part of the primitive's identity, so editing it
+while the talk runs recompiles it in place.

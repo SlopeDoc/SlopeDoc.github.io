@@ -61,11 +61,36 @@ slides:
   - ...
 ```
 
+ `preamble:` is latex written
+straight in the deck, a string or a list of lines, added on top of
+`commands.tex` and hot-reloaded with everything else.
+
+```yaml
+preamble:
+  - \usepackage{libertine}
+```
+
+### Deck settings
+
+`config:` sets the values used in all frames (like title size, etc...). 
+
+```yaml
+config:
+  title_scale: 1.5        # scale of title items
+  latex_scale: 1.0        # default scale of latex, formula and algo items
+  box_roundness: 1.0      # corner radius of boxes
+  margin: 0.06            # gap the edge anchors leave, one number or [x, y]
+  top: [0.5, 0.1]         # where at: TOP puts an item
+  center: [0.5, 0.5]
+  bottom: [0.5, 0.9]
+```
+
 ### What hot reload watches
 
 | File | Effect when edited |
 | --- | --- |
 | `deck.yaml` | slides are recomposed in place |
+| `preamble:` or `config:` in the deck | the same, formulas recompiled if the preamble moved |
 | latex definitions file | edited entries are recompiled, and the slides recomposed |
 | latex preamble file | every formula is recompiled |
 | saved camera views | the view is reloaded |

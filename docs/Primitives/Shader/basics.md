@@ -110,7 +110,7 @@ fx->bind({"show_field", "show_basin"});      // several at once
 The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a bare name in a deck, below.
 
 !!! tip "Unknown names never throw"
-    A uniform the shader doesn't currently declare is silently ignored rather than thrown, so you can  exactly what you want while editing the shader live and adding/removing uniforms as you go.
+    A uniform the shader doesn't currently declare is silently ignored rather than thrown, so you can declare exactly what you want while editing the shader live, adding and removing uniforms.
 
 ## Sharing code with `#include`
 
@@ -126,7 +126,7 @@ Plain textual inclusion, expanded before the source ever reaches the GL compiler
 
 A `shader:` item in a [deck format](../../../deck/deck_format) declares what goes *into* the
 shader: its uniforms, its textures, and the region of the plane it draws. That covers most of
-what a single-pass shader needs without touching C++. Multi-pass, ping-pong and storage
+what a single-pass shader needs without any C++. Multi-pass, ping-pong and storage
 buffers need a streaming order the deck cannot express, and stay on the
 [C++ side](../advanced).
 
@@ -144,9 +144,7 @@ buffers need a streaming order the deck cannot express, and stay on the
     grad:  {file: gradient.png, filter: nearest, wrap: repeat}
 ```
 
-Each uniform **declared with a type** becomes a persistent [tunable parameter](../../../live/params): it appears in
-the Tuner panel while the shader is on screen, you drag it live, `Ctrl+S` saves it to
-`views/params.json` and the next run picks it up. The shader follows it every frame. An entry
+Each uniform **declared with a type** becomes a persistent [tunable parameter](../../../live/params). An entry
 with no type declares nothing and reads an existing value instead, below.
 
 Types are `float`, `int`, `bool`, `vec2`, `vec3`, `dir` and `color` (vec4). A `dir` is a
@@ -156,7 +154,7 @@ optional, and a bounded parameter is drawn as a slider rather than a drag field.
 `<type>[N]` declares an array, from 1 to 64 elements. The shader sees
 `uniform vec3 controls[8];` and the panel shows one parameter per element, named
 `controls[0]` to `controls[7]`, each with its own handle. Its `default` is a list of one
-value per element. Watch the quotes: inside a flow mapping yaml reads the brackets itself,
+value per element. Note the quotes: inside a flow mapping yaml reads the brackets itself,
 so write `{type: "vec3[8]", default: [...]}`.
 
 Each texture binds an image file to the sampler of the same name, which the shader declares
@@ -215,7 +213,7 @@ line width with `iPixelXY()` is what keeps it at the same thickness however the 
 scaled.
 
 A label can then be placed on a point *of that space*, with `tracker` or `follow:` on the
-[tracking page](../../../placement/tracking#following-a-point-of-a-shader), and it lands on
+[tracking page](../../../placement/tracking#following-a-point-of-a-shader), and it is placed on
 what the shader draws for that value. Without a `view:` a shader has no world points.
 
 ### On a shader registered from C++
@@ -231,8 +229,8 @@ its updater does not lose the declarative layer with it:
 ```
 
 Its parameters are named after the object, not the item's `id:`, so they hold however many
-slides show it, and a hot reload drops only what the deck declared last time, leaving its
-C++ owner's own binds standing. Declaring these keys on more than one item is reported, and
+slides show it, and a hot reload drops only what the deck declared last time, leaving the binds of its
+C++ owner in place. Declaring these keys on more than one item is reported, and
 an `object:` that is a group, or not a shader, refuses them.
 
 ## Snippet textures

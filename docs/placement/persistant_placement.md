@@ -2,7 +2,7 @@
 title: Persistent
 ---
 
-Eyeballing positions on the screen can be tedious, hence, you can instead assign a label to a primitive (possibly a different one per slide).
+Placing primitives on the screen by hand can be tedious, hence, you can instead assign a label to a primitive (possibly a different one per slide).
 
 Labeled primitives can be selected with ```Ctrl+Left Click```, then moved with the mouse and scaled with the mouse wheel. While you drag, light-blue guides appear and snap the primitive's edges and center to the other primitives of the slide, so you can align elements precisely. A selected primitive can also be centered horizontally by pressing ```H``` and vertically by pressing ```V```.
 
@@ -18,6 +18,27 @@ Dragged positions are kept only for the current session until you save them: pre
 !!! warning "Warning"
     Labels must be unique, if you set the same label to another primitive, they will share the same position (can be useful to replace a primitive by another one).
 
+
+## A name for a new item
+
+Coming up with fresh names for all primitives can be hard. Press ```N``` and slope copies a free name to the
+clipboard, to paste as the ```at:``` or ```id:``` of your next item.
+
+It is never a label the deck already uses, nor the name of one of its items.
+
+```yaml
+- formula: e^{i\pi} = -1
+  at: moset               # pasted from the clipboard
+```
+
+While writing a [deck](../../deck/getting_started), `--auto-suggest` copies one
+on every save, so a free name is in the clipboard when you add the next item:
+
+```
+./project_exe --project_path /home/.../slope_project --auto-suggest
+```
+
+In that case the whole ```at: moset``` line is copied.
 
 <video src="../../static/persistant.mp4" muted autoplay loop controls width="100%" >
 </video>

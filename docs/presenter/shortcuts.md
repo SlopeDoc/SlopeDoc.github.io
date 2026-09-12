@@ -40,6 +40,8 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 | ``C`` | Export the current camera view |
 | ``D`` | Polyscope GUI |
 | ``L`` | Reload LaTeX (hot reload) |
+| ``E`` | [Editor](../../live/editor) for every hot-reloaded file |
+| ``N`` | Copy [a free label](../../placement/persistant_placement#a-name-for-a-new-item) to the clipboard, to name a new item |
 | ``A`` | Tuner panel: [tunable parameters](../../live/params) of the current slide, and their handles |
 | ``P`` | Screenshot (saved to ``/tmp/screenshot_*.png``) |
 | ``R`` | Reset [rehearsal timings](../timings) |
