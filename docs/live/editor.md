@@ -23,13 +23,27 @@ reads the change on the next frame, so saving is what reloads.
 | `E` | open and close the editor |
 | `Ctrl` + `S` | save the open file, which reloads it |
 | `Ctrl` + `/` | comment or uncomment the selected lines, in the language of the file |
-| `Tab` | indent, two spaces in a yaml file |
+| `Tab` / `Shift` + `Tab` | indent or dedent the selected lines, by two spaces |
 | `Enter` | a new line, indented like the one it ends |
 | `Ctrl` + `C` / `X` / `V` | copy, cut, paste |
+| `Ctrl` + `N` | type a label name that no item uses yet, for a new `at:` or `id:` |
 | `Escape` | leave the text field, then close the window |
 
 The `size` slider scales the editor font. Syntax highlighting is the one a
 [code primitive](../../Primitives/code#languages) uses, and covers the same languages.
+Long lines wrap.
+
+### Finding a frame
+
+The editor opens the deck on the frame currently shown. Below the file list, a yaml
+file shows its frames by their title. Clicking one moves the editor to that line,
+and the presentation to that frame.
+
+### Documentation
+
+The `documentation` checkbox opens a panel with the deck keys and items, the shader
+library functions or the Lua built-ins, depending on the open file. Type in its
+filter to find a key.
 
 ### Files that do not exist yet
 

@@ -82,14 +82,14 @@ local speed = param("wave/speed", 1.2, 0, 4)   -- declared here, slider in the T
 return math.sin(t.from_begin * speed) * amplitude   -- declared elsewhere, read by its name
 ```
 
-`param()` returns the live value, so a section reads it like any other number and follows the slider while the show runs. A parameter that already exists, declared in C++ or by another section, is read by its bare name ; declaring it again with the same call is harmless and returns it unchanged.
+`param()` returns the live value, so a section reads it like any other number and follows the slider while the show runs. A parameter that already exists, declared in C++ or by another section, is read by its name. Declaring it again with the same call returns it unchanged.
 
 ??? note "```param(name, default, min, max)```"
     - ```name``` the parameter's name, `"group/name"` grouping it in the Tuner panel
     - ```default``` its value until it is edited
     - ```min```, ```max``` slider bounds, optional ; equal (the default) means an unconstrained drag
 
-    Declares a [tunable parameter](params.md) on first use and returns its live value. Only scalars are declared this way ; a `vec2`, `vec3` or color parameter declared in C++ is read by its bare name.
+    Declares a [tunable parameter](params.md) on first use and returns its live value. Only scalars are declared this way. A `vec2`, `vec3` or color parameter declared in C++ is read by its name.
 
 ## Interaction with C++
 

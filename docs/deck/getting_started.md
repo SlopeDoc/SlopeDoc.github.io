@@ -51,7 +51,7 @@ slides:
       - load: my_key        # content from the latex definitions file
 ```
 
-`init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble, both hot-reloaded too. Their paths are given at the top of the deck with the `latex:` and `commands:` keys; when omitted, the project's `latex.json` and `commands.tex` are used if they exist. `snippets:` names the [Lua files](../../live/snippets) the deck animates with, one or several.
+`init` also loads a latex definitions file (see [dynamic latex](../../Primitives/Latex/dynamic)) and a latex preamble, both hot-reloaded too. Their paths are given at the top of the deck with the `latex:` and `commands:` keys. Without them, the project's `latex.json` and `commands.tex` are used if they exist. `snippets:` names the [Lua files](../../live/snippets) the deck animates with, one or several.
 
 ```yaml
 latex: my_definitions.json

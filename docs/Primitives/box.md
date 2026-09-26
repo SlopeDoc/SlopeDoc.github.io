@@ -15,6 +15,7 @@ them and follows them as they move.
     - latex: framed content
     - image: fig.png
   padding: 0.02         # margin around the contents, also padx / pady
+  pad_top: 0.06         # one side only, also pad_bot / pad_left / pad_right
   color: "#333333"      # the outline
   thickness: 2
   filled: true          # also fill_color, alpha

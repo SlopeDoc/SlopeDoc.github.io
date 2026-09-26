@@ -91,8 +91,8 @@ In a deck, arrows and boxes are the `arrow:` and `box:` items, [below](#deck-for
 
 ```yaml
 - arrow:
-    from: KR2               # an item id, a [x, y] position, or a label
-    to: KR2_sub
+    from: KR2               # an item id, a label, [x, y] on screen or [x, y, z] in the scene
+    to: {follow: query_point}   # anything follow: accepts
     bend: 0.25              # curvature, 0 being straight
     color: "#aa0000"
     from_offset: [0, 0.02]  # shift the attach points
@@ -109,6 +109,7 @@ them and follows them as they move:
     - latex: framed content
     - image: fig.png
   padding: 0.02         # margin around the contents, also padx / pady
+  pad_top: 0.06         # one side only, also pad_bot / pad_left / pad_right
   color: "#333333"      # the outline
   thickness: 2
   filled: true          # also fill_color, alpha

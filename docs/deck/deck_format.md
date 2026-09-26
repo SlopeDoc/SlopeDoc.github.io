@@ -37,6 +37,7 @@ Screen items take one placement key:
   at: TOP                 # TOP | CENTER | BOTTOM
 - image: logo.png
   at: BOTTOM_RIGHT        # flush to an edge or a corner
+  offset: [0, -0.05]      # shifts any placed item, so items can share a label
 - image: fig.png
   below: my_key           # below/above/right_of/left_of another item
   padding: 0.05
@@ -64,6 +65,7 @@ part of the primitive, they describe this placement of it:
   alpha: 0.5              # opacity
   rot: 20                 # rotation, in degrees
   zoom: 1.5               # scales this placement
+  depth: 1                # drawn above lower depths, 0 by default
 ```
 
 ??? note "`zoom` and `scale` are different things"
@@ -72,7 +74,7 @@ part of the primitive, they describe this placement of it:
 
 ### Steps
 
-A bare `- step` marker splits a frame into clicks (the equivalent of `inNextFrame`): every item after it appears on the next click.
+A `- step` line splits a frame into clicks, like `inNextFrame` in C++. Every item after it appears on the next click.
 
 ```yaml
 - frame:
@@ -113,23 +115,26 @@ It is built once and the same primitives are re-used, so a footer stays in place
 
 ### Named groups
 
-Any other top-level list is a group of items, expanded wherever its bare name appears in a frame:
+Any other top-level list is a group of items (or `params:` and `items:`), expanded wherever its name appears in a frame:
 
 ```yaml
 axes:
-  - object: grid
-  - latex: x
-    at: x_label
+  params: {label: x}      # an empty default must be given at each call
+  items:
+    - object: grid
+    - latex: $label
+      at: x_label
 slides:
   - frame:
-      - axes
+      - axes              # the defaults
       - object: curve
   - frame:
-      - axes
+      - axes: time_axes   # a call, its arguments beside it
+        label: t
       - object: other_curve
 ```
 
-Like a template, a group is built on first use and re-added afterwards, so a group opening several frames keeps its objects across the slide change rather than fading them out and back in. It cannot contain a `- step` either.
+`$name` is replaced by the argument as it is (a number, a list, a text), `${name}` inside a text, and `${id}` is the id of the call. A group can contain `- step`.
 
 ### Background
 
@@ -142,7 +147,7 @@ Like a template, a group is built on first use and re-added afterwards, so a gro
 
 ### Referencing items : ids and groups
 
-Operations refer to items by their key (latex key, image filename stem, object name, `title`), or an explicit `id:`. Any item can also join a tagged group with `group: name`; a group has no position of its own, operations simply map over its members.
+Operations refer to items by their key (latex key, image filename stem, object name, `title`), or an explicit `id:`. An `id:` names a primitive like a variable in C++, so two items written the same way without one are two primitives. Any item can also join a tagged group with `group: name`. A group has no position of its own, operations simply map over its members.
 
 ```yaml
 - formula: \mathcal{S}
@@ -157,7 +162,8 @@ After a `- step` (or in a later frame), existing items can be manipulated:
 
 ```yaml
 - step
-- remove: [isurf, side_notes]     # item ids or groups
+- remove: [old_fig, side_notes]   # item ids or groups, or a group call's id
+- isurf                           # shows it again, where it was last placed
 - replace: fig
   with: {image: better_fig.png}
 - set: isurf                      # re-place an existing item,

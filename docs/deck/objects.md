@@ -46,7 +46,7 @@ spot->setUpdater([=](TimeObject t){
 });
 ```
 
-The mesh, the deform loop and the upload stay compiled; the amplitude and the phase are a file you save.
+The mesh, the deform loop and the upload stay compiled, while the amplitude and the phase are in a file you save.
 
 ### A registered shader keeps its deck inputs
 
