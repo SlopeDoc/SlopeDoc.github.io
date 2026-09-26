@@ -38,3 +38,14 @@ The goal is to allow researchers, teachers and geometry lovers to easily illustr
 ### Presentations with *Slope*:
 
 Here is a link to a youtube playlist containing presentations with Slope : [link](https://youtube.com/playlist?list=PLmC_RrzoO5-dHpV4h-ZX7077p0G-bjQWw&si=YfHUrDVlMtzPaDGn). Please let me know if you want to add your presentation to the list!
+
+### Workflow tutorial
+
+<div style="position: relative; width: 100%; aspect-ratio: 16 / 9;">
+  <iframe src="https://www.youtube-nocookie.com/embed/YEEsuHSZFN0"
+          title="Slope workflow tutorial"
+          style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+</div>
