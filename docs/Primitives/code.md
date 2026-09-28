@@ -80,13 +80,13 @@ code->style.font_scale   = 2.0f;
 
 | Field | |
 | --- | --- |
-| `font` | any ttf, loaded once; falls back on `Options::CodeFont`, then polyscope's monospace |
+| `font` | any ttf, loaded once, else `Options::CodeFont`, else polyscope's monospace |
 | `font_scale` | on top of the slide state's own scale (default 2.2) |
 | `tracking` | multiplies each glyph's advance, 1 keeps the font's metrics |
 | `line_spacing` | 1.15 |
 | `padding` | pixels around the block |
 | `line_numbers` | off by default |
-| `absolute_line_numbers` | numbers a slice by its lines in the file; `reveal` and `focus` stay relative to the loaded portion |
+| `absolute_line_numbers` | numbers a slice by its lines in the file, while `reveal` and `focus` stay relative to the loaded portion |
 | `dim_factor` | how far the lines outside a focus are dimmed, 1 keeps them opaque |
 
 Every colour is a [named parameter](../../live/params) — `code/text`,

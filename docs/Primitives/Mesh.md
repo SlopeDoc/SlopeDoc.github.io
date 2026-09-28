@@ -46,4 +46,7 @@ slope offers a custom wrapper for scalar fields for a proper continuous intro/ou
   at: bunny_transform   # a persistent transform label, not a screen position
   smooth: false         # polyscope shading mode, false shows the edges
   normalize: true       # rescale the mesh to fit the scene
+  color: "#d08040"
 ```
+
+It also takes the `transform:` of every [scene item](../polyscope_primitives#deck-format).

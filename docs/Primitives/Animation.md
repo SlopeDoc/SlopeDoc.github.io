@@ -2,7 +2,7 @@ The way animations can be programmatically conceived is through updaters.
 
 All primitives have an updater object that is called at each frame such that each primitive can be time-dependent. It takes a `TimeObject`, which carries the clocks, the current slide and the keyframe queries described below.
 
-An updater is C++, so editing one costs a rebuild. The constants it reads belong in a [parameter](../../live/params), and often the motion itself belongs in a [snippet](../../live/snippets); both are re-read on save, and both expose the same queries.
+An updater is C++, so editing one costs a rebuild. The constants it reads belong in a [parameter](../../live/params), and often the motion itself belongs in a [snippet](../../live/snippets). Both are re-read on save and expose the same queries.
 
 ```cpp
 auto pc = PointCloud::Add(positions);
@@ -101,4 +101,4 @@ alpha = t.sinceKeyframe("reveal");
 
 Both take a last argument `sequential`, which makes a window close before the next one opens instead of overlapping it, so two states are never seen mixed.
 
-A snippet spells them the same way, `t.duringKeyframe("a")`, and a shader calls them bare, `duringKeyframe("a")`.
+A snippet spells them the same way, `t.duringKeyframe("a")`, and a shader calls them without `t.`, `duringKeyframe("a")`.

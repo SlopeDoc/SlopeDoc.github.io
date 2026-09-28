@@ -25,8 +25,8 @@ The path to the ```pdflatex```, ```convert``` and ```ffmpeg``` tools are automat
 !!! note "```std::string PathToPDFLATEX```"
 !!! note "```std::string PathToCONVERT```"
 !!! note "```std::string PathToFFMPEG```"
-    Only used by the [Video and Webcam](../Primitives/video) primitives. A bare
-    name is resolved through ```PATH```, so a tool installed after cmake ran is
+    Only used by the [Video and Webcam](../Primitives/video) primitives. A name
+    without a path is resolved through ```PATH```, so a tool installed after cmake ran is
     still found.
 !!! note "```std::string PathToFFPROBE```"
     Reads a clip's size, frame rate and duration before playing it.

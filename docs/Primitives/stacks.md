@@ -19,13 +19,13 @@ show << inNextFrame << stack->place(paragraph2);  // registered now :
 
 The layout is computed from **all** registered children, visible or not: a child appearing at a later step fades in at its final position, and earlier children never move.
 
-The stack draws nothing itself; it exists as a screen primitive so that arrows and [englobing boxes](../shapes) can target the whole block.
+The stack draws nothing itself. It is a screen primitive so that arrows and [englobing boxes](../shapes) can target the whole block.
 
 | Field | Effect |
 | --- | --- |
 | `spacing` | vertical gap between children, relative units |
 | `align` | `LEFT`, `CENTER` or `RIGHT` |
-| `handle` | block center; a label makes the block drag-editable |
+| `handle` | block center, a label makes the block drag-editable |
 
 In a deck, stacks are the `stack:` item, [below](#deck-format).
 

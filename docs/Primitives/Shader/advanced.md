@@ -14,7 +14,7 @@ at on the slide.
 
 | Signature | Effect |
 | --- | --- |
-| `static ShaderPtr FromFile(const path& file, int w = 0, int h = 0)` | `w`/`h` set the render resolution; `<= 0` keeps the window's own |
+| `static ShaderPtr FromFile(const path& file, int w = 0, int h = 0)` | `w`/`h` set the render resolution, `<= 0` keeps the window's own |
 | `static ShaderPtr Add(const std::string& src, int w = 0, int h = 0)` | same, from a source string |
 | `void setResolution(int w, int h)` | render resolution in pixels, what `iResolution` reports |
 | `int bufferWidth() const` / `int bufferHeight() const` | that resolution |
@@ -138,11 +138,11 @@ layout(std430, binding = 0) buffer Density { uint density[]; };
 | `void setBuffer(int binding, const void* data, std::size_t bytes)` | upload, creating the buffer if needed |
 | `template<class T> void setBuffer(int binding, const std::vector<T>& v)` | same, `v.size() * sizeof(T)` bytes |
 | `void allocBuffer(int binding, std::size_t bytes)` | reserve a zeroed buffer, uploading nothing |
-| `bool readBuffer(int binding, void* dst, std::size_t bytes) const` | read back; `false` if there is no buffer at that binding |
+| `bool readBuffer(int binding, void* dst, std::size_t bytes) const` | read back, or `false` if there is no buffer at that binding |
 | `template<class T> bool readBuffer(int binding, std::vector<T>& v) const` | same, into a vector you have already sized |
 | `void clearBufferData(int binding, unsigned int value = 0)` | refill the whole buffer with `value`, GPU-side (GL 4.3; a no-op below that) |
 | `void shareBuffer(int binding, const ShaderPtr& src, int src_binding)` | bind another pass's buffer here as well |
-| `void clearBuffer(int binding)` | drop this binding; the allocation dies with its last holder |
+| `void clearBuffer(int binding)` | drop this binding, the allocation is freed with its last holder |
 
 Re-uploading the same byte count reuses the allocation, so a `setBuffer` per frame is a
 copy and not a reallocation. A memory barrier is issued after every draw, so writes are

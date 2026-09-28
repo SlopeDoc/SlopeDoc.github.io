@@ -56,6 +56,8 @@ The point is read through the view and rect the shader was last drawn with, so t
 - formula: p
   follow: fx.center       # "center", read in the world space of the shader "fx"
   offset: [0.025, -0.03]  # shifted from that point, in screen units
+- latex: the nose
+  follow: {object: bunny, vertex: 1520}   # a vertex of a mesh, cloud or curve
 ```
 
 The name is a [snippet variable](../../live/snippets), a [tunable parameter](../../live/params), or a placer registered with `registerPlacer`. Its width says which space it is in:

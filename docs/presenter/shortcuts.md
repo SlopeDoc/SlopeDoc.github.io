@@ -19,7 +19,7 @@ These act on [persistent screen primitives](../../placement/persistant_placement
 
 | Key / mouse | Action |
 | --- | --- |
-| ``Ctrl`` + left click | Pick the primitive under the cursor; click again on the same spot to cycle down through primitives stacked there |
+| ``Ctrl`` + left click | Pick the primitive under the cursor. Click again on the same spot to cycle through the primitives below it |
 | drag | Move the picked primitive (light-blue guides snap it to other primitives) |
 | mouse wheel | Scale the picked primitive |
 | ``Shift``+wheel | Change the alpha of the picked primitive |

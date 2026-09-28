@@ -59,7 +59,7 @@ A plain `.frag` file with no `#version` line gets a prelude prepended, declaring
 | `iTimeDelta` | float | seconds since last frame |
 | `iFrame` | int | frames this shader has rendered |
 | `iFrameRate` | float | frames per second, smoothed |
-| `iMouse` | vec4 | xy = cursor (px, y up); zw = last click, z<0 while unpressed |
+| `iMouse` | vec4 | xy = cursor (px, y up), zw = last click, z<0 while unpressed |
 | `iMouseNorm` | vec2 | cursor in 0..1 across the rect, y up |
 | `iHovered` | float | 1.0 while the cursor is over the rect |
 | `iDate` | vec4 | year, month(1-12), day, seconds since midnight |
@@ -107,7 +107,7 @@ fx->bind("reveal");                          // uniform <- the value called "rev
 fx->bind({"show_field", "show_basin"});      // several at once
 ```
 
-The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a bare name in a deck, below.
+The width follows the value, 1 to 4 components, so one call serves a `float` and a `vec3`. Same mechanism as a name in a deck, below.
 
 !!! tip "Unknown names never throw"
     A uniform the shader doesn't currently declare is silently ignored rather than thrown, so you can declare exactly what you want while editing the shader live, adding and removing uniforms.
