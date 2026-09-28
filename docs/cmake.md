@@ -22,9 +22,9 @@ Slope is designed to be easily integrated on top of any cmake project in order t
     add_executable(slope_project slides.cpp )
     target_link_libraries(slope_project slope)
     ```
-=== "FetchContent file (`cmake/slope.cmake`)"
+=== "FetchContent file"
 
-    ```cmake title="slope.cmake" linenums="1"
+    ```cmake title="cmake/slope.cmake" linenums="1"
     include(FetchContent)
     FetchContent_Declare(
       slope
