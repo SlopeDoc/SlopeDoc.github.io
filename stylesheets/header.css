@@ -1,0 +1,16 @@
+.slope-hl {
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371, #47c9ff, #ff5f6d);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: slope-shimmer 6s linear infinite;
+}
+@keyframes slope-shimmer {
+  to { background-position: 300% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slope-hl { animation: none; }
+}
