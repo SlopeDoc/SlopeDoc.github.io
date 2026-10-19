@@ -9,3 +9,4 @@ Any help is welcome! In particular regarding clean software engineering (really 
 ### Contributors:
 
 - [David Coeurjolly](https://perso.liris.cnrs.fr/david.coeurjolly/)
+- [Hugo Schott](https://h-schott.github.io/)
